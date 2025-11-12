@@ -20,8 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;displaFy=swap"
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>  
 </head>
 
 <body id="page-top">
@@ -29,7 +28,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
         <div class="container px-5">
 
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="./table_dashboard/dashboard_admin.php">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="./dashboard_staffTU/beranda.php">
                 <img src="foto/logo_polibatam.png" alt="Logo" width="47" height="42" class="me-3">
                 Buku Tamu
             </a>
@@ -71,6 +70,7 @@
                         <h1 class="display-1 lh-1 mb-3">Buku Tamu Staff TU</h1>
                         <p class="lead fw-normal text-muted mb-5">Sistem pencatatan kehadiran yang modern dan efisien
                         </p>
+                        <a href="asset/tambah.php" class="btn btn-primary btn-lg ">Tambah Data</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

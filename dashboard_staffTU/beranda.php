@@ -14,8 +14,12 @@
   <!-- Sidebar -->
   <?php include '../Nav_Side_Bar/sidebar.php'; ?>
 
+
+
   <!-- Konten Utama -->
-  <div class="flex-grow-1 p-4" style="margin-left:10px;"> 
+  <div class="flex-grow-1"> 
+
+    <?php include '../Nav_Side_Bar/navbar.php'; ?>
 
     <div class="container mt-4">
 

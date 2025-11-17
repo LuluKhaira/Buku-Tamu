@@ -17,50 +17,70 @@
 
 
   <!-- Konten Utama -->
-  <div class="flex-grow-1"> 
+  <div class="flex-grow-1">
 
     <?php include '../Nav_Side_Bar/navbar.php'; ?>
 
     <div class="container mt-4">
 
-      <!-- Kotak Ringkasan -->
-      <div class="row mb-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm border-start-primary border-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="text-primary mb-1">BULAN INI</h6>
-                <h5 class="fw-bold mb-0">15 Pengunjung</h5>
+      <div class="row">
+
+        <!-- Bulan Ini -->
+        <div class="col-xl-4 col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    Bulan Ini</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">15 Pengunjung</div>
+                </div>
+                <div class="col-auto">
+                  <i class="bi bi-calendar3 fs-2 text-gray-300"></i>
+                </div>
               </div>
-              <i class="bi bi-calendar3 text-muted fs-3"></i>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card shadow-sm border-start-success border-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="text-success mb-1">MINGGU INI</h6>
-                <h5 class="fw-bold mb-0">7 Pengunjung</h5>
+        <!-- Minggu Ini -->
+        <div class="col-xl-4 col-md-6 mb-4">
+          <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    Minggu Ini</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">7 Pengunjung</div>
+                </div>
+                <div class="col-auto">
+                  <i class="bi bi-calendar-week fs-2 text-gray-300"></i>
+                </div>
               </div>
-              <i class="bi bi-calendar-week text-muted fs-3"></i>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card shadow-sm border-start-info border-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="text-info mb-1">HARI INI</h6>
-                <h5 class="fw-bold mb-0">2 Pengunjung</h5>
+        <!-- Hari Ini -->
+        <div class="col-xl-4 col-md-6 mb-4">
+          <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                    Hari Ini</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">2 Pengunjung</div>
+                </div>
+                <div class="col-auto">
+                  <i class="bi bi-calendar-day fs-2 text-gray-300"></i>
+                </div>
               </div>
-              <i class="bi bi-calendar-day text-muted fs-3"></i>
             </div>
           </div>
         </div>
+
       </div>
+
 
       <!-- Tabel Buku Tamu -->
       <div class="card shadow-sm border-0">
@@ -139,4 +159,5 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

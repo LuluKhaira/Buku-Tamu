@@ -7,7 +7,7 @@
   <title>Sidebar</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="../Nav_Side_Bar/sidebar.css"> <!-- Hubungkan CSS eksternal -->
+  <link rel="stylesheet" href="../Nav_Side_Bar/sidebar.css">
 </head>
 
 <?php
@@ -20,7 +20,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <div>
       <!-- Bagian Logo + Judul -->
       <div class="brand-section">
-        <img src="../foto/logo_polibatam.png" alt="Logo"> <!-- Ganti dengan path logo kamu -->
+        <img src="../foto/logo_polibatam.png" alt="Logo">
         <div class="brand-text">
           <p class="brand">BukuTamu</p>
           <p class="role">Staff TU</p>

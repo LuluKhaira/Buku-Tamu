@@ -51,8 +51,8 @@ body {
 
 .sidebar .nav-link:hover,
 .sidebar .nav-link.active {
-  background-color: #f0f3ff;
-  color: #4c57ff;
+  background-color: rgba(68, 112, 111, 0.15);
+  color: #f4b942;
 }
 
 .sidebar .logout {

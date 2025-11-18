@@ -7,11 +7,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Buku Tamu</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Google fonts-->
-    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap"
         rel="stylesheet" />
     <link
@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;displaFy=swap"
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>  
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -60,166 +60,150 @@
             </div>
         </div>
     </nav>
-    <!-- Mashead header-->
-    <header class="masthead">
-        <div class="container px-5">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6">
-                    <!-- Mashead text and app badges-->
-                    <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                        <h1 class="display-1 lh-1 mb-3">Buku Tamu Staff TU</h1>
-                        <p class="lead fw-normal text-muted mb-5">Sistem pencatatan kehadiran yang modern dan efisien
-                        </p>
-                        <a href="asset/tambah.php" class="btn btn-primary btn-lg ">Tambah Data</a>
-                    </div>
+    <!-- Mashead Header -->
+<header class="masthead">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+
+            <!-- Left Text Section -->
+            <div class="col-lg-6">
+                <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                    <h1 class="display-1 lh-1 mb-3">Buku Tamu Staff TU</h1>
+                    <p class="lead fw-normal text-muted mb-5">
+                        Sistem pencatatan kehadiran yang modern dan efisien
+                    </p>
+                    <a href="asset/tambah.php" class="btn btn-primary btn-lg">
+                        Tambah Data
+                    </a>
                 </div>
-                <div class="col-lg-6">
-                    <!-- Masthead device mockup feature-->
-                    <div class="masthead-device-mockup">
-                        <svg class="circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="circleGradient" gradientTransform="rotate(45)">
-                                    <stop class="gradient-start-color" offset="0%"></stop>
-                                    <stop class="gradient-end-color" offset="100%"></stop>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="50"></circle>
-                        </svg><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03"
-                                transform="translate(120.42 -49.88) rotate(45)"></rect>
-                            <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03"
-                                transform="translate(-49.88 120.42) rotate(-45)"></rect>
-                        </svg><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="50"></circle>
-                        </svg>
-                        <div class="device-wrapper">
-                            <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
-                                <div class="screen">
-                                    <div class="laptop-frame">
-                                        <img src="foto/tatausaha.png" class="laptop-screen">
-                                    </div>
+            </div>
+
+            <!-- Right Image / Mockup -->
+            <div class="col-lg-6">
+                <div class="masthead-device-mockup">
+                    <div class="device-wrapper">
+                        <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
+                            <div class="screen">
+                                <div class="laptop-frame">
+                                    <img src="foto/tatausaha.png" class="laptop-screen" alt="Tata Usaha">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </header>
+    </div>
+</header>
+
 
 
     <!-- App tentang section-->
     <section id="tentang">
-    <div class="container px-5">
-        <div class="row gx-5 justify-content-center text-center">
-            <div class="col-md-3 mb-5">
-                <!-- Tentang -->
-                <i class="bi bi-chat-square-dots icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Informasi</h3>
-                <p class="text-muted mb-0">Website buku tamu kami dibuat untuk mempermudah pendataan
-                    pengunjung mulai dari nama hingga tujuan kunjungan.</p>
-            </div>
-            <div class="col-md-3 mb-5">
-                <!-- Fitur -->
-                <i class="bi bi-puzzle icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Fitur</h3>
-                <p class="text-muted mb-0">Fitur dari website kami meliputi Input data pengunjung,
-                     Pencarian data, Mengubah data dan menghapus data.</p>
-            </div>
-            <div class="col-md-3 mb-5">
-                <!-- Keunggulan -->
-                <i class="bi bi-trophy icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Keunggulan</h3>
-                <p class="text-muted mb-0">Mudah digunakan, cepat, dan data tersimpan rapi</p>
-            </div>
-            <div class="col-md-3 mb-5">
-                <!-- Keamanan Data -->
-                <i class="bi bi-shield-shaded icon-feature text-gradient d-block mb-3"></i>
-                <h3 class="font-alt">Keamanan Data</h3>
-                <p class="text-muted mb-0">Website kami memastikan data yang Anda isi
-                    tersimpan dengan aman.</p>
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center text-center">
+                <div class="col-md-3 mb-5">
+                    <!-- Tentang -->
+                    <i class="bi bi-chat-square-dots icon-feature text-gradient d-block mb-3"></i>
+                    <h3 class="font-alt">Informasi</h3>
+                    <p class="text-muted mb-0">Website buku tamu kami dibuat untuk mempermudah pendataan
+                        pengunjung mulai dari nama hingga tujuan kunjungan.</p>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <!-- Fitur -->
+                    <i class="bi bi-puzzle icon-feature text-gradient d-block mb-3"></i>
+                    <h3 class="font-alt">Fitur</h3>
+                    <p class="text-muted mb-0">Fitur dari website kami meliputi Input data pengunjung,
+                        Pencarian data, Mengubah data dan menghapus data.</p>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <!-- Keunggulan -->
+                    <i class="bi bi-trophy icon-feature text-gradient d-block mb-3"></i>
+                    <h3 class="font-alt">Keunggulan</h3>
+                    <p class="text-muted mb-0">Mudah digunakan, cepat, dan data tersimpan rapi</p>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <!-- Keamanan Data -->
+                    <i class="bi bi-shield-shaded icon-feature text-gradient d-block mb-3"></i>
+                    <h3 class="font-alt">Keamanan Data</h3>
+                    <p class="text-muted mb-0">Website kami memastikan data yang Anda isi
+                        tersimpan dengan aman.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
 
-<!-- Team Section -->
-<section class="py-5">
-  <div class="container">
-    <div class="row text-center">
-      <!-- Judul tetap -->
-      <div class="col-lg-3 col-md-12 mb-4">
-        <div class="h-100 d-flex justify-content-center align-items-center flex-column text-center mb-5">
-          <h2>Team Kelompok 1</h2>
-          <p>Tim hebat dibalik proyek kami</p>
-        </div>
-      </div>
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="position-relative">
+                            <img src="foto/Tambah.png" class="card-img-top rounded-top-4" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold">Tambah Pengunjung</h5>
+                            <p class="text-muted small">
+                                Dengan fitur Tambah Pengunjung, pencatatan tamu kini lebih cepat dan terorganisir. Setiap data yang masuk langsung tersimpan dan siap digunakan untuk laporan harian.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Anggota 1 -->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card border-0 shadow h-100 overflow-hidden">
-          <div class="d-flex justify-content-center align-items-center" style="height: 300px; overflow: hidden;">
-            <img src="foto/lulu.jpg" class="w-100 h-auto" alt="Foto Lulu">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Lulu Khaira Yudita</h5>
-            <p class="text-muted">Ketua PBL</p>
-            <p>Bertanggung jawab dalam pembuatan Dashboard Staff Tata Usaha dan Pengunjung</p>
-            <div>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-instagram"></i></a>
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="position-relative">
+                            <img src="foto/Gedung.jpg" class="card-img-top rounded-top-4" alt="">
+                            <span
+                                class="badge bg-white text-dark position-absolute top-0 m-3 px-3 py-2 shadow-sm rounded-pill">
+                                Burnout
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold">Beranda</h5>
+                            <p class="text-muted small">
+                                Do less. Take a walk. Look up at trees. Break in the drudgery of daily overload…
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-flex align-items-center gap-2 pb-4">
+                            <img src="https://i.pravatar.cc/41" class="rounded-circle" width="40" height="40" alt="">
+                            <div>
+                                <div class="fw-semibold small">Dr. Nick Wilsford</div>
+                                <div class="text-muted small">March 19 · 5 min read</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="position-relative">
+                            <img src="foto/Gedung.jpg" class="card-img-top rounded-top-4" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold">Tambah Pengunjung</h5>
+                            <p class="text-muted small">
+                                Understanding emotions better may reduce the risk of addictive behaviors.
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-flex align-items-center gap-2 pb-4">
+                            <img src="https://i.pravatar.cc/42" class="rounded-circle" width="40" height="40" alt="">
+                            <div>
+                                <div class="fw-semibold small">Dr. Sarah Longwell</div>
+                                <div class="text-muted small">March 18 · 7 min read</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Anggota 2 -->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card border-0 shadow h-100 overflow-hidden">
-          <div class="d-flex justify-content-center align-items-center" style="height: 300px; overflow: hidden;">
-            <img src="foto/zahwa.jpg" class="w-100 h-auto" alt="Foto Zahwa">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Zahwa Aqila</h5>
-            <p class="text-muted">Anggota</p>
-            <p>Bertanggung jawab dalam membuat Landing Page.</p>
-            <div>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Anggota 3 -->
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card border-0 shadow h-100 overflow-hidden">
-          <div class="d-flex justify-content-center align-items-center" style="height: 300px; overflow: hidden;">
-            <img src="foto/ezra.jpg" class="w-100 h-auto" alt="Foto Ezra">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Ezra Merita Ringoringo</h5>
-            <p class="text-muted">Anggota</p>
-            <p>Bertanggung jawab dalam membuat Landing Page dan Role Button.</p>
-            <div>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-twitter-x"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-linkedin"></i></a>
-              <a href="#" class="text-dark mx-2"><i class="bi bi-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="kontak" class="py-md-20 py-12 bg-white">
         <div class="container">
@@ -271,24 +255,24 @@
 
 
     <!-- Footer-->
-<!-- Footer -->
-<footer class="bg-dark text-light py-4 mt-5 border-top border-secondary">
-  <div class="container text-center">
-    <h5 class="fw-bold mb-2">Buku Tamu Tata Usaha</h5>
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5 border-top border-secondary">
+        <div class="container text-center">
+            <h5 class="fw-bold mb-2">Buku Tamu Tata Usaha</h5>
 
-    <div class="d-flex justify-content-center mb-3">
-      <a href="#" class="text-light mx-2 fs-5"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="text-light mx-2 fs-5"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="text-light mx-2 fs-5"><i class="bi bi-envelope"></i></a>
-    </div>
+            <div class="d-flex justify-content-center mb-3">
+                <a href="#" class="text-light mx-2 fs-5"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-light mx-2 fs-5"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-light mx-2 fs-5"><i class="bi bi-envelope"></i></a>
+            </div>
 
-    <hr class="border-secondary w-50 mx-auto my-3">
+            <hr class="border-secondary w-50 mx-auto my-3">
 
-    <small class="text-secondary d-block">
-    <span class="text-light fw-semibold">The Fighter</span> | IFA Pagi-1
-    </small>
-  </div>
-</footer>
+            <small class="text-secondary d-block">
+                <span class="text-light fw-semibold">The Fighter</span> | IFA Pagi-1
+            </small>
+        </div>
+    </footer>
 
 
 

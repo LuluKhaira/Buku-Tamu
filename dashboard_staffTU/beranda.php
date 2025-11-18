@@ -83,76 +83,86 @@
 
 
       <!-- Tabel Buku Tamu -->
-      <div class="card shadow-sm border-0">
-        <div class="card-body">
-          <h5 class="card-title mb-3">Buku Tamu Tata Usaha</h5>
-          <div class="table-responsive">
-            <table class="table table-hover table-sm align-middle text-center">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Pengunjung</th>
-                  <th scope="col">Tanggal</th>
-                  <th scope="col">Waktu</th>
-                  <th scope="col">Instansi</th>
-                  <th scope="col">Tujuan</th>
-                  <th scope="col">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>01</td>
-                  <td>Yanto</td>
-                  <td>15/9/2025</td>
-                  <td>09.00</td>
-                  <td>Politeknik Negeri Batam</td>
-                  <td>Observasi</td>
-                  <td>
-                    <button class="btn btn-link text-primary p-0">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-link text-danger p-0">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>02</td>
-                  <td>Khaira</td>
-                  <td>15/9/2025</td>
-                  <td>09.30</td>
-                  <td>PT. Pertamina</td>
-                  <td>Kunjungan</td>
-                  <td>
-                    <button class="btn btn-link text-primary p-0">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-link text-danger p-0">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>03</td>
-                  <td>Zahwa</td>
-                  <td>15/9/2025</td>
-                  <td>10.30</td>
-                  <td>PT. SIX</td>
-                  <td>Kunjungan</td>
-                  <td>
-                    <button class="btn btn-link text-primary p-0">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                    <button class="btn btn-link text-danger p-0">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <div class="card shadow-sm mb-4">
+
+  <!-- HEADER -->
+  <div class="card-header py-3">
+    <h5 class="mb-0">Buku Tamu Tata Usaha</h5>
+  </div>
+
+  <!-- BODY -->
+  <div class="card-body">
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle text-center table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>No</th>
+            <th>Pengunjung</th>
+            <th>Tanggal</th>
+            <th>Waktu</th>
+            <th>Instansi</th>
+            <th>Tujuan</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>Yanto</td>
+            <td>15/9/2025</td>
+            <td>09.00</td>
+            <td>Politeknik Negeri Batam</td>
+            <td>Observasi</td>
+            <td>
+              <button class="btn btn-link text-primary p-0">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-link text-danger p-0">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>Khaira</td>
+            <td>15/9/2025</td>
+            <td>09.30</td>
+            <td>PT. Pertamina</td>
+            <td>Kunjungan</td>
+            <td>
+              <button class="btn btn-link text-primary p-0">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-link text-danger p-0">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>Zahwa</td>
+            <td>15/9/2025</td>
+            <td>10.30</td>
+            <td>PT. SIX</td>
+            <td>Kunjungan</td>
+            <td>
+              <button class="btn btn-link text-primary p-0">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-link text-danger p-0">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
 
     </div>
   </div>

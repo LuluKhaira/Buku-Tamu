@@ -79,20 +79,20 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama *</label>
-                                <input type="text" name="pengunjung" class="form-control" placeholder="Ex. John Doe"
+                                <input type="text" name="pengunjung" class="form-control" placeholder="Masukkan nama anda"
                                     required>
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label class="form-label small fw-semibold">Instansi *</label>
-                                <input type="text" name="instansi" class="form-control" placeholder="Nama Instansi"
+                                <label class="form-label small fw-semibold">No Handphone *</label>
+                                <input type="text" name="instansi" class="form-control" placeholder="08xxxxxxxxxx"
                                     required>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label small fw-semibold">No Handphone *</label>
-                            <input type="tel" name="no_hp" class="form-control" placeholder="08xxxxxxxxxx" required>
+                            <label class="form-label small fw-semibold">Instansi *</label>
+                            <input type="tel" name="no_hp" class="form-control" placeholder="xxxxxx" required>
                         </div>
 
                         <div class="mb-4">
@@ -109,7 +109,6 @@
                 </div>
             </div>
 
-            <!-- Right - Info Section -->
             <!-- Right - Info Section -->
             <div class="col-lg-5">
                 <div class="info-panel" id="previewPanel">
@@ -129,8 +128,8 @@
         e.preventDefault(); // cegah reload
 
         let nama = document.querySelector("[name='pengunjung']").value;
-        let instansi = document.querySelector("[name='instansi']").value;
         let hp = document.querySelector("[name='no_hp']").value;
+        let instansi = document.querySelector("[name='instansi']").value;
         let tujuan = document.querySelector("[name='tujuan']").value;
 
         let panel = document.getElementById("previewPanel");
@@ -144,14 +143,15 @@
             </div>
 
             <div class="mb-3">
+                <strong>No Handphone:</strong>
+                <p class="opacity-75 mb-0">${hp}</p>
+            </div>
+
+            <div class="mb-3">
                 <strong>Instansi:</strong>
                 <p class="opacity-75 mb-0">${instansi}</p>
             </div>
 
-            <div class="mb-3">
-                <strong>No Handphone:</strong>
-                <p class="opacity-75 mb-0">${hp}</p>
-            </div>
 
             <div class="mb-3">
                 <strong>Tujuan:</strong>

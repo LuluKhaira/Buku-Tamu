@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>History</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <body class="bg-light d-flex">
@@ -63,8 +63,8 @@
         <!-- BODY -->
         <div class="card-body">
 
-          <div class="table table-bordered">
-            <table class="table table-hover align-middle text-center">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle text-center table-bordered">
               <thead class="table-light">
                 <tr>
                   <th>No</th>
@@ -73,8 +73,10 @@
                   <th>Waktu</th>
                   <th>Instansi</th>
                   <th>Tujuan</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
+
               <tbody>
                 <tr>
                   <td>01</td>
@@ -83,7 +85,16 @@
                   <td>09.00</td>
                   <td>Politeknik Negeri Batam</td>
                   <td>Observasi</td>
+                  <td>
+                    <button class="btn btn-link text-primary p-0 me-2">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-link text-danger p-0">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
                 </tr>
+
                 <tr>
                   <td>02</td>
                   <td>Khaira</td>
@@ -91,7 +102,16 @@
                   <td>09.30</td>
                   <td>PT. Pertamina</td>
                   <td>Kunjungan</td>
+                  <td>
+                    <button class="btn btn-link text-primary p-0 me-2">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-link text-danger p-0">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
                 </tr>
+
                 <tr>
                   <td>03</td>
                   <td>Zahwa</td>
@@ -99,16 +119,22 @@
                   <td>10.30</td>
                   <td>PT. SIX</td>
                   <td>Kunjungan</td>
+                  <td>
+                    <button class="btn btn-link text-primary p-0 me-2">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-link text-danger p-0">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
                 </tr>
+
               </tbody>
+
             </table>
           </div>
-
         </div>
-
       </div>
-
-
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

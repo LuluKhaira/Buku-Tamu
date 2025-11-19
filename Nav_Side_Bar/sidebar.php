@@ -15,8 +15,8 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<body>
-  <div class="sidebar d-flex flex-column position-relative">
+<body >
+  <div class="sidebar d-flex flex-column position-relative" >
     <div>
       <!-- Bagian Logo + Judul -->
       <div class="brand-section">
@@ -29,10 +29,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
       <!-- Menu -->
       <a href="../dashboard_staffTU/beranda.php"
-        class="nav-link <?= ($current_page == 'beranda.php') ? 'active' : '' ?>">
+        class="nav-link mb-2 <?= ($current_page == 'beranda.php') ? 'active' : '' ?>">
         <i class="bi bi-house-door"></i> Beranda
       </a>
-
+      
       <a href="../dashboard_staffTU/laporan.php"
         class="nav-link <?= ($current_page == 'laporan.php') ? 'active' : '' ?>">
         <i class="bi bi-file-earmark-text"></i> Laporan

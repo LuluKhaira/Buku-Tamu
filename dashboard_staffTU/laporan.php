@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<body class="bg-light d-flex">
+<body class="d-flex" style="background:#f2f2f2;">
 
   <!-- Sidebar -->
   <?php include '../Nav_Side_Bar/sidebar.php'; ?>
 
   <!-- Konten Utama -->
-  <div class="flex-grow-1 p-4" style="margin-left:10px;">
+  <div class="flex-grow-1">
+    <?php include '../Nav_Side_Bar/navbar.php'; ?>
     <!-- margin-left:280px biar gak ketimpa sidebar -->
 
     <div class="container mt-4">
@@ -24,7 +25,7 @@
       <div class="card shadow-sm mb-4">
 
         <!-- HEADER -->
-        <div class="card-header py-3">
+        <div class="card-header py-3 fw-semibold" style="background:#ece3dc; color:#984216;">
           Filter Tanggal
         </div>
 
@@ -33,13 +34,13 @@
 
           <form class="row g-5 justify-content-center">
             <div class="col-md-3">
-              <label for="dariTanggal" class="form-label text-center w-100">Dari Tanggal</label>
-              <input type="date" class="form-control" id="dariTanggal" value="2025-11-12">
+              <label for="dariTanggal" class="form-label text-center w-100" style="color:#984216;">Dari Tanggal</label>
+              <input type="date" class="form-control"  style="border: 1.9px solid #984216;" id="dariTanggal" value="2025-11-12">
             </div>
 
             <div class="col-md-3">
-              <label for="sampaiTanggal" class="form-label text-center w-100">Sampai Tanggal</label>
-              <input type="date" class="form-control" id="sampaiTanggal" value="2025-11-12">
+              <label for="sampaiTanggal" class="form-label text-center w-100" style="color:#984216;">Sampai Tanggal</label>
+              <input type="date" class="form-control" style="border: 1.9px solid #984216;" id="sampaiTanggal" value="2025-11-12">
             </div>
           </form>
 
@@ -52,12 +53,27 @@
       <div class="card shadow-sm mb-4">
 
         <!-- HEADER -->
-        <div class="card-header d-flex justify-content-between align-items-center py-3">
-          <span>History Buku Tamu</span>
+        <div class="card-header d-flex justify-content-between align-items-center py-3 fw-semibold" style="background:#ece3dc; color:#984216;">
+          <span>Laporan Buku Tamu</span>
 
-          <button class="btn btn-success btn-sm">
-            <i class="fa fa-download"></i> Export Excel
-          </button>
+          <div class="d-flex align-items-center gap-3">
+
+            <!-- SEARCH BAR -->
+            <form class="d-none d-sm-inline-block" >
+              <div class="input-group">
+                <span class="input-group-text bg-warning border-0">
+                  <i class="fas fa-search"></i>
+                </span>
+                <input type="text" class="form-control border-0" style="width: 250px;" placeholder="Cari nama, instansi, tanggal...">
+              </div>
+            </form>
+
+            <!-- EXPORT BUTTON -->
+            <button class="btn btn-success btn-sm">
+              <i class="fa fa-download"></i> Export Excel
+            </button>
+
+          </div>
         </div>
 
         <!-- BODY -->
@@ -86,7 +102,7 @@
                   <td>Politeknik Negeri Batam</td>
                   <td>Observasi</td>
                   <td>
-                    <button class="btn btn-link text-primary p-0 me-2">
+                    <button class="btn btn-link text-success p-0 me-2">
                       <i class="bi bi-pencil"></i>
                     </button>
                     <button class="btn btn-link text-danger p-0">
@@ -103,7 +119,7 @@
                   <td>PT. Pertamina</td>
                   <td>Kunjungan</td>
                   <td>
-                    <button class="btn btn-link text-primary p-0 me-2">
+                    <button class="btn btn-link text-success p-0 me-2">
                       <i class="bi bi-pencil"></i>
                     </button>
                     <button class="btn btn-link text-danger p-0">
@@ -120,7 +136,7 @@
                   <td>PT. SIX</td>
                   <td>Kunjungan</td>
                   <td>
-                    <button class="btn btn-link text-primary p-0 me-2">
+                    <button class="btn btn-link text-success p-0 me-2">
                       <i class="bi bi-pencil"></i>
                     </button>
                     <button class="btn btn-link text-danger p-0">

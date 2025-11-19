@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<body class="bg-light d-flex">
+<body class="d-flex" style="background:#f2f2f2;">
 
   <!-- Sidebar -->
   <?php include '../Nav_Side_Bar/sidebar.php'; ?>
@@ -20,20 +20,19 @@
     <?php include '../Nav_Side_Bar/navbar.php'; ?>
 
     <div class="container mt-4">
-
       <div class="row">
-
         <!-- Bulan Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
-          <div class="card h-100 py-2" style="background-color:#f4b942; border-left:.25rem solid #f4b942;">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1" style="color:#000;">Bulan Ini</div>
-                  <div class="h5 mb-0 font-weight-bold" style="color:#000;">15 Pengunjung</div>
+          <div class="card h-100 py-2"
+            style="border-left:8px solid #fff1b5; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+            <div class="card-body" >
+              <div class="row align-items-center">
+                <div class="col" >
+                  <div class="text-uppercase fw-bold mb-1" style="color:#984216;">Bulan Ini</div>
+                  <div class="h5 fw-bold" style="color:#984216;">15 Pengunjung</div>
                 </div>
                 <div class="col-auto">
-                  <i class="bi bi-calendar3 fs-2" style="color:#000;"></i>
+                  <i class="bi bi-calendar3 fs-2" style="color:#984216;"></i>
                 </div>
               </div>
             </div>
@@ -43,15 +42,15 @@
         <!-- Minggu Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2"
-            style="background-color:#2d5f5d; border-left:.25rem solid #2d5f5d; box-shadow:0 0.15rem 1rem #2d5f5d;">
+            style="border-left:8px solid #5e83ae; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1" style="color:#ffffff;">Minggu Ini</div>
-                  <div class="h5 mb-0 font-weight-bold" style="color:#ffffff;">7 Pengunjung</div>
+              <div class="row align-items-center">
+                <div class="col">
+                  <div class="text-uppercase fw-bold mb-1" style="color:#984216;">Minggu Ini</div>
+                  <div class="h5 fw-bold" style="color:#984216;">7 Pengunjung</div>
                 </div>
                 <div class="col-auto">
-                  <i class="bi bi-calendar-week fs-2" style="color:#ffffff;"></i>
+                  <i class="bi bi-calendar-week fs-2" style="color:#984216;"></i>
                 </div>
               </div>
             </div>
@@ -61,22 +60,23 @@
         <!-- Hari Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2"
-            style="background-color:#2d5f5d; border-left:.25rem solid #2d5f5d; box-shadow:0 0.15rem 1rem #2d5f5d;">
+            style="border-left:8px solid #43302e; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1" style="color:#ffffff;">Hari Ini</div>
-                  <div class="h5 mb-0 font-weight-bold" style="color:#ffffff;">2 Pengunjung</div>
+              <div class="row align-items-center">
+                <div class="col">
+                  <div class="text-uppercase fw-bold mb-1" style="color:#984216;">Hari Ini</div>
+                  <div class="h5 fw-bold" style="color:#984216;">2 Pengunjung</div>
                 </div>
                 <div class="col-auto">
-                  <i class="bi bi-calendar-day fs-2" style="color:#ffffff;"></i>
+                  <i class="bi bi-calendar-day fs-2" style="color:#984216;"></i>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-      </div> <!-- END ROW CARD -->
+      </div>
+      <!-- END ROW CARD -->
 
 
 
@@ -90,8 +90,8 @@
         <div class="col-lg-8 mb-4">
           <div class="card shadow-sm h-100">
 
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
-              <h5 class="mb-0 fw-semibold">Pengunjung Hari Ini</h5>
+            <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background:#ece3dc;">
+              <h5 class="mb-0 fw-semibold" style="color:#984216;">Pengunjung Hari Ini</h5>
             </div>
 
             <div class="card-body">
@@ -137,8 +137,8 @@
         <!-- CHART SAMPING TABEL -->
         <div class="col-lg-4 mb-4">
           <div class="card shadow-sm h-100">
-            <div class="card-header py-3">
-              <h5 class="mb-0 fw-semibold">Jumlah Pengunjung</h5>
+            <div class="card-header py-3" style="background:#ece3dc;">
+              <h5 class="mb-0 fw-semibold" style="color:#984216;">Jumlah Pengunjung</h5>
             </div>
 
             <div class="card-body">
@@ -172,8 +172,8 @@
           label: 'Jumlah Pengunjung',
           data: [12, 15, 18, 20, 25, 22, 30, 28, 26, 24, 19, 14],  // contoh data
           backgroundColor: [
-            '#2d5f5d', '#f4b942', '#2d5f5d', '#f4b942', '#2d5f5d', '#f4b942',
-            '#2d5f5d', '#f4b942', '#2d5f5d', '#f4b942', '#2d5f5d', '#f4b942'
+            '#5e83ae', '#984216', '#5e83ae', '#984216', '#5e83ae', '#984216',
+            '#5e83ae', '#984216', '#5e83ae', '#984216', '#5e83ae', '#984216'
           ]
         }]
       },

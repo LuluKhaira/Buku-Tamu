@@ -79,7 +79,7 @@
       <!-- END ROW CARD -->
 
       <!-- =========================== -->
-      <!--      TABEL + JAM/TANGGAL    -->
+      <!--      TABEL + WAKTU SEKARANG  -->
       <!-- =========================== -->
 
       <div class="row">
@@ -121,16 +121,20 @@
                       <td>19/11/2025</td>
                       <td>10.00</td>
                     </tr>
-                  </tbody>
-
+                  </body>
                 </table>
               </div>
             </div>
-
           </div>
         </div>
 
-        <!-- JAM & TANGGAL -->
+        <!-- WAKTU SEKARANG (STATIS DARI SERVER) -->
+        <?php
+        date_default_timezone_set("Asia/Jakarta");
+        $jam = date("H:i:s");
+        $hari = date("l");
+        $tanggal = date("d F Y");
+        ?>
         <div class="col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
 
@@ -139,40 +143,14 @@
             </div>
 
             <div class="card-body d-flex flex-column justify-content-center align-items-center">
-              <h1 id="clockTime" class="fw-bold display-3 mb-0"></h1>
-              <p id="clockDate" class="text-muted fs-4 mt-2"></p>
+              <h1 class="fw-bold display-3 mb-0"><?php echo $jam; ?></h1>
+              <p class="text-muted fs-4 mt-2"><?php echo $hari . ', ' . $tanggal; ?></p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-  <script>
-    function updateClock() {
-      const now = new Date();
-
-      const jam = now.getHours().toString().padStart(2, "0");
-      const menit = now.getMinutes().toString().padStart(2, "0");
-      const detik = now.getSeconds().toString().padStart(2, "0");
-
-      const hari = now.toLocaleDateString("id-ID", {
-        weekday: "long"
-      });
-      const tanggal = now.toLocaleDateString("id-ID", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric"
-      });
-
-      document.getElementById("clockTime").textContent = `${jam} ${menit}: ${detik}`;
-      document.getElementById("clockDate").textContent = `${hari}, ${tanggal}`;
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
 
 </body>
 

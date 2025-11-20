@@ -72,7 +72,7 @@
                     <p class="lead fw-normal text-muted mb-5">
                         Sistem pencatatan kehadiran yang modern dan efisien
                     </p>
-                    <a href="asset/tambah.php" class="btn btn-primary btn-lg">
+                    <a href="asset/tambah_only.php" class="btn btn-primary btn-lg">
                         Tambah Data
                     </a>
                 </div>

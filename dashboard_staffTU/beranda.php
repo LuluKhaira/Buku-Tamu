@@ -24,12 +24,12 @@
         <!-- Bulan Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2"
-            style="border-left:8px solid #fff1b5; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+            style="border-left:8px solid #f4b942; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
               <div class="row align-items-center">
                 <div class="col">
-                  <div class="text-uppercase fw-bold mb-1" style="color:#984216;">Bulan Ini</div>
-                  <div class="h5 fw-bold" style="color:#984216;">15 Pengunjung</div>
+                  <div class="text-uppercase fw-semibold text-primary mb-1" style="color:#984216;">Bulan Ini</div>
+                  <div class="h5 fw-semibold text-primary" style="color:#984216;">15 Pengunjung</div>
                 </div>
                 <div class="col-auto">
                   <i class="bi bi-calendar3 fs-2" style="color:#984216;"></i>
@@ -42,12 +42,12 @@
         <!-- Minggu Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2"
-            style="border-left:8px solid #5e83ae; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+            style="border-left:8px solid #2d5f5d; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
               <div class="row align-items-center">
                 <div class="col">
-                  <div class="text-uppercase fw-bold mb-1" style="color:#984216;">Minggu Ini</div>
-                  <div class="h5 fw-bold" style="color:#984216;">7 Pengunjung</div>
+                  <div class="text-uppercase fw-semibold text-primary mb-1" style="color:#984216;">Minggu Ini</div>
+                  <div class="h5 fw-semibold text-primary" style="color:#984216;">7 Pengunjung</div>
                 </div>
                 <div class="col-auto">
                   <i class="bi bi-calendar-week fs-2" style="color:#984216;"></i>
@@ -60,12 +60,12 @@
         <!-- Hari Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2"
-            style="border-left:8px solid #43302e; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+            style="border-left:8px solid #2d5f5d; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
               <div class="row align-items-center">
                 <div class="col">
-                  <div class="text-uppercase fw-bold mb-1" style="color:#984216;">Hari Ini</div>
-                  <div class="h5 fw-bold" style="color:#984216;">2 Pengunjung</div>
+                  <div class="text-uppercase fw-semibold text-primary mb-1" style="color:#984216;">Hari Ini</div>
+                  <div class="h5 fw-semibold text-primary" style="color:#984216;">2 Pengunjung</div>
                 </div>
                 <div class="col-auto">
                   <i class="bi bi-calendar-day fs-2" style="color:#984216;"></i>
@@ -89,7 +89,7 @@
           <div class="card shadow-sm h-100">
 
             <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background:#ece3dc;">
-              <h5 class="mb-0 fw-semibold" style="color:#984216;">Pengunjung Hari Ini</h5>
+              <h5 class="mb-0 fw-semibold text-primary" style="color:#984216;">Pengunjung Hari Ini</h5>
             </div>
 
             <div class="card-body">
@@ -133,8 +133,7 @@
         <!-- JAM & TANGGAL -->
         <div class="col-lg-4 mb-4">
           <div class="card h-100 shadow-sm">
-
-            <div class="card-header bg-light text-center">
+            <div class="card-header py-3 bg-light text-center">
               <h5 class="mb-0 fw-semibold text-primary">Waktu Sekarang</h5>
             </div>
 

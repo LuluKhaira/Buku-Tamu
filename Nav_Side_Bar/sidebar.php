@@ -33,9 +33,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <i class="bi bi-house-door"></i> Beranda
       </a>
       
-      <a href="../dashboard_staffTU/laporan.php"
-        class="nav-link <?= ($current_page == 'laporan.php') ? 'active' : '' ?>">
-        <i class="bi bi-file-earmark-text"></i> Laporan
+      <a href="../dashboard_staffTU/riwayat.php"
+        class="nav-link <?= ($current_page == 'riwayat.php') ? 'active' : '' ?>">
+        <i class="bi bi-hourglass-split"></i> Riwayat
       </a>
     </div>
 

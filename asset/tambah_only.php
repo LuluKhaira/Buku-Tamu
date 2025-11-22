@@ -18,8 +18,8 @@
             <div class="col-lg-7">
                 <div class="form-panel">
                     <div class="mb-3">
-                        <?php include '../Nav_Side_Bar/nav_tambah.php'; ?>
                         <?php $active = 'satuan'; ?>
+                        <?php include '../Nav_Side_Bar/nav_tambah.php'; ?>
                         <p class="text-uppercase text-secondary mb-2"
                             style="letter-spacing: 3px; font-size: 13px; font-weight: 500;">TAMBAH PENGUNJUNG</p>
                         <h2 class="fw-bold mb-0">

@@ -18,10 +18,10 @@
             <div class="col-lg-7">
                 <div class="form-panel">
                     <div class="mb-3">
-                        <?php $active = 'rombongan'; ?>
+                        <?php $active = 'kelompok'; ?>
                         <?php include '../Nav_Side_Bar/nav_tambah.php'; ?>
                         <p class="text-uppercase text-secondary mb-2"
-                            style="letter-spacing: 3px; font-size: 13px; font-weight: 500;">TAMBAH gerom</p>
+                            style="letter-spacing: 3px; font-size: 13px; font-weight: 500;">TAMBAH PENGUNJUNG</p>
                         <h2 class="fw-bold mb-0">
                             Silahkan isi Informasi <span style="color: #f4b942; font-style: italic;">Pengunjung!</span>
                         </h2>
@@ -32,7 +32,7 @@
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama Penanggung Jawab *</label>
                                 <input type="text" name="pengunjung" class="form-control"
-                                    placeholder="Nama PIC/Ketua rombongan" required>
+                                    placeholder="Nama PIC/Ketua kelompok" required>
                             </div>
 
                             <div class="col-md-6 mb-3">

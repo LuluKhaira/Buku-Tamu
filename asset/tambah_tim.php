@@ -32,7 +32,7 @@
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama Penanggung Jawab *</label>
                                 <input type="text" name="pengunjung" class="form-control"
-                                    placeholder="Nama PIC/Ketua kelompok" required>
+                                    placeholder="Nama PIC/Ketua rombongan" required>
                             </div>
 
                             <div class="col-md-6 mb-3">

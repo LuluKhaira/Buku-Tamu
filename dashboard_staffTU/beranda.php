@@ -141,7 +141,7 @@
                       </li>
                       <li>
                         <a class="dropdown-item sort-option" href="#" data-sort="last-accessed">
-                          <span class="check-mark"></span> gerombolan
+                          <span class="check-mark"></span> kelompok
                         </a>
                       </li>
                     </ul>
@@ -181,7 +181,7 @@
                     </tr>
 
                     <tr>
-                      <td><span class="badge badge-jenis" style="background:#FFC107; color:#000;">Rombongan</span></td>
+                      <td><span class="badge badge-jenis" style="background:#FFC107; color:#000;">Kelompok</span></td>
                       <td>Ibu Siti (PJ)</td>
                       <td>12</td>
                       <td>22/11/2025</td>
@@ -205,7 +205,7 @@
                     </tr>
 
                     <tr>
-                      <td><span class="badge badge-jenis" style="background:#FFC107; color:#000;">Rombongan</span></td>
+                      <td><span class="badge badge-jenis" style="background:#FFC107; color:#000;">Kelompok</span></td>
                       <td>Pak Ahmad (PJ)</td>
                       <td>5</td>
                       <td>22/11/2025</td>
@@ -279,8 +279,14 @@
         String(now.getMinutes()).padStart(2, '0');
 
       document.getElementById("clockDate").textContent =
-        now.toLocaleDateString("id-ID", { weekday: "long" }) + ", " +
-        now.toLocaleDateString("id-ID", { day: "2-digit", month: "long", year: "numeric" });
+        now.toLocaleDateString("id-ID", {
+          weekday: "long"
+        }) + ", " +
+        now.toLocaleDateString("id-ID", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        });
     }
 
     setInterval(updateClock, 1000);

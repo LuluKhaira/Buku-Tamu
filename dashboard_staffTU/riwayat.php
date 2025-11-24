@@ -94,7 +94,7 @@
                   <td>PT. Pertamina</td>
                   <td>Kunjungan</td>
                   <td>10</td>
-                  <td><span class="badge bg-warning text-dark">Rombongan</span></td>
+                  <td><span class="badge bg-warning text-dark">Kelompok</span></td>
                   <td>
                     <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
                     <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
@@ -110,7 +110,7 @@
                   <td>PT. SIX</td>
                   <td>Kunjungan</td>
                   <td>10</td>
-                  <td><span class="badge bg-warning text-dark">Rombongan</span></td>
+                  <td><span class="badge bg-warning text-dark">Kelompok</span></td>
                   <td>
                     <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
                     <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>

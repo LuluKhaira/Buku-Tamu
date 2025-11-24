@@ -1,9 +1,8 @@
 <?php
-// Konfigurasi koneksi database
 $servername = "localhost"; // Nama server database Anda
 $username = "root"; // Username MySQL Anda
 $password = ""; // Password MySQL Anda
-$dbname = "db_stafftu"; // Nama database yang Anda gunakan
+$dbname = "bukutamu"; // Nama database yang Anda gunakan
 
 // Membuat koneksi ke database
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,4 +16,3 @@ if ($conn->connect_error) {
 if ($conn->connect_error) {
     die("Koneksi ke database gagal: " . $conn->connect_error);
 }
-

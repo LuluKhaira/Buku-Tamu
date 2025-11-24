@@ -27,7 +27,7 @@
                         </h2>
                     </div>
 
-                    <form action="" method="POST">
+                    <form action="nav_tambah.php" method="POST">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama Penanggung Jawab *</label>

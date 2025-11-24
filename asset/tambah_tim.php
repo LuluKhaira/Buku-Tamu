@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>satuan Pengunjung</title>
+    <title>kelompok Pengunjung</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../asset/tambah.css">
@@ -27,11 +27,12 @@
                         </h2>
                     </div>
 
-                    <form action="nav_tambah.php" method="POST">
+                    <form id="formTamu">
+                        <input type="hidden" name="jenis" value="kelompok">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama Penanggung Jawab *</label>
-                                <input type="text" name="pengunjung" class="form-control"
+                                <input type="text" name="nama" class="form-control"
                                     placeholder="Nama PIC/Ketua rombongan" required>
                             </div>
 
@@ -58,9 +59,8 @@
                                 placeholder="Masukkan tujuan kedatangan..." required></textarea>
                         </div>
 
-                        <div class="d-flex align-items-center gap-2">
-                            <button type="submit" class="btn btn-send ms-2">Daftar Anggota</button>
-                        </div>
+                        <button type="button" id="btnSimpan" class="btn btn-send ms-2">Simpan Data</button>
+                        
                     </form>
 
                 </div>
@@ -79,7 +79,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../asset/card_tambah.js"></script>
+    <script src="../asset/card_tambah_tim.js"></script>
 
 
 

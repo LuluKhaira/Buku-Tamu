@@ -27,13 +27,15 @@
                         </h2>
                     </div>
 
-                    <form action="../config/db_only.php" method="POST">
+                    <form id="formTamu">
+
+                        <input type="hidden" name="jenis" value="satuan"> <!-- jenis otomatis -->
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama *</label>
-                                <input type="text" name="nama" class="form-control"
-                                    placeholder="Masukkan nama anda" required>
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan nama anda"
+                                    required>
                             </div>
 
                             <div class="col-md-6 mb-3">
@@ -45,7 +47,8 @@
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Instansi *</label>
-                            <input type="text" name="instansi" class="form-control" placeholder="xxxxxx" required>
+                            <input type="text" name="instansi" class="form-control"
+                                placeholder="Instansi / Sekolah / Perusahaan" required>
                         </div>
 
                         <div class="mb-4">
@@ -54,10 +57,8 @@
                                 placeholder="Masukkan tujuan kedatangan..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-send ms-2">Simpan Data</button>
+                        <button type="button" id="btnSimpan" class="btn btn-send ms-2">Simpan Data</button>
                     </form>
-
-
                 </div>
             </div>
 
@@ -68,33 +69,6 @@
                     <p class="opacity-75">Belum ada data yang diinput.</p>
                 </div>
             </div>
-            <table class="table table-striped table-bordered">
-                <tbody>
-                    <?php
-                    include '../config/connect.php';
-                    $query = mysqli_query($connect, "SELECT * FROM pengunjung");
-                    $no = 1;
-                    while ($data = mysqli_fetch_assoc($query)) {
-                    ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $data['no_pengunjung']; ?></td>
-                            <td><?php echo $data['nama']; ?></td>
-                            <td><?php echo $data['no_hp']; ?></td>
-                            <td><?php echo $data['instansi']; ?></td>
-                            <td><?php echo $data['tanggal']; ?></td>
-                            <td><?php echo $data['waktu']; ?></td>
-
-                            <td><?php echo $data['tujuan']; ?></td>
-                            <td><?php echo $data['jumlah']; ?></td>
-                            <td>
-                            </td>
-                        </tr>
-                    <?php
-                    } ?>
-                </tbody>
-            </table>
-
         </div>
     </div>
 

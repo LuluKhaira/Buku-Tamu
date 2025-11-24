@@ -1,73 +1,67 @@
-document.querySelector("form").addEventListener("submit", function (e) {
-            e.preventDefault(); // cegah reload
+const panel = document.getElementById("previewPanel");
 
-            let nama = document.querySelector("[name='pengunjung']").value;
-            let hp = document.querySelector("[name='no_hp']").value;
-            let instansi = document.querySelector("[name='instansi']").value;
-            let jumlah = document.querySelector("[name='jumlah']").value;
-            let tujuan = document.querySelector("[name='tujuan']").value;
+// Tombol SIMPAN → tampilkan preview + 2 tombol
+document.getElementById("btnSimpan").addEventListener("click", function () {
 
-            let panel = document.getElementById("previewPanel");
+    let nama = document.querySelector("[name='nama']").value;
+    let hp = document.querySelector("[name='no_hp']").value;
+    let instansi = document.querySelector("[name='instansi']").value;
+    let jumlah = document.querySelector("[name='jumlah']").value;
+    let tujuan = document.querySelector("[name='tujuan']").value;
 
-            panel.innerHTML = `
-            <h5 class="fw-bold mb-3">Konfirmasi Data</h5>
+    // Tampilkan preview konfirmasi
+    panel.innerHTML = `
+        <h5 class="fw-bold mb-3">Preview Data</h5>
+        
+        <div><strong>Nama:</strong> ${nama || "-"}</div>
+        <div><strong>No HP:</strong> ${hp || "-"}</div>
+        <div><strong>Instansi:</strong> ${instansi || "-"}</div>
+        <div><strong>Jumlah:</strong> ${jumlah || "-"}</div>
+        <div><strong>Tujuan:</strong> ${tujuan || "-"}</div>
 
-            <div class="mb-3">
-                <strong>Nama:</strong>
-                <p class="opacity-75 mb-0">${nama}</p>
-            </div>
+        <hr>
+        <p class="fw-bold">Apakah data sudah sesuai?</p>
 
-            <div class="mb-3">
-                <strong>No Handphone:</strong>
-                <p class="opacity-75 mb-0">${hp}</p>
-            </div>
+        <button id="btnUlangi" class="btn btn-warning me-2">Ulangi</button>
+        <button id="btnKonfirmasi" class="btn btn-success">Ya</button>
+    `;
 
-            <div class="mb-3">
-                <strong>Instansi:</strong>
-                <p class="opacity-75 mb-0">${instansi}</p>
-            </div>
-
-            <div class="mb-3">
-                <strong>Jumlah Anggota:</strong>
-                <p class="opacity-75 mb-0">${jumlah}</p>
-            </div>
-
-
-            <div class="mb-3">
-                <strong>Tujuan:</strong>
-                <p class="opacity-75 mb-0">${tujuan}</p>
-            </div>
-
-            <p class="mt-3 mb-2 fw-semibold">Apakah data sudah sesuai?</p>
-
-            <div class="d-flex gap-2 mt-2">
-            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-semibold" id="btnUlangi">Ulangi</button>
-            <button class="btn btn-warning btn-sm rounded-pill px-3 fw-semibold" id="btnSimpan">Ya, Simpan</button>
-            </div>
-
+    // Tombol ULANGI
+    document.getElementById("btnUlangi").addEventListener("click", function () {
+        panel.innerHTML = `
+            <h5 class="fw-bold mb-3">Preview Data</h5>
+            <p class="opacity-75">Silakan isi data kembali.</p>
         `;
+    });
 
-            // Tombol ulangi → kembali ke form
-            document.getElementById("btnUlangi").addEventListener("click", function () {
-                panel.innerHTML = `
-                <h5 class="fw-bold mb-3">Preview Data</h5>
-                <p class="opacity-75">Belum ada data yang diinput.</p>
-            `;
-            });
+    // Tombol YA → kirim data ke PHP
+    document.getElementById("btnKonfirmasi").addEventListener("click", function () {
 
-            // Tombol simpan → reset dan notifikasi sukses
-            document.getElementById("btnSimpan").addEventListener("click", function () {
+        const formData = new FormData();
+        formData.append('jenis', 'satuan'); // ← bagian penting
+        formData.append('nama', nama);
+        formData.append('no_hp', hp);
+        formData.append('instansi', instansi);
+        formData.append('jumlah', jumlah);
+        formData.append('tujuan', tujuan);
 
-                // reset form
+        fetch('../config/db_tim.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+
+                // Reset form
                 document.querySelector("form").reset();
 
-                // reset panel
+                // Reset panel
                 panel.innerHTML = `
                 <h5 class="fw-bold mb-3">Preview Data</h5>
                 <p class="opacity-75">Belum ada data yang diinput.</p>
             `;
 
-                // Notifikasi Bootstrap
+                // Notifikasi sukses
                 const alert = document.createElement("div");
                 alert.className = "alert alert-success alert-dismissible fade show position-fixed";
                 alert.style.top = "20px";
@@ -79,11 +73,11 @@ document.querySelector("form").addEventListener("submit", function (e) {
             `;
                 document.body.appendChild(alert);
 
-                // hilang otomatis 3 detik
                 setTimeout(() => {
-                    alert.classList.remove("show");
-                    alert.classList.add("hide");
+                    alert.remove();
                 }, 3000);
-            });
 
-        });
+            })
+            .catch(err => console.error(err));
+    });
+});

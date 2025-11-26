@@ -1,5 +1,7 @@
 <?php
 include '../config/connect.php';
+date_default_timezone_set('Asia/Jakarta');
+
 
 $nama       = $_POST['nama'];
 $no_hp      = $_POST['no_hp'];

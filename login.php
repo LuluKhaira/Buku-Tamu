@@ -48,7 +48,7 @@
 
             <!-- LINKS -->
             <div class="text-start">
-              <a href="#" onclick="openPopup()" class="small text-muted text-start text-decoration-none">Lupa
+              <a href="" onclick="openPopup()" class="small text-muted text-start text-decoration-none">Lupa
                 Password?</a>
               </p>
             </div>
@@ -87,12 +87,12 @@
       event.preventDefault();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
-      const dummyEmail = "lulu@gmail.com";
-      const dummyPassword = "123456";
+      const dummyEmail = "staff@gmail.com";
+      const dummyPassword = "staff123";
 
       if (email === dummyEmail && password === dummyPassword) {
-        alert("Login berhasil! Selamat datang, Lulu!");
-        window.location.replace("table_dashboard/dashboard_admin.php");
+        alert("Login berhasil! Selamat datang, Admin!");
+        window.location.replace("dashboard_staffTU/beranda.php");
       } else {
         alert("Email atau password salah. Coba lagi!");
       }

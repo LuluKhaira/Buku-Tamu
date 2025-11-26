@@ -34,7 +34,7 @@
                     <li class="nav-item"><a class="nav-link px-3" href="#kontak">Kontak</a></li>
                 </ul>
                 <div class="d-flex gap-2 ms-lg-3">
-                    <a href="#" class="btn btn-outline-primary rounded-pill px-4">
+                    <a href="login.php" class="btn btn-outline-primary rounded-pill px-4">
                         <i class="bi bi-box-arrow-in-right me-2"></i>Login
                     </a>
                     <a href="#" class="btn btn-primary rounded-pill px-4">

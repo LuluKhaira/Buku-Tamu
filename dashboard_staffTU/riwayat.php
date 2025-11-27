@@ -13,6 +13,8 @@
 
 </head>
 
+
+
 <body class="d-flex" style="background:#F5EFE7;">
 
   <?php include '../Nav_Side_Bar/sidebar.php'; ?>
@@ -51,9 +53,32 @@
 
         <div class="card-body">
 
-          <div class="table-responsive">
+          <form method="GET" class="row g-3 mb-4 align-items-end justify-content-center">
+
+            <div class="col-md-3 col-lg-2 text-center">
+              <label for="dariTanggal" class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
+              <input type="date" name="dari" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
+                value="<?= $_GET['dari'] ?? '' ?>">
+            </div>
+
+            <div class="col-md-3 col-lg-2 text-center">
+              <label for="sampaiTanggal" class="form-label mb-0 small" style="color:#8B5E34;">Sampai Tanggal</label>
+              <input type="date" name="sampai" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
+                value="<?= $_GET['sampai'] ?? '' ?>">
+            </div>
+
+            <div class="col-auto">
+              <button type="submit" class="btn btn-sm text-white" style="background:#D4A373; border-color:#D4A373;">
+                <i class="bi bi-funnel"></i> Filter
+              </button>
+            </div>
+
+          </form>
+
+
+          <div class="table-responsive" style="max-height: 460px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-hover align-middle text-center table-bordered" id="tabelData">
-              <thead style="background:#EFE3D6; color:#8B5E34;">
+              <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0; z-index: 5;">
                 <tr>
                   <th>No</th>
                   <th>Pengunjung</th>
@@ -76,52 +101,57 @@
                 $q = mysqli_query($connect, $sql);
 
                 if ($q === false) {
-                    echo '<tr><td colspan="10" class="text-danger">Query error: ' . htmlspecialchars(mysqli_error($connect)) . '</td></tr>';
+                  echo '<tr><td colspan="10" class="text-danger">Query error: ' . htmlspecialchars(mysqli_error($connect)) . '</td></tr>';
                 } else {
-                    $rows = [];
-                    while ($r = mysqli_fetch_assoc($q)) {
-                        $rows[] = $r;
-                    }
+                  $rows = [];
+                  while ($r = mysqli_fetch_assoc($q)) {
+                    $rows[] = $r;
+                  }
 
-                    if (count($rows) === 0) {
-                        echo '<tr><td colspan="10" class="text-muted">Belum ada data pengunjung.</td></tr>';
-                    } else {
-                        $no = 1;
-                        // detect if 'id' column exists
-                        $hasId = array_key_exists('id', $rows[0]);
+                  if (count($rows) === 0) {
+                    echo '<tr><td colspan="10" class="text-muted">Belum ada data pengunjung.</td></tr>';
+                  } else {
+                    $no = 1;
+                    // detect if 'id' column exists
+                    $hasId = array_key_exists('id', $rows[0]);
 
-                        foreach ($rows as $row):
-                ?>
-                  <tr <?= $hasId ? 'data-id="' . $row['id'] . '"' : 'data-has-id="0"' ?>>
-                    <td><?= str_pad($no, 2, '0', STR_PAD_LEFT) ?></td>
-                    <td><?= htmlspecialchars($row['nama']) ?></td>
-                    <td><?= htmlspecialchars($row['no_hp']) ?></td>
-                    <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
-                    <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
-                    <td><?= htmlspecialchars($row['instansi']) ?></td>
-                    <td><?= htmlspecialchars($row['tujuan']) ?></td>
-                    <td><?= $row['jumlah'] ?></td>
-                    <td>
-                      <?php if (isset($row['jenis']) && $row['jenis'] == 'satuan'): ?>
-                        <span class="badge bg-success">Satuan</span>
-                      <?php else: ?>
-                        <span class="badge bg-warning text-dark">Kelompok</span>
-                      <?php endif; ?>
-                    </td>
-                    <td>
-                      <?php if ($hasId): ?>
-                        <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
-                        <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
-                      <?php else: ?>
-                        <button class="btn btn-link p-0 me-2 text-secondary" disabled title="No id column"> <i class="bi bi-pencil"></i></button>
-                        <button class="btn btn-link p-0 text-secondary" disabled title="No id column"> <i class="bi bi-trash"></i></button>
-                      <?php endif; ?>
-                    </td>
-                  </tr>
-                <?php
-                            $no++;
-                        endforeach;
-                    }
+                    foreach ($rows as $row):
+                      ?>
+                      <tr <?= $hasId ? 'data-id="' . $row['id'] . '"' : 'data-has-id="0"' ?>>
+                        <td><?= str_pad($no, 2, '0', STR_PAD_LEFT) ?></td>
+                        <td><?= htmlspecialchars($row['nama']) ?></td>
+                        <td><?= htmlspecialchars($row['no_hp']) ?></td>
+                        <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
+                        <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
+                        <td><?= htmlspecialchars($row['instansi']) ?></td>
+                        <td><?= htmlspecialchars($row['tujuan']) ?></td>
+                        <td><?= $row['jumlah'] ?></td>
+                        <td>
+                          <?php if (isset($row['jenis']) && $row['jenis'] == 'satuan'): ?>
+                            <span class="badge bg-success">Satuan</span>
+                          <?php else: ?>
+                            <span class="badge bg-warning text-dark">Kelompok</span>
+                          <?php endif; ?>
+                        </td>
+                        <td class="d-flex justify-content-center gap-2">
+                          <?php if ($hasId): ?>
+                            <button class="btn btn-link p-0 text-success btn-edit"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
+                          <?php else: ?>
+                            <button class="btn btn-link p-0 text-secondary" disabled title="No id column">
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-link p-0 text-secondary" disabled title="No id column">
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          <?php endif; ?>
+                        </td>
+
+                      </tr>
+                      <?php
+                      $no++;
+                    endforeach;
+                  }
                 }
                 ?>
               </tbody>

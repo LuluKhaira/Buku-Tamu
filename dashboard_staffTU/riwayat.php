@@ -96,8 +96,9 @@
               <tbody>
                 <?php
                 include_once '../config/connect.php';
+                include '../config/db_tanggal.php';
 
-                $sql = "SELECT * FROM pengunjung ORDER BY tanggal DESC, waktu DESC";
+                
                 $q = mysqli_query($connect, $sql);
 
                 if ($q === false) {

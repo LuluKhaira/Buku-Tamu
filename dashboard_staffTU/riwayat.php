@@ -69,54 +69,61 @@
               </thead>
 
               <tbody>
-                <tr>
-                  <td>01</td>
-                  <td>Yanto</td>
-                  <td>0812xxxx8888</td>
-                  <td>15/9/2025</td>
-                  <td>09.00</td>
-                  <td>Politeknik Negeri Batam</td>
-                  <td>Observasi</td>
-                  <td>1</td>
-                  <td><span class="badge bg-success">Satuan</span></td>
-                  <td>
-                    <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
+                <?php
+                include_once '../config/connect.php';
 
-                <tr>
-                  <td>02</td>
-                  <td>Khaira</td>
-                  <td>0857xxxx9999</td>
-                  <td>15/9/2025</td>
-                  <td>09.30</td>
-                  <td>PT. Pertamina</td>
-                  <td>Kunjungan</td>
-                  <td>10</td>
-                  <td><span class="badge bg-warning text-dark">Kelompok</span></td>
-                  <td>
-                    <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
+                $sql = "SELECT * FROM pengunjung ORDER BY tanggal DESC, waktu DESC";
+                $q = mysqli_query($connect, $sql);
 
-                <tr>
-                  <td>03</td>
-                  <td>Zahwa</td>
-                  <td>0813xxxx7777</td>
-                  <td>15/9/2025</td>
-                  <td>10.30</td>
-                  <td>PT. SIX</td>
-                  <td>Kunjungan</td>
-                  <td>10</td>
-                  <td><span class="badge bg-warning text-dark">Kelompok</span></td>
-                  <td>
-                    <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
-                  </td>
-                </tr>
+                if ($q === false) {
+                    echo '<tr><td colspan="10" class="text-danger">Query error: ' . htmlspecialchars(mysqli_error($connect)) . '</td></tr>';
+                } else {
+                    $rows = [];
+                    while ($r = mysqli_fetch_assoc($q)) {
+                        $rows[] = $r;
+                    }
 
+                    if (count($rows) === 0) {
+                        echo '<tr><td colspan="10" class="text-muted">Belum ada data pengunjung.</td></tr>';
+                    } else {
+                        $no = 1;
+                        // detect if 'id' column exists
+                        $hasId = array_key_exists('id', $rows[0]);
+
+                        foreach ($rows as $row):
+                ?>
+                  <tr <?= $hasId ? 'data-id="' . $row['id'] . '"' : 'data-has-id="0"' ?>>
+                    <td><?= str_pad($no, 2, '0', STR_PAD_LEFT) ?></td>
+                    <td><?= htmlspecialchars($row['nama']) ?></td>
+                    <td><?= htmlspecialchars($row['no_hp']) ?></td>
+                    <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
+                    <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
+                    <td><?= htmlspecialchars($row['instansi']) ?></td>
+                    <td><?= htmlspecialchars($row['tujuan']) ?></td>
+                    <td><?= $row['jumlah'] ?></td>
+                    <td>
+                      <?php if (isset($row['jenis']) && $row['jenis'] == 'satuan'): ?>
+                        <span class="badge bg-success">Satuan</span>
+                      <?php else: ?>
+                        <span class="badge bg-warning text-dark">Kelompok</span>
+                      <?php endif; ?>
+                    </td>
+                    <td>
+                      <?php if ($hasId): ?>
+                        <button class="btn btn-link p-0 me-2 text-success btn-edit"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
+                      <?php else: ?>
+                        <button class="btn btn-link p-0 me-2 text-secondary" disabled title="No id column"> <i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-link p-0 text-secondary" disabled title="No id column"> <i class="bi bi-trash"></i></button>
+                      <?php endif; ?>
+                    </td>
+                  </tr>
+                <?php
+                            $no++;
+                        endforeach;
+                    }
+                }
+                ?>
               </tbody>
             </table>
           </div>
@@ -201,57 +208,121 @@
   </div>
 
 
-  <!-- ====================== SCRIPT ===================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     let rowEdit = null;
     let rowDelete = null;
 
+    // helper: show alert
+    function showAlert(message, type = 'success') {
+      const alert = document.createElement('div');
+      alert.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+      alert.style.top = '20px';
+      alert.style.right = '20px';
+      alert.style.zIndex = '9999';
+      alert.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+      document.body.appendChild(alert);
+      setTimeout(() => alert.remove(), 3000);
+    }
+
     // === KLIK EDIT ===
-    document.querySelectorAll(".btn-edit").forEach(btn => {
-      btn.addEventListener("click", function () {
-        rowEdit = this.closest("tr");
-        const data = rowEdit.querySelectorAll("td");
+    document.querySelectorAll('.btn-edit').forEach(btn => {
+      btn.addEventListener('click', function () {
+        rowEdit = this.closest('tr');
+        const cells = rowEdit.querySelectorAll('td');
+        document.getElementById('editNama').value = cells[1].innerText.trim();
+        document.getElementById('editNoHp').value = cells[2].innerText.trim();
+        document.getElementById('editInstansi').value = cells[5].innerText.trim();
+        document.getElementById('editTujuan').value = cells[6].innerText.trim();
+        document.getElementById('editJumlah').value = cells[7].innerText.trim();
 
-        document.getElementById("editNama").value = data[1].innerText;
-        document.getElementById("editNoHp").value = data[2].innerText;
-        document.getElementById("editInstansi").value = data[5].innerText;
-        document.getElementById("editTujuan").value = data[6].innerText;
-        document.getElementById("editJumlah").value = data[7].innerText;
-
-        new bootstrap.Modal(document.getElementById("modalEdit")).show();
+        new bootstrap.Modal(document.getElementById('modalEdit')).show();
       });
     });
 
-    // === SIMPAN EDIT ===
-    document.getElementById("btnSimpanEdit").addEventListener("click", () => {
-      const inputs = rowEdit.querySelectorAll("td");
-      inputs[1].innerText = document.getElementById("editNama").value;
-      inputs[2].innerText = document.getElementById("editNoHp").value;
-      inputs[5].innerText = document.getElementById("editInstansi").value;
-      inputs[6].innerText = document.getElementById("editTujuan").value;
-      inputs[7].innerText = document.getElementById("editJumlah").value;
+    // === SIMPAN EDIT (AJAX) ===
+    document.getElementById('btnSimpanEdit').addEventListener('click', () => {
+      if (!rowEdit) return;
+      const id = rowEdit.getAttribute('data-id');
+      const nama = document.getElementById('editNama').value.trim();
+      const no_hp = document.getElementById('editNoHp').value.trim();
+      const instansi = document.getElementById('editInstansi').value.trim();
+      const tujuan = document.getElementById('editTujuan').value.trim();
+      const jumlah = document.getElementById('editJumlah').value || 1;
 
-      bootstrap.Modal.getInstance(document.getElementById("modalEdit")).hide();
+      const form = new FormData();
+      form.append('id', id);
+      form.append('nama', nama);
+      form.append('no_hp', no_hp);
+      form.append('instansi', instansi);
+      form.append('tujuan', tujuan);
+      form.append('jumlah', jumlah);
+
+      fetch('../config/riwayat_update.php', {
+        method: 'POST',
+        body: form
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            // update DOM
+            const cells = rowEdit.querySelectorAll('td');
+            cells[1].innerText = nama;
+            cells[2].innerText = no_hp;
+            cells[5].innerText = instansi;
+            cells[6].innerText = tujuan;
+            cells[7].innerText = jumlah;
+
+            showAlert('Data berhasil diperbarui', 'success');
+            bootstrap.Modal.getInstance(document.getElementById('modalEdit')).hide();
+          } else {
+            showAlert('Gagal memperbarui: ' + data.message, 'danger');
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          showAlert('Terjadi kesalahan jaringan', 'danger');
+        });
     });
-
 
     // === KLIK DELETE ===
-    document.querySelectorAll(".btn-delete").forEach(btn => {
-      btn.addEventListener("click", function () {
-        rowDelete = this.closest("tr");
-        new bootstrap.Modal(document.getElementById("modalDelete")).show();
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', function () {
+        rowDelete = this.closest('tr');
+        new bootstrap.Modal(document.getElementById('modalDelete')).show();
       });
     });
 
-    // === HAPUS BARIS ===
-    document.getElementById("btnConfirmDelete").addEventListener("click", () => {
-      rowDelete.remove();
-      bootstrap.Modal.getInstance(document.getElementById("modalDelete")).hide();
+    // === HAPUS BARIS (AJAX) ===
+    document.getElementById('btnConfirmDelete').addEventListener('click', () => {
+      if (!rowDelete) return;
+      const id = rowDelete.getAttribute('data-id');
+
+      const form = new FormData();
+      form.append('id', id);
+
+      fetch('../config/riwayat_delete.php', {
+        method: 'POST',
+        body: form
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            rowDelete.remove();
+            showAlert('Data berhasil dihapus', 'success');
+            bootstrap.Modal.getInstance(document.getElementById('modalDelete')).hide();
+          } else {
+            showAlert('Gagal menghapus: ' + data.message, 'danger');
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          showAlert('Terjadi kesalahan jaringan', 'danger');
+        });
     });
   </script>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

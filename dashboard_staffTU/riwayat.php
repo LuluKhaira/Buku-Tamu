@@ -43,9 +43,18 @@
               </div>
             </form>
 
-            <button class="btn btn-success btn-sm">
-              <i class="fa fa-download"></i> Export Excel
-            </button>
+            <form method="POST" action="../config/exportexcel.php">
+
+                <!-- Hidden untuk kirim tanggal filter -->
+                <input type="hidden" name="tanggala" value="<?= $_POST['dari'] ?? '' ?>">
+                <input type="hidden" name="tanggalb" value="<?= $_POST['sampai'] ?? '' ?>">
+
+                <button class="btn btn-success form-control" name="bexport">
+                  <i class="fa fa-download"></i> Export Data Excel
+                </button>
+            
+            </form>
+
 
           </div>
 
@@ -98,7 +107,7 @@
                 include_once '../config/connect.php';
                 include '../config/db_tanggal.php';
 
-                
+
                 $q = mysqli_query($connect, $sql);
 
                 if ($q === false) {

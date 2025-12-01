@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>History</title>
@@ -10,10 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
 </head>
-
-
 
 <body class="d-flex" style="background:#F5EFE7;">
 
@@ -33,6 +29,7 @@
 
           <div class="d-flex align-items-center gap-3">
 
+            <!-- SEARCH BAR -->
             <form class="d-none d-sm-inline-block">
               <div class="input-group input-group-sm">
                 <span class="input-group-text border-0" style="background:#D4A373; color:white;">
@@ -43,51 +40,49 @@
               </div>
             </form>
 
-            <form method="POST" action="../config/exportexcel.php">
-
-                <!-- Hidden untuk kirim tanggal filter -->
-                <input type="hidden" name="tanggala" value="<?= $_POST['dari'] ?? '' ?>">
-                <input type="hidden" name="tanggalb" value="<?= $_POST['sampai'] ?? '' ?>">
-
-                <button class="btn btn-success form-control" name="bexport">
-                  <i class="fa fa-download"></i> Export Data Excel
-                </button>
-            
-            </form>
-
-
           </div>
 
         </div>
 
         <div class="card-body">
 
+          <!-- FORM FILTER TANGGAL -->
           <form method="GET" class="row g-3 mb-4 align-items-end justify-content-center">
 
             <div class="col-md-3 col-lg-2 text-center">
-              <label for="dariTanggal" class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
-              <input type="date" name="dari" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
-                value="<?= $_GET['dari'] ?? '' ?>">
+              <label class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
+              <input type="date" name="dari" class="form-control form-control-sm"
+                style="border: 1.9px solid #8B5E34;" value="<?= $_GET['dari'] ?? '' ?>">
             </div>
 
             <div class="col-md-3 col-lg-2 text-center">
-              <label for="sampaiTanggal" class="form-label mb-0 small" style="color:#8B5E34;">Sampai Tanggal</label>
-              <input type="date" name="sampai" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
-                value="<?= $_GET['sampai'] ?? '' ?>">
+              <label class="form-label mb-0 small" style="color:#8B5E34;">Sampai Tanggal</label>
+              <input type="date" name="sampai" class="form-control form-control-sm"
+                style="border: 1.9px solid #8B5E34;" value="<?= $_GET['sampai'] ?? '' ?>">
             </div>
 
             <div class="col-auto">
-              <button type="submit" class="btn btn-sm text-white" style="background:#D4A373; border-color:#D4A373;">
+              <button type="submit" class="btn btn-sm text-white" style="background:#D4A373;">
                 <i class="bi bi-funnel"></i> Filter
               </button>
             </div>
 
           </form>
 
+          <!-- FORM EXPORT EXCEL (TERPISAH, TIDAK BUNGKUS TABLE) -->
+          <form method="POST" action="../config/exportexcel.php" class="mb-2">
+            <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+            <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
-          <div class="table-responsive" style="max-height: 460px; overflow-y: auto; overflow-x: auto;">
-            <table class="table table-hover align-middle text-center table-bordered" id="tabelData">
-              <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0; z-index: 5;">
+            <button class="btn btn-success btn-sm">
+              <i class="fa fa-download"></i> Export Excel
+            </button>
+          </form>
+
+          <!-- TABLE -->
+          <div class="table-responsive" style="max-height: 460px; overflow-y: auto;">
+            <table class="table table-hover align-middle text-center table-bordered">
+              <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0;">
                 <tr>
                   <th>No</th>
                   <th>Pengunjung</th>
@@ -104,31 +99,23 @@
 
               <tbody>
                 <?php
-                include_once '../config/connect.php';
+                include '../config/connect.php';
                 include '../config/db_tanggal.php';
 
-
                 $q = mysqli_query($connect, $sql);
-
-                if ($q === false) {
-                  echo '<tr><td colspan="10" class="text-danger">Query error: ' . htmlspecialchars(mysqli_error($connect)) . '</td></tr>';
+                if (!$q) {
+                  echo '<tr><td colspan="10" class="text-danger">Query Error</td></tr>';
                 } else {
-                  $rows = [];
-                  while ($r = mysqli_fetch_assoc($q)) {
-                    $rows[] = $r;
-                  }
+                  $rows = mysqli_fetch_all($q, MYSQLI_ASSOC);
 
-                  if (count($rows) === 0) {
-                    echo '<tr><td colspan="10" class="text-muted">Belum ada data pengunjung.</td></tr>';
+                  if (empty($rows)) {
+                    echo '<tr><td colspan="10">Tidak ada data.</td></tr>';
                   } else {
                     $no = 1;
-                    // detect if 'id' column exists
-                    $hasId = array_key_exists('id', $rows[0]);
-
                     foreach ($rows as $row):
-                      ?>
-                      <tr <?= $hasId ? 'data-id="' . $row['id'] . '"' : 'data-has-id="0"' ?>>
-                        <td><?= str_pad($no, 2, '0', STR_PAD_LEFT) ?></td>
+                ?>
+                      <tr data-id="<?= $row['id'] ?>">
+                        <td><?= $no++ ?></td>
                         <td><?= htmlspecialchars($row['nama']) ?></td>
                         <td><?= htmlspecialchars($row['no_hp']) ?></td>
                         <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
@@ -137,29 +124,36 @@
                         <td><?= htmlspecialchars($row['tujuan']) ?></td>
                         <td><?= $row['jumlah'] ?></td>
                         <td>
-                          <?php if (isset($row['jenis']) && $row['jenis'] == 'satuan'): ?>
+                          <?php if ($row['jenis'] == 'satuan'): ?>
                             <span class="badge bg-success">Satuan</span>
                           <?php else: ?>
                             <span class="badge bg-warning text-dark">Kelompok</span>
                           <?php endif; ?>
                         </td>
-                        <td class="d-flex justify-content-center gap-2">
-                          <?php if ($hasId): ?>
-                            <button class="btn btn-link p-0 text-success btn-edit"><i class="bi bi-pencil"></i></button>
-                            <button class="btn btn-link p-0 text-danger btn-delete"><i class="bi bi-trash"></i></button>
-                          <?php else: ?>
-                            <button class="btn btn-link p-0 text-secondary" disabled title="No id column">
-                              <i class="bi bi-pencil"></i>
-                            </button>
-                            <button class="btn btn-link p-0 text-secondary" disabled title="No id column">
-                              <i class="bi bi-trash"></i>
-                            </button>
-                          <?php endif; ?>
-                        </td>
 
+                        <td class="d-flex justify-content-center gap-2">
+                          <button class="btn btn-success btn-sm edit-button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editPengunjungModal"
+                            data-id="<?= $row['id'] ?>"
+                            data-nama="<?= $row['nama'] ?>"
+                            data-nohp="<?= $row['no_hp'] ?>"
+                            data-instansi="<?= $row['instansi'] ?>"
+                            data-tujuan="<?= $row['tujuan'] ?>"
+                            data-jenis="<?= $row['jenis'] ?>">
+                            <i class="bi bi-pencil-square"></i>
+                          </button>
+
+                          <button class="btn btn-danger btn-sm btn-delete"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalDelete"
+                            data-id="<?= $row['id'] ?>"
+                            data-nama="<?= $row['nama'] ?>">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
                       </tr>
-                      <?php
-                      $no++;
+                <?php
                     endforeach;
                   }
                 }
@@ -174,57 +168,57 @@
     </div>
   </div>
 
-  <!-- ====================== MODAL EDIT ===================== -->
-  <div class="modal fade" id="modalEdit" tabindex="-1">
+  <!-- ======================= MODAL EDIT ======================= -->
+  <div class="modal fade" id="editPengunjungModal" tabindex="-1">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <form action="../config/riwayat_update.php" method="POST" class="modal-content">
 
-        <div class="modal-header">
+        <div class="modal-header bg-success text-white">
           <h5 class="modal-title">Edit Data Pengunjung</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
         <div class="modal-body">
-          <form id="formEdit">
-            <div class="mb-2">
-              <label class="form-label small">Nama Pengunjung</label>
-              <input type="text" class="form-control" id="editNama">
-            </div>
 
-            <div class="mb-2">
-              <label class="form-label small">Nomor HP</label>
-              <input type="text" class="form-control" id="editNoHp">
-            </div>
+          <input type="hidden" id="edit-id" name="id">
 
-            <div class="mb-2">
-              <label class="form-label small">Instansi</label>
-              <input type="text" class="form-control" id="editInstansi">
-            </div>
+          <div class="mb-2">
+            <label>Nama</label>
+            <input type="text" id="edit-nama" name="nama" class="form-control" required>
+          </div>
 
-            <div class="mb-2">
-              <label class="form-label small">Tujuan</label>
-              <input type="text" class="form-control" id="editTujuan">
-            </div>
+          <div class="mb-2">
+            <label>No HP</label>
+            <input type="text" id="edit-nohp" name="no_hp" class="form-control" required>
+          </div>
 
-            <div class="mb-2">
-              <label class="form-label small">Jumlah</label>
-              <input type="number" class="form-control" id="editJumlah">
-            </div>
+          <div class="mb-2">
+            <label>Instansi</label>
+            <input type="text" id="edit-instansi" name="instansi" class="form-control" required>
+          </div>
 
-          </form>
+          <div class="mb-2">
+            <label>Tujuan</label>
+            <input type="text" id="edit-tujuan" name="tujuan" class="form-control" required>
+          </div>
+
+          <div class="mb-2">
+            <label>Jenis</label>
+            <input type="text" id="edit-jenis" name="jenis" class="form-control" required>
+          </div>
+
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button class="btn btn-primary" id="btnSimpanEdit">Simpan</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button class="btn btn-success">Simpan</button>
         </div>
 
-      </div>
+      </form>
     </div>
   </div>
 
-
-  <!-- ====================== MODAL DELETE ===================== -->
+  <!-- ======================= MODAL DELETE ======================= -->
   <div class="modal fade" id="modalDelete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -236,6 +230,8 @@
 
         <div class="modal-body">
           Apakah kamu yakin ingin menghapus data ini?
+          <input type="hidden" id="delete-id">
+          <p class="mt-2">Nama: <b id="delete-nama"></b></p>
         </div>
 
         <div class="modal-footer">
@@ -247,97 +243,35 @@
     </div>
   </div>
 
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    let rowEdit = null;
     let rowDelete = null;
 
-    // helper: show alert
-    function showAlert(message, type = 'success') {
-      const alert = document.createElement('div');
-      alert.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-      alert.style.top = '20px';
-      alert.style.right = '20px';
-      alert.style.zIndex = '9999';
-      alert.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
-      document.body.appendChild(alert);
-      setTimeout(() => alert.remove(), 3000);
-    }
-
-    // === KLIK EDIT ===
-    document.querySelectorAll('.btn-edit').forEach(btn => {
-      btn.addEventListener('click', function () {
-        rowEdit = this.closest('tr');
-        const cells = rowEdit.querySelectorAll('td');
-        document.getElementById('editNama').value = cells[1].innerText.trim();
-        document.getElementById('editNoHp').value = cells[2].innerText.trim();
-        document.getElementById('editInstansi').value = cells[5].innerText.trim();
-        document.getElementById('editTujuan').value = cells[6].innerText.trim();
-        document.getElementById('editJumlah').value = cells[7].innerText.trim();
-
-        new bootstrap.Modal(document.getElementById('modalEdit')).show();
+    // Edit
+    document.querySelectorAll('.edit-button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.getElementById('edit-id').value = this.dataset.id;
+        document.getElementById('edit-nama').value = this.dataset.nama;
+        document.getElementById('edit-nohp').value = this.dataset.nohp;
+        document.getElementById('edit-instansi').value = this.dataset.instansi;
+        document.getElementById('edit-tujuan').value = this.dataset.tujuan;
+        document.getElementById('edit-jenis').value = this.dataset.jenis;
       });
     });
 
-    // === SIMPAN EDIT (AJAX) ===
-    document.getElementById('btnSimpanEdit').addEventListener('click', () => {
-      if (!rowEdit) return;
-      const id = rowEdit.getAttribute('data-id');
-      const nama = document.getElementById('editNama').value.trim();
-      const no_hp = document.getElementById('editNoHp').value.trim();
-      const instansi = document.getElementById('editInstansi').value.trim();
-      const tujuan = document.getElementById('editTujuan').value.trim();
-      const jumlah = document.getElementById('editJumlah').value || 1;
-
-      const form = new FormData();
-      form.append('id', id);
-      form.append('nama', nama);
-      form.append('no_hp', no_hp);
-      form.append('instansi', instansi);
-      form.append('tujuan', tujuan);
-      form.append('jumlah', jumlah);
-
-      fetch('../config/riwayat_update.php', {
-        method: 'POST',
-        body: form
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            // update DOM
-            const cells = rowEdit.querySelectorAll('td');
-            cells[1].innerText = nama;
-            cells[2].innerText = no_hp;
-            cells[5].innerText = instansi;
-            cells[6].innerText = tujuan;
-            cells[7].innerText = jumlah;
-
-            showAlert('Data berhasil diperbarui', 'success');
-            bootstrap.Modal.getInstance(document.getElementById('modalEdit')).hide();
-          } else {
-            showAlert('Gagal memperbarui: ' + data.message, 'danger');
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          showAlert('Terjadi kesalahan jaringan', 'danger');
-        });
-    });
-
-    // === KLIK DELETE ===
+    // Delete
     document.querySelectorAll('.btn-delete').forEach(btn => {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function() {
         rowDelete = this.closest('tr');
-        new bootstrap.Modal(document.getElementById('modalDelete')).show();
+        document.getElementById('delete-id').value = this.dataset.id;
+        document.getElementById('delete-nama').innerText = this.dataset.nama;
       });
     });
 
-    // === HAPUS BARIS (AJAX) ===
+    // Confirm Delete
     document.getElementById('btnConfirmDelete').addEventListener('click', () => {
-      if (!rowDelete) return;
-      const id = rowDelete.getAttribute('data-id');
+      const id = document.getElementById('delete-id').value;
 
       const form = new FormData();
       form.append('id', id);
@@ -346,24 +280,15 @@
         method: 'POST',
         body: form
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            rowDelete.remove();
-            showAlert('Data berhasil dihapus', 'success');
-            bootstrap.Modal.getInstance(document.getElementById('modalDelete')).hide();
-          } else {
-            showAlert('Gagal menghapus: ' + data.message, 'danger');
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          showAlert('Terjadi kesalahan jaringan', 'danger');
-        });
+      .then(r => r.json())
+      .then(res => {
+        if (res.success) {
+          rowDelete.remove();
+          bootstrap.Modal.getInstance(document.getElementById('modalDelete')).hide();
+        }
+      });
     });
   </script>
 
-
 </body>
-
 </html>

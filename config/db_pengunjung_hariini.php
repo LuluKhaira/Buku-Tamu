@@ -1,5 +1,6 @@
 <?php
 include "../config/connect.php";
+date_default_timezone_set('Asia/Jakarta');
 
 // ================================
 // Ambil FILTER dari URL

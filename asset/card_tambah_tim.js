@@ -17,7 +17,10 @@ document.getElementById("btnSimpan").addEventListener("click", function () {
         <div><strong>No HP:</strong> ${hp || "-"}</div>
         <div><strong>Instansi:</strong> ${instansi || "-"}</div>
         <div><strong>Jumlah:</strong> ${jumlah || "-"}</div>
-        <div><strong>Tujuan:</strong> ${tujuan || "-"}</div>
+        <div style="white-space: normal; word-wrap: break-word; max-width: 200px;">
+            <strong>Tujuan:</strong> ${tujuan || "-"}
+        </div>
+
 
         <hr>
         <p class="fw-bold">Apakah data sudah sesuai?</p>

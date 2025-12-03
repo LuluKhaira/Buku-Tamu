@@ -15,7 +15,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="dashboard_staffTU/beranda.php">
@@ -45,7 +44,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="bg-white border-bottom d-flex align-items-center" style="min-height: 100vh;">
         <div class="container px-3 px-md-4 px-lg-5 py-5">
             <div class="row g-4 g-lg-5 align-items-center justify-content-center text-center text-lg-start">
@@ -73,7 +71,6 @@
                     </div>
                 </div>
 
-                <!-- Right Image -->
                 <div class="col-lg-6">
                     <div class="position-relative">
                         <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
@@ -83,7 +80,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </header>
@@ -152,7 +148,6 @@
     <section class="py-5">
         <div class="container">
             <div class="row g-4">
-                <!-- Card 1 -->
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm rounded-4 h-100">
                         <div class="position-relative">
@@ -168,35 +163,38 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm rounded-4 h-100">
                         <div class="position-relative">
-                            <img src="foto/Gedung.jpg" class="card-img-top rounded-top-4" alt="">
+                            <img src="foto/dashboard.png" class="card-img-top rounded-top-4" alt="">
                             <span
                                 class="badge bg-white text-dark position-absolute top-0 m-3 px-3 py-2 shadow-sm rounded-pill">
                                 Burnout
                             </span>
                         </div>
                         <div class="card-body">
-                            <h5 class="fw-bold">Beranda</h5>
+                            <h5 class="fw-bold">Beranda Staff TU</h5>
                             <p class="text-muted small">
-                                Do less. Take a walk. Look up at trees. Break in the drudgery of daily overload…
+                                Dengan beranda ini secara instan menyajikan keterangan pengunjung (harian, mingguan,
+                                bulanan).
+                                Bagian "Pengunjung Hari Ini" memberikan detail data tamu terbaru,
+                                termasuk jenis kunjungan dan waktu kedatangan, yang divalidasi oleh penunjuk waktu.
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm rounded-4 h-100">
                         <div class="position-relative">
-                            <img src="foto/Gedung.jpg" class="card-img-top rounded-top-4" alt="">
+                            <img src="foto/riwayat.png" class="card-img-top rounded-top-4" alt="">
                         </div>
                         <div class="card-body">
-                            <h5 class="fw-bold">Tambah Pengunjung</h5>
+                            <h5 class="fw-bold">Riwayat Staff TU</h5>
                             <p class="text-muted small">
-                                Understanding emotions better may reduce the risk of addictive behaviors.
+                                Dengan Fitur riwayat menyimpan seluruh cerita dan detail dari semua kunjungan yang
+                                pernah terjadi bisa
+                                disaring, dicari, dan diekspor melalui Excel.
                             </p>
                         </div>
                     </div>

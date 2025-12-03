@@ -1,5 +1,6 @@
 <?php
 include "../config/connect.php";
+date_default_timezone_set('Asia/Jakarta');
 
 // Hari ini
 $q_hari = mysqli_query($connect, "SELECT COUNT(*) FROM pengunjung WHERE DATE(tanggal) = CURDATE()");

@@ -2,13 +2,23 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>History</title>
+  <title>Riwayat</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <style>
+    .badge-jenis {
+      width: 90px;
+      display: inline-block;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 6px 0;
+    }
+  </style>
 </head>
 
 <body class="d-flex" style="background:#F5EFE7;">
@@ -29,7 +39,6 @@
 
           <div class="d-flex align-items-center gap-3">
 
-            <!-- SEARCH BAR -->
             <form class="d-none d-sm-inline-block">
               <div class="input-group input-group-sm">
                 <span class="input-group-text border-0" style="background:#D4A373; color:white;">
@@ -40,49 +49,47 @@
               </div>
             </form>
 
+            <form method="POST" action="../config/exportexcel.php">
+              <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+              <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+
+              <button class="btn btn-success form-control" name="bexport">
+                <i class="fa fa-download"></i> Export Data Excel
+              </button>
+            </form>
+
           </div>
 
         </div>
 
         <div class="card-body">
 
-          <!-- FORM FILTER TANGGAL -->
           <form method="GET" class="row g-3 mb-4 align-items-end justify-content-center">
 
             <div class="col-md-3 col-lg-2 text-center">
               <label class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
-              <input type="date" name="dari" class="form-control form-control-sm"
-                style="border: 1.9px solid #8B5E34;" value="<?= $_GET['dari'] ?? '' ?>">
+              <input type="date" name="dari" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
+                value="<?= $_GET['dari'] ?? '' ?>">
             </div>
 
             <div class="col-md-3 col-lg-2 text-center">
               <label class="form-label mb-0 small" style="color:#8B5E34;">Sampai Tanggal</label>
-              <input type="date" name="sampai" class="form-control form-control-sm"
-                style="border: 1.9px solid #8B5E34;" value="<?= $_GET['sampai'] ?? '' ?>">
+              <input type="date" name="sampai" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
+                value="<?= $_GET['sampai'] ?? '' ?>">
             </div>
 
             <div class="col-auto">
-              <button type="submit" class="btn btn-sm text-white" style="background:#D4A373;">
+              <button type="submit" class="btn btn-sm text-white" style="background:#D4A373; border-color:#D4A373;">
                 <i class="bi bi-funnel"></i> Filter
               </button>
             </div>
 
           </form>
 
-          <!-- FORM EXPORT EXCEL (TERPISAH, TIDAK BUNGKUS TABLE) -->
-          <form method="POST" action="../config/exportexcel.php" class="mb-2">
-            <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-            <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+          <div class="table-responsive" style="max-height: 460px; overflow-y: auto; overflow-x: auto;">
+            <table class="table table-hover align-middle table-bordered">
 
-            <button class="btn btn-success btn-sm">
-              <i class="fa fa-download"></i> Export Excel
-            </button>
-          </form>
-
-          <!-- TABLE -->
-          <div class="table-responsive" style="max-height: 460px; overflow-y: auto;">
-            <table class="table table-hover align-middle text-center table-bordered">
-              <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0;">
+              <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0; z-index: 5;">
                 <tr>
                   <th>No</th>
                   <th>Pengunjung</th>
@@ -98,63 +105,58 @@
               </thead>
 
               <tbody>
+
                 <?php
-                include '../config/connect.php';
+                include_once '../config/connect.php';
                 include '../config/db_tanggal.php';
 
                 $q = mysqli_query($connect, $sql);
-                if (!$q) {
-                  echo '<tr><td colspan="10" class="text-danger">Query Error</td></tr>';
-                } else {
-                  $rows = mysqli_fetch_all($q, MYSQLI_ASSOC);
 
-                  if (empty($rows)) {
-                    echo '<tr><td colspan="10">Tidak ada data.</td></tr>';
+                if (!$q) {
+                  echo '<tr><td colspan="10" class="text-danger">Query error: ' . mysqli_error($connect) . '</td></tr>';
+                } else {
+                  // CEK JUMLAH DATA
+                  if (mysqli_num_rows($q) == 0) {
+                    echo '<tr>
+                <td colspan="10" class="text-muted text-center">
+                  Belum ada pengunjung dibulan / tanggal ini.
+                </td>
+              </tr>';
                   } else {
                     $no = 1;
-                    foreach ($rows as $row):
-                ?>
-                      <tr data-id="<?= $row['id'] ?>">
-                        <td><?= $no++ ?></td>
+                    while ($row = mysqli_fetch_assoc($q)):
+                      ?>
+                      <tr data-id="<?= $row['no_pengunjung'] ?>">
+                        <td><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
                         <td><?= htmlspecialchars($row['nama']) ?></td>
                         <td><?= htmlspecialchars($row['no_hp']) ?></td>
                         <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
                         <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
                         <td><?= htmlspecialchars($row['instansi']) ?></td>
-                        <td><?= htmlspecialchars($row['tujuan']) ?></td>
+                        <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
+                          data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['tujuan']) ?>">
+                          <?= htmlspecialchars($row['tujuan']) ?>
+                        </td>
                         <td><?= $row['jumlah'] ?></td>
                         <td>
                           <?php if ($row['jenis'] == 'satuan'): ?>
-                            <span class="badge bg-success">Satuan</span>
+                            <span class="badge bg-success badge-jenis">Satuan</span>
                           <?php else: ?>
-                            <span class="badge bg-warning text-dark">Kelompok</span>
+                            <span class="badge bg-warning text-dark badge-jenis">Kelompok</span>
                           <?php endif; ?>
                         </td>
 
                         <td class="d-flex justify-content-center gap-2">
-                          <button class="btn btn-success btn-sm edit-button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#editPengunjungModal"
-                            data-id="<?= $row['id'] ?>"
-                            data-nama="<?= $row['nama'] ?>"
-                            data-nohp="<?= $row['no_hp'] ?>"
-                            data-instansi="<?= $row['instansi'] ?>"
-                            data-tujuan="<?= $row['tujuan'] ?>"
-                            data-jenis="<?= $row['jenis'] ?>">
-                            <i class="bi bi-pencil-square"></i>
+                          <button class="btn btn-link p-0 text-success btn-edit">
+                            <i class="bi bi-pencil"></i>
                           </button>
-
-                          <button class="btn btn-danger btn-sm btn-delete"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalDelete"
-                            data-id="<?= $row['id'] ?>"
-                            data-nama="<?= $row['nama'] ?>">
+                          <button class="btn btn-link p-0 text-danger btn-delete">
                             <i class="bi bi-trash"></i>
                           </button>
                         </td>
                       </tr>
-                <?php
-                    endforeach;
+                      <?php
+                    endwhile;
                   }
                 }
                 ?>
@@ -168,57 +170,56 @@
     </div>
   </div>
 
-  <!-- ======================= MODAL EDIT ======================= -->
-  <div class="modal fade" id="editPengunjungModal" tabindex="-1">
+  <!-- ====================== MODAL EDIT ===================== -->
+  <div class="modal fade" id="modalEdit" tabindex="-1">
     <div class="modal-dialog">
-      <form action="../config/riwayat_update.php" method="POST" class="modal-content">
+      <div class="modal-content">
 
-        <div class="modal-header bg-success text-white">
+        <div class="modal-header">
           <h5 class="modal-title">Edit Data Pengunjung</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
         <div class="modal-body">
+          <form id="formEdit">
+            <div class="mb-2">
+              <label class="form-label small">Nama Pengunjung</label>
+              <input type="text" class="form-control" id="editNama">
+            </div>
 
-          <input type="hidden" id="edit-id" name="id">
+            <div class="mb-2">
+              <label class="form-label small">Nomor HP</label>
+              <input type="text" class="form-control" id="editNoHp">
+            </div>
 
-          <div class="mb-2">
-            <label>Nama</label>
-            <input type="text" id="edit-nama" name="nama" class="form-control" required>
-          </div>
+            <div class="mb-2">
+              <label class="form-label small">Instansi</label>
+              <input type="text" class="form-control" id="editInstansi">
+            </div>
 
-          <div class="mb-2">
-            <label>No HP</label>
-            <input type="text" id="edit-nohp" name="no_hp" class="form-control" required>
-          </div>
+            <div class="mb-2">
+              <label class="form-label small">Tujuan</label>
+              <input type="text" class="form-control" id="editTujuan">
+            </div>
 
-          <div class="mb-2">
-            <label>Instansi</label>
-            <input type="text" id="edit-instansi" name="instansi" class="form-control" required>
-          </div>
+            <div class="mb-2">
+              <label class="form-label small">Jumlah</label>
+              <input type="number" class="form-control" id="editJumlah">
+            </div>
 
-          <div class="mb-2">
-            <label>Tujuan</label>
-            <input type="text" id="edit-tujuan" name="tujuan" class="form-control" required>
-          </div>
-
-          <div class="mb-2">
-            <label>Jenis</label>
-            <input type="text" id="edit-jenis" name="jenis" class="form-control" required>
-          </div>
-
+          </form>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button class="btn btn-success">Simpan</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button class="btn btn-primary" id="btnSimpanEdit">Simpan</button>
         </div>
 
-      </form>
+      </div>
     </div>
   </div>
 
-  <!-- ======================= MODAL DELETE ======================= -->
+  <!-- ====================== MODAL DELETE ===================== -->
   <div class="modal fade" id="modalDelete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -230,8 +231,6 @@
 
         <div class="modal-body">
           Apakah kamu yakin ingin menghapus data ini?
-          <input type="hidden" id="delete-id">
-          <p class="mt-2">Nama: <b id="delete-nama"></b></p>
         </div>
 
         <div class="modal-footer">
@@ -243,52 +242,95 @@
     </div>
   </div>
 
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    let rowDelete = null;
+    let selectedId = null;
 
-    // Edit
-    document.querySelectorAll('.edit-button').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.getElementById('edit-id').value = this.dataset.id;
-        document.getElementById('edit-nama').value = this.dataset.nama;
-        document.getElementById('edit-nohp').value = this.dataset.nohp;
-        document.getElementById('edit-instansi').value = this.dataset.instansi;
-        document.getElementById('edit-tujuan').value = this.dataset.tujuan;
-        document.getElementById('edit-jenis').value = this.dataset.jenis;
+    const modalEdit = new bootstrap.Modal(document.getElementById('modalEdit'));
+    const modalDelete = new bootstrap.Modal(document.getElementById('modalDelete'));
+
+    // ======================= EDIT ===========================
+    document.querySelectorAll('.btn-edit').forEach(btn => {
+      btn.addEventListener('click', function () {
+
+        let tr = this.closest('tr');
+        selectedId = tr.dataset.id; // FIX: ID taken from no_pengunjung
+
+        let data = tr.querySelectorAll('td');
+
+        document.getElementById('editNama').value = data[1].textContent.trim();
+        document.getElementById('editNoHp').value = data[2].textContent.trim();
+        document.getElementById('editInstansi').value = data[5].textContent.trim();
+        document.getElementById('editTujuan').value = data[6].textContent.trim();
+        document.getElementById('editJumlah').value = data[7].textContent.trim();
+
+        modalEdit.show();
       });
     });
 
-    // Delete
+    document.getElementById('btnSimpanEdit').addEventListener('click', function () {
+
+      let formData = new FormData();
+      formData.append('no_pengunjung', selectedId);
+      formData.append('nama', document.getElementById('editNama').value);
+      formData.append('no_hp', document.getElementById('editNoHp').value);
+      formData.append('instansi', document.getElementById('editInstansi').value);
+      formData.append('tujuan', document.getElementById('editTujuan').value);
+      formData.append('jumlah', document.getElementById('editJumlah').value);
+
+      fetch('../config/riwayat_update.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.status === 'success') {
+            alert("Data berhasil diupdate!");
+            location.reload();
+          } else {
+            alert("Gagal update: " + res.message);
+          }
+        });
+
+    });
+
+    // ======================= DELETE ===========================
     document.querySelectorAll('.btn-delete').forEach(btn => {
-      btn.addEventListener('click', function() {
-        rowDelete = this.closest('tr');
-        document.getElementById('delete-id').value = this.dataset.id;
-        document.getElementById('delete-nama').innerText = this.dataset.nama;
+      btn.addEventListener('click', function () {
+        let tr = this.closest('tr');
+        selectedId = tr.dataset.id;
+        modalDelete.show();
       });
     });
 
-    // Confirm Delete
-    document.getElementById('btnConfirmDelete').addEventListener('click', () => {
-      const id = document.getElementById('delete-id').value;
+    document.getElementById('btnConfirmDelete').addEventListener('click', function () {
 
-      const form = new FormData();
-      form.append('id', id);
+      let formData = new FormData();
+      formData.append('no_pengunjung', selectedId);
 
       fetch('../config/riwayat_delete.php', {
         method: 'POST',
-        body: form
+        body: formData
       })
-      .then(r => r.json())
-      .then(res => {
-        if (res.success) {
-          rowDelete.remove();
-          bootstrap.Modal.getInstance(document.getElementById('modalDelete')).hide();
-        }
-      });
+        .then(res => res.json())
+        .then(res => {
+          if (res.status === 'success') {
+            alert("Data berhasil dihapus!");
+            location.reload();
+          } else {
+            alert("Gagal hapus: " + res.message);
+          }
+        });
+
     });
+
+    //jika tulisan berlebih
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
   </script>
 
 </body>
+
 </html>

@@ -11,15 +11,23 @@ header("Expires: 0");
 $tgl1 = $_POST['tanggala'] ?? '';
 $tgl2 = $_POST['tanggalb'] ?? '';
 
-// Query
 if ($tgl1 !== '' && $tgl2 !== '') {
+    // Jika dua-duanya diisi → range tanggal
     $sql = "SELECT * FROM pengunjung 
             WHERE tanggal BETWEEN '$tgl1' AND '$tgl2'
             ORDER BY tanggal ASC, waktu ASC";
+
+} elseif ($tgl1 !== '' && $tgl2 === '') {
+    // Jika hanya satu tanggal → tampilkan tanggal itu saja
+    $sql = "SELECT * FROM pengunjung 
+            WHERE tanggal = '$tgl1'
+            ORDER BY tanggal ASC, waktu ASC";
+
 } else {
-    // Jika tidak memilih tanggal, tampilkan semua
+    // Jika tidak memilih tanggal → tampilkan semua
     $sql = "SELECT * FROM pengunjung ORDER BY tanggal ASC, waktu ASC";
 }
+
 
 $tampil = mysqli_query($connect, $sql);
 ?>
@@ -27,7 +35,7 @@ $tampil = mysqli_query($connect, $sql);
 <table border="1">
     <thead>
         <tr>
-            <th colspan="7"><strong>Rekapitulasi Data Pengunjung</strong></th>
+            <th colspan="7"><strong>Data Pengunjung</strong></th>
         </tr>
         <tr>
             <th>No</th>
@@ -44,16 +52,17 @@ $tampil = mysqli_query($connect, $sql);
         <?php
         $no = 1;
         while ($row = mysqli_fetch_assoc($tampil)) {
-        ?>
+            ?>
             <tr>
                 <td><?= $no++ ?></td>
                 <td><?= $row['tanggal'] ?></td>
-                <td><?= $row['waktu'] ?></td>
+                <td><?= date('H:i', strtotime($row['waktu'])) ?></td>
                 <td><?= $row['nama'] ?></td>
                 <td><?= $row['instansi'] ?></td>
                 <td><?= $row['jumlah'] ?></td>
                 <td><?= $row['no_hp'] ?></td>
             </tr>
+
         <?php } ?>
     </tbody>
 </table>

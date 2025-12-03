@@ -1,28 +1,28 @@
 <?php
 include '../config/connect.php';
 
-$nama       = $_POST['nama'];
-$no_hp      = $_POST['no_hp'];
-$tanggal    = date("Y-m-d");
-$waktu      = date("H:i:s");
-$instansi   = $_POST['instansi'];
-$tujuan     = $_POST['tujuan'];
-$jenis      = $_POST['jenis'];
-$id         = $_POST['id']; 
+$id       = $_POST['no_pengunjung'] ?? '';
+$nama     = $_POST['nama'] ?? '';
+$no_hp    = $_POST['no_hp'] ?? '';
+$instansi = $_POST['instansi'] ?? '';
+$tujuan   = $_POST['tujuan'] ?? '';
+$jumlah   = $_POST['jumlah'] ?? '';
 
-$query = "UPDATE pengunjung SET 
+if ($id == '') {
+    echo json_encode(['status' => 'error', 'message' => 'ID kosong']);
+    exit;
+}
+
+$sql = "UPDATE pengunjung SET 
             nama='$nama',
             no_hp='$no_hp',
-            tanggal='$tanggal',
-            waktu='$waktu',
             instansi='$instansi',
             tujuan='$tujuan',
-            jenis='$jenis'
-          WHERE id='$id'";
+            jumlah='$jumlah'
+        WHERE no_pengunjung='$id'";
 
-mysqli_query($connect, $query);
-
-// Redirect kembali
-header("Location: ../riwayat_update.php");
-exit();
-?>
+if (mysqli_query($connect, $sql)) {
+    echo json_encode(['status' => 'success']);
+} else {
+    echo json_encode(['status' => 'error', 'message' => mysqli_error($connect)]);
+}

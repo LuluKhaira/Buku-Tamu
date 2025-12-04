@@ -88,4 +88,7 @@ $total_page = ceil($total_data / $limit);
 // untuk tulisan "Menampilkan X - Y"
 $first_number = ($total_data > 0) ? $offset + 1 : 0;
 $last_number  = $offset + count($pengunjung_hari_ini);
+
+
 ?>
+

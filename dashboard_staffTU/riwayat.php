@@ -21,6 +21,10 @@
   </style>
 </head>
 
+<?php
+include "../config/db_riwayat.php";
+?>
+
 <body class="d-flex" style="background:#F5EFE7;">
 
   <?php include '../Nav_Side_Bar/sidebar.php'; ?>
@@ -39,15 +43,17 @@
 
           <div class="d-flex align-items-center gap-3">
 
-            <form class="d-none d-sm-inline-block">
+            <form class="d-none d-sm-inline-block" method="GET">
               <div class="input-group input-group-sm">
                 <span class="input-group-text border-0" style="background:#D4A373; color:white;">
                   <i class="fas fa-search"></i>
                 </span>
-                <input type="text" class="form-control border-0" style="width: 200px; background:#F7E9C8;"
-                  placeholder="Cari...">
+                <input type="text" name="search" class="form-control border-0" style="width: 200px; background:#F7E9C8;"
+                  placeholder="Cari nama, Instansi, tanggal..." value="<?= $_GET['search'] ?? '' ?>">
               </div>
             </form>
+
+
 
             <form method="POST" action="../config/exportexcel.php">
               <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
@@ -108,8 +114,8 @@
 
                 <?php
                 include_once '../config/connect.php';
-                include '../config/db_tanggal.php';
-
+                include '../config/db_riwayat.php';
+                // include '../config/db_tanggal.php';
                 $q = mysqli_query($connect, $sql);
 
                 if (!$q) {
@@ -244,6 +250,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../dashboard_staffTU/riwayat.js"></script>
 
   <script>
     let selectedId = null;
@@ -329,6 +336,8 @@
     //jika tulisan berlebih
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
+
+
   </script>
 
 </body>

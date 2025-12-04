@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;500;600;700&display=swap" rel="stylesheet" />
 </head>
 
-<body>
+<body class="pt-5 pt-lg-4">
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="dashboard_staffTU/beranda.php">
@@ -28,61 +28,54 @@
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link px-3" href="#beranda">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#fitur">Fitur</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#kontak">Kontak</a></li>
                 </ul>
                 <div class="d-flex gap-2 ms-lg-3">
-                    <a href="login.php" class="btn btn-outline-primary rounded-pill px-4">
+                    <a href="login.php" class="btn btn-success rounded-pill px-4">
                         <i class="bi bi-box-arrow-in-right me-2"></i>Login
-                    </a>
-                    <a href="#" class="btn btn-primary rounded-pill px-4">
-                        <i class="bi bi-person-plus-fill me-2"></i>Sign Up
                     </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="bg-white border-bottom d-flex align-items-center" style="min-height: 100vh;">
+    <header id="beranda" class="bg-white d-flex align-items-center min-vh-lg-100 mt-5 pt-5 mt-lg-5">
         <div class="container px-3 px-md-4 px-lg-5 py-5">
             <div class="row g-4 g-lg-5 align-items-center justify-content-center text-center text-lg-start">
-                <!-- Left Content -->
+
                 <div class="col-lg-6">
-                    <div>
+                    <h1 class="display-3 fw-bold mb-4 lh-1">
+                        Buku Tamu<br>
+                        <span class="text-success">Staff Tata Usaha</span>
+                    </h1>
 
-                        <h1 class="display-3 fw-bold mb-4 lh-1">
-                            Buku Tamu<br>
-                            <span class="text-success">Staff Tata Usaha</span>
-                        </h1>
+                    <p class="lead text-muted mb-4 fs-5">
+                        Sistem pencatatan kehadiran yang modern dan efisien untuk Tata Usaha.
+                    </p>
 
-                        <p class="lead text-muted mb-4 fs-5">
-                            Sistem pencatatan kehadiran yang modern dan efisien untuk Tata Usaha. Kelola data pengunjung
-                            dengan mudah dan cepat.
-                        </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start mb-5">
+                        <a href="asset/tambah_only.php"
+                            class="btn btn-warning btn-lg px-4 rounded-pill fw-semibold shadow-sm">
+                            <i class="bi bi-plus-circle-fill me-2"></i>
+                            Tambah Data
+                        </a>
+                    </div>
+                </div>
 
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start mb-5">
-                            <a href="asset/tambah_only.php"
-                                class="btn btn-warning btn-lg px-4 rounded-pill fw-semibold shadow-sm">
-                                <i class="bi bi-plus-circle-fill me-2"></i>
-                                Tambah Data
-                            </a>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
+                        <div class="card-body p-0">
+                            <img src="foto/Tambah.png" class="img-fluid w-100">
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="position-relative">
-                        <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
-                            <div class="card-body p-0">
-                                <img src="foto/Tambah.png" class="img-fluid w-100" alt="Buku Tamu Dashboard">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
+
 
 
     <!-- Features Section -->

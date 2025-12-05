@@ -14,7 +14,6 @@
     <div class="container py-5 mt-3">
         <div class="row gy-4 gx-0">
 
-            <!-- Left - Form Section -->
             <div class="col-lg-7">
                 <div class="form-panel">
                     <div class="mb-3">
@@ -66,22 +65,16 @@
                 </div>
             </div>
 
-            <!-- Right - Info Section -->
             <div class="col-lg-5">
                 <div class="info-panel" id="previewPanel">
                     <h5 class="fw-bold mb-3">Preview Data</h5>
                     <p class="opacity-75">Belum ada data yang diinput.</p>
                 </div>
             </div>
-
-
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../asset/card_tambah_tim.js"></script>
-
-
 
 </body>
 

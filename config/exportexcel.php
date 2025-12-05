@@ -1,30 +1,25 @@
 <?php
 include '../config/connect.php';
 
-// Persiapan untuk Excel
 header("Content-type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=Data_Pengunjung.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-// Ambil tanggal (aman walau kosong)
 $tgl1 = $_POST['tanggala'] ?? '';
 $tgl2 = $_POST['tanggalb'] ?? '';
 
 if ($tgl1 !== '' && $tgl2 !== '') {
-    // Jika dua-duanya diisi → range tanggal
     $sql = "SELECT * FROM pengunjung 
             WHERE tanggal BETWEEN '$tgl1' AND '$tgl2'
             ORDER BY tanggal ASC, waktu ASC";
 
 } elseif ($tgl1 !== '' && $tgl2 === '') {
-    // Jika hanya satu tanggal → tampilkan tanggal itu saja
     $sql = "SELECT * FROM pengunjung 
             WHERE tanggal = '$tgl1'
             ORDER BY tanggal ASC, waktu ASC";
 
 } else {
-    // Jika tidak memilih tanggal → tampilkan semua
     $sql = "SELECT * FROM pengunjung ORDER BY tanggal ASC, waktu ASC";
 }
 

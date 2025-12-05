@@ -11,14 +11,12 @@
 </head>
 
 <?php
-// Tangkap nama file saat ini
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
 <body >
   <div class="sidebar d-flex flex-column position-relative" >
     <div>
-      <!-- Bagian Logo + Judul -->
       <div class="brand-section">
         <img src="../foto/logo_polibatam.png" alt="Logo">
         <div class="brand-text">
@@ -27,7 +25,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
         </div>
       </div>
 
-      <!-- Menu -->
       <a href="../dashboard_staffTU/beranda.php"
         class="nav-link mb-2 <?= ($current_page == 'beranda.php') ? 'active' : '' ?>">
         <i class="bi bi-house-door"></i> Beranda
@@ -39,7 +36,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
       </a>
     </div>
 
-    <!-- Logout -->
     <div class="logout">
       <a href="../index.php" class="nav-link"><i class="bi bi-box-arrow-right"></i>Logout</a>
     </div>

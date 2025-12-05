@@ -63,15 +63,10 @@ include "../config/db_riwayat.php";
                 <i class="fa fa-download"></i> Export Data Excel
               </button>
             </form>
-
           </div>
-
         </div>
-
         <div class="card-body">
-
           <form method="GET" class="row g-3 mb-4 align-items-end justify-content-center">
-
             <div class="col-md-3 col-lg-2 text-center">
               <label class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
               <input type="date" name="dari" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
@@ -115,13 +110,11 @@ include "../config/db_riwayat.php";
                 <?php
                 include_once '../config/connect.php';
                 include '../config/db_riwayat.php';
-                // include '../config/db_tanggal.php';
                 $q = mysqli_query($connect, $sql);
 
                 if (!$q) {
                   echo '<tr><td colspan="10" class="text-danger">Query error: ' . mysqli_error($connect) . '</td></tr>';
                 } else {
-                  // CEK JUMLAH DATA
                   if (mysqli_num_rows($q) == 0) {
                     echo '<tr>
                 <td colspan="10" class="text-muted text-center">
@@ -131,7 +124,7 @@ include "../config/db_riwayat.php";
                   } else {
                     $no = 1;
                     while ($row = mysqli_fetch_assoc($q)):
-                      ?>
+                ?>
                       <tr data-id="<?= $row['no_pengunjung'] ?>">
                         <td><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
                         <td><?= htmlspecialchars($row['nama']) ?></td>
@@ -161,7 +154,7 @@ include "../config/db_riwayat.php";
                           </button>
                         </td>
                       </tr>
-                      <?php
+                <?php
                     endwhile;
                   }
                 }
@@ -176,7 +169,6 @@ include "../config/db_riwayat.php";
     </div>
   </div>
 
-  <!-- ====================== MODAL EDIT ===================== -->
   <div class="modal fade" id="modalEdit" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -225,7 +217,6 @@ include "../config/db_riwayat.php";
     </div>
   </div>
 
-  <!-- ====================== MODAL DELETE ===================== -->
   <div class="modal fade" id="modalDelete" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -258,9 +249,8 @@ include "../config/db_riwayat.php";
     const modalEdit = new bootstrap.Modal(document.getElementById('modalEdit'));
     const modalDelete = new bootstrap.Modal(document.getElementById('modalDelete'));
 
-    // ======================= EDIT ===========================
     document.querySelectorAll('.btn-edit').forEach(btn => {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function() {
 
         let tr = this.closest('tr');
         selectedId = tr.dataset.id; // FIX: ID taken from no_pengunjung
@@ -277,7 +267,7 @@ include "../config/db_riwayat.php";
       });
     });
 
-    document.getElementById('btnSimpanEdit').addEventListener('click', function () {
+    document.getElementById('btnSimpanEdit').addEventListener('click', function() {
 
       let formData = new FormData();
       formData.append('no_pengunjung', selectedId);
@@ -288,9 +278,9 @@ include "../config/db_riwayat.php";
       formData.append('jumlah', document.getElementById('editJumlah').value);
 
       fetch('../config/riwayat_update.php', {
-        method: 'POST',
-        body: formData
-      })
+          method: 'POST',
+          body: formData
+        })
         .then(res => res.json())
         .then(res => {
           if (res.status === 'success') {
@@ -305,22 +295,22 @@ include "../config/db_riwayat.php";
 
     // ======================= DELETE ===========================
     document.querySelectorAll('.btn-delete').forEach(btn => {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function() {
         let tr = this.closest('tr');
         selectedId = tr.dataset.id;
         modalDelete.show();
       });
     });
 
-    document.getElementById('btnConfirmDelete').addEventListener('click', function () {
+    document.getElementById('btnConfirmDelete').addEventListener('click', function() {
 
       let formData = new FormData();
       formData.append('no_pengunjung', selectedId);
 
       fetch('../config/riwayat_delete.php', {
-        method: 'POST',
-        body: formData
-      })
+          method: 'POST',
+          body: formData
+        })
         .then(res => res.json())
         .then(res => {
           if (res.status === 'success') {
@@ -333,11 +323,8 @@ include "../config/db_riwayat.php";
 
     });
 
-    //jika tulisan berlebih
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
-
-
   </script>
 
 </body>

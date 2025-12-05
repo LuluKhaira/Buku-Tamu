@@ -59,3 +59,22 @@ body {
   bottom: 30px;
   width: 230px;
 }
+
+    .logout {
+        margin-top: -10px;
+    }
+
+    .logout a {
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #6c757d; /* abu2 */
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+    }
+
+    .logout a:hover {
+        color: #dc3545; /* merah saat hover */
+    }

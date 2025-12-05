@@ -36,11 +36,7 @@ include "../config/db_pengunjung_hariini.php";
     <?php include '../Nav_Side_Bar/navbar.php'; ?>
 
     <div class="container mt-4">
-
-      <!-- 3 CARD ATAS -->
       <div class="row">
-
-        <!-- Bulan Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2" style="border-left:8px solid #D4A373; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
@@ -59,7 +55,6 @@ include "../config/db_pengunjung_hariini.php";
           </div>
         </div>
 
-        <!-- Minggu Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2" style="border-left:8px solid #D4A373; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">
@@ -99,11 +94,7 @@ include "../config/db_pengunjung_hariini.php";
 
       </div>
 
-
-      <!-- TABLE & CLOCK -->
       <div class="row">
-
-        <!-- TABEL -->
         <div class="col-lg-8 mb-3">
           <div class="card shadow-sm" style=" overflow-y: auto;">
 
@@ -112,10 +103,7 @@ include "../config/db_pengunjung_hariini.php";
             </div>
 
             <div class="card-body">
-
-              <!-- Tampilkan entri -->
               <div class="row mb-3 align-items-center justify-content-between">
-
                 <div class="col-md-6">
                   <div class="input-group input-group-sm" style="width: 230px;">
                     <input class="form-control" style="background:#F7E9C8;" type="text" id="searchInput" name="search"
@@ -127,10 +115,8 @@ include "../config/db_pengunjung_hariini.php";
 
 
                 <div class="col-md-6 d-flex align-items-center justify-content-end gap-2">
-
                   <div class="d-flex align-items-center gap-2">
                     <span class="col-form-label">Tampilkan</span>
-
                     <select class="form-select form-select-sm" id="showEntries" name="limit"
                       onchange="changeLimit(this.value)">
                       <option value="10" <?= ($limit == 10) ? 'selected' : '' ?>>10</option>
@@ -139,21 +125,16 @@ include "../config/db_pengunjung_hariini.php";
                     </select>
                   </div>
 
-
-
                   <div class="dropdown" id="sortDropdown">
                     <button class="btn dropdown-toggle sort-button" type="button" id="dropdownMenuSort"
                       data-bs-toggle="dropdown" aria-expanded="false">
 
-                      <!-- Label otomatis berubah -->
                       <span id="selectedSortOption">
                         <?= ($filter_jenis == 'all') ? 'Semua' : ucfirst($filter_jenis); ?>
                       </span>
-
                     </button>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuSort">
-
                       <li>
                         <a class="dropdown-item <?= ($filter_jenis == 'all') ? 'active' : '' ?>" href="?jenis=all">
                           Semua
@@ -179,7 +160,6 @@ include "../config/db_pengunjung_hariini.php";
                 </div>
               </div>
 
-              <!-- DATA TABLE -->
               <div class="table-responsive" style="max-height: 310px; overflow-y: auto;">
                 <table id="tabelPengunjung" class="table table-hover text-center align-middle table-bordered mb-0">
                   <thead class="table-light sticky-top" style="top: 0; z-index: 10;">
@@ -221,7 +201,6 @@ include "../config/db_pengunjung_hariini.php";
                 </table>
               </div>
 
-              <!-- PAGINATION -->
               <p class="text-muted mb-0">
                 Menampilkan <span class="fw-bold"><?= $first_number ?></span>
                 sampai <span class="fw-bold"><?= $last_number ?></span>
@@ -229,13 +208,11 @@ include "../config/db_pengunjung_hariini.php";
               </p>
               <ul class="pagination pagination-sm justify-content-end mb-0">
 
-                <!-- PREVIOUS -->
                 <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
                   <a class="page-link"
                     href="?page=<?= $page - 1 ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">&laquo;</a>
                 </li>
 
-                <!-- NUMBER PAGES -->
                 <?php for ($i = 1; $i <= $total_page; $i++): ?>
                   <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
                     <a class="page-link" href="?page=<?= $i ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">
@@ -244,20 +221,15 @@ include "../config/db_pengunjung_hariini.php";
                   </li>
                 <?php endfor; ?>
 
-                <!-- NEXT -->
                 <li class="page-item <?= ($page >= $total_page) ? 'disabled' : '' ?>">
                   <a class="page-link"
                     href="?page=<?= $page + 1 ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">&raquo;</a>
                 </li>
-
               </ul>
-
-
             </div>
           </div>
         </div>
 
-        <!-- CLOCK -->
         <div class="col-lg-4 mb-3">
           <div class="card h-100 shadow-sm text-center">
             <div class="card-header py-3" style="background:#EFE3D6;">
@@ -270,13 +242,10 @@ include "../config/db_pengunjung_hariini.php";
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
 
-  <!-- SCRIPT -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../dashboard_staffTU/beranda.js"></script>
 </body>

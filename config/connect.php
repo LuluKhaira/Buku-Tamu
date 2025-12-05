@@ -2,8 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "bukutamu"; //Nama Database 
-// melakukan koneksi ke db 
+$db = "bukutamu";
 $connect = mysqli_connect(
     $host,
     $user,

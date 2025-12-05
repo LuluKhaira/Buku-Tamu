@@ -20,13 +20,10 @@
         </div>
         <div class="col-md-7 d-flex align-items-center">
           <div class="card-body p-5">
-
-            <!-- LOGO -->
             <div class="text-center mb-4">
               <h3 class="fw-bold mt-3">Login</h3>
             </div>
 
-            <!-- FORM -->
             <form action="config/db_login_proses.php" method="POST">
               <div class="mb-3 position-relative">
                 <i class="fas fa-envelope position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
@@ -43,7 +40,6 @@
               </div>
             </form>
 
-            <!-- LINKS -->
             <div class="text-start">
               <a href="#" onclick="openPopup()" class="small text-muted text-start text-decoration-none">Lupa
                 Password?</a>
@@ -55,7 +51,6 @@
     </div>
   </section>
 
-  <!-- POPUP RESET PASSWORD -->
   <div id="forgotPopup"
     class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center"
     style="background: rgba(0,0,0,0.5); z-index:1050;">

@@ -7,7 +7,6 @@ $sampai = $_GET['sampai'] ?? '';
 
 $sql = "SELECT * FROM pengunjung WHERE 1=1";
 
-// FILTER SEARCH
 if ($search !== '') {
     $sql .= " AND (
         nama LIKE '%$search%'
@@ -16,7 +15,6 @@ if ($search !== '') {
     )";
 }
 
-// FILTER TANGGAL
 if ($dari !== '' && $sampai !== '') {
     $sql .= " AND tanggal BETWEEN '$dari' AND '$sampai'";
 }

@@ -8,10 +8,8 @@ $tanggal    = date("Y-m-d");
 $waktu      = date("H:i:s");
 $instansi   = $_POST['instansi'];
 $tujuan     = $_POST['tujuan'];
-$jenis      = $_POST['jenis']; // otomatis "satuan"
-
-// jumlah otomatis 1 untuk satuan
-$jumlah = $_POST['jumlah'];
+$jenis      = $_POST['jenis'];
+$jumlah     = $_POST['jumlah'];
 
 if ($jumlah > 1) {
     $jenis = "kelompok";

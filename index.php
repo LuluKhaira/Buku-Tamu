@@ -76,9 +76,6 @@
         </div>
     </header>
 
-
-
-    <!-- Features Section -->
     <section id="tentang" class="py-5 bg-white">
         <div class="container px-4 px-lg-5 py-5">
             <div class="row g-5">
@@ -197,55 +194,21 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="kontak" class="py-5 bg-white">
         <div class="container px-4 px-lg-5 py-5">
             <div class="row g-5 align-items-center">
-                <!-- Left Content -->
-                <div class="col-lg-6">
-                    <div class="mb-4 mb-lg-0">
-                        <h2 class="display-5 fw-bold mb-4">Ada kesan atau saran? Ceritakan pada kami!</h2>
-                        <p class="lead text-muted mb-4">
-                            Pada PBL semester 1 ini, kami sangat terbuka menerima kritik dan saran dari kalian. Semua
-                            masukan kalian akan sangat membantu kami untuk menjadi lebih baik.
-                        </p>
-                    </div>
+
+                <div class="col-lg-12 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Hubungi Kami Jika Ada Kebutuhan</h2>
+                    <p class="lead text-muted mb-4 px-lg-5">
+                        Jika Anda membutuhkan informasi lebih lanjut, memiliki pertanyaan terkait layanan Tata Usaha,
+                        atau memerlukan bantuan dalam menggunakan sistem Buku Tamu, silakan hubungi kami melalui kontak yang tersedia di bawah ini.
                 </div>
 
-                <!-- Right Form -->
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-lg rounded-4">
-                        <div class="card-body p-4 p-md-5">
-                            <form>
-                                <div class="mb-4">
-                                    <label for="name" class="form-label fw-semibold">Nama Lengkap</label>
-                                    <input type="text" class="form-control form-control-lg rounded-3" id="name"
-                                        placeholder="Masukkan nama Anda">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="email" class="form-label fw-semibold">Email</label>
-                                    <input type="email" class="form-control form-control-lg rounded-3" id="email"
-                                        placeholder="contoh@email.com">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="message" class="form-label fw-semibold">Pesan Anda</label>
-                                    <textarea class="form-control form-control-lg rounded-3" id="message" rows="5"
-                                        placeholder="Tuliskan kesan dan saran Anda..."></textarea>
-                                </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill">
-                                        <i class="bi bi-send me-2"></i>Kirim Pesan
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-dark text-white py-5">
         <div class="container px-4 px-lg-5">
             <div class="row g-4">
@@ -333,7 +296,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

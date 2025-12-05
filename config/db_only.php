@@ -9,9 +9,8 @@ $tanggal    = date("Y-m-d");
 $waktu      = date("H:i:s");
 $instansi   = $_POST['instansi'];
 $tujuan     = $_POST['tujuan'];
-$jenis      = $_POST['jenis']; // otomatis "satuan"
+$jenis      = $_POST['jenis'];
 
-// jumlah otomatis 1 untuk satuan
 $jumlah = 1;
 
 $input = mysqli_query(

@@ -210,91 +210,79 @@
     </section>
 
     <footer class="bg-dark text-white py-5">
-        <div class="container px-4 px-lg-5">
-            <div class="row g-4">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="fw-bold mb-3">
-                        <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
-                    </h5>
-                    <p class="text-white-50 mb-3">
-                        Sistem pencatatan kehadiran yang modern dan efisien untuk Tata Usaha Politeknik Negeri Batam.
-                    </p>
-                    <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; padding: 0;">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; padding: 0;">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; padding: 0;">
-                            <i class="bi bi-envelope"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle"
-                            style="width: 40px; height: 40px; padding: 0;">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
+    <div class="container px-4 px-lg-5">
+        <div class="row g-4">
+
+<footer class="bg-dark text-white py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row g-4">
+
+            <!-- Kiri -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5 class="fw-bold mb-3">
+                    <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
+                </h5>
+                <p class="text-white-50 mb-3">
+                    Sistem pencatatan kehadiran yang modern dan efisien untuk Tata Usaha Politeknik Negeri Batam.
+                </p>
+            </div>
+
+            <!-- Menu & Kontak di kanan tapi teks rata kiri -->
+            <div class="col-lg-8">
+                <div class="row justify-content-end">
+
+                    <!-- Menu -->
+                    <div class="col-lg-3 col-md-4 col-6 text-start">
+                        <h6 class="fw-bold mb-3">Menu</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#beranda" class="text-white-50 text-decoration-none">Beranda</a></li>
+                            <li class="mb-2"><a href="#tentang" class="text-white-50 text-decoration-none">Tentang</a></li>
+                        </ul>
                     </div>
-                </div>
 
-                <div class="col-lg-2 col-md-4 col-6">
-                    <h6 class="fw-bold mb-3">Menu</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Beranda</a></li>
-                        <li class="mb-2"><a href="#tentang" class="text-white-50 text-decoration-none">Tentang</a></li>
-                        <li class="mb-2"><a href="#fitur" class="text-white-50 text-decoration-none">Fitur</a></li>
-                        <li class="mb-2"><a href="#kontak" class="text-white-50 text-decoration-none">Kontak</a></li>
-                    </ul>
-                </div>
+                    <!-- Kontak -->
+                    <div class="col-lg-5 col-md-4 col-6 text-start">
+                        <h6 class="fw-bold mb-3">Kontak Kami</h6>
+                        <ul class="list-unstyled text-white-50 small">
+                            <li class="mb-2">
+                                <i class="bi bi-geo-alt me-2"></i>
+                                Politeknik Negeri Batam
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-telephone me-2"></i>
+                                +62 778 123456
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-envelope me-2"></i>
+                                info@polibatam.ac.id
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="col-lg-3 col-md-4 col-6">
-                    <h6 class="fw-bold mb-3">Layanan</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="asset/tambah_only.php"
-                                class="text-white-50 text-decoration-none">Tambah Data</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Cari Data</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Laporan</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Bantuan</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4">
-                    <h6 class="fw-bold mb-3">Kontak Kami</h6>
-                    <ul class="list-unstyled text-white-50 small">
-                        <li class="mb-2">
-                            <i class="bi bi-geo-alt me-2"></i>
-                            Politeknik Negeri Batam
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-telephone me-2"></i>
-                            +62 778 123456
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-envelope me-2"></i>
-                            info@polibatam.ac.id
-                        </li>
-                    </ul>
                 </div>
             </div>
 
-            <hr class="border-secondary my-4">
+        </div>
 
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <small class="text-white-50">
-                        &copy; 2025 Buku Tamu Staff TU.
-                    </small>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <small class="text-white-50">
-                        Pencipta dari <span class="text-white fw-semibold">The Fighter</span> | IF A Pagi - 1
-                    </small>
-                </div>
+        <hr class="border-secondary my-4">
+
+        <div class="row">
+            <div class="col-md-6 text-start mb-3 mb-md-0">
+                <small class="text-white-50">
+                    &copy; 2025 Buku Tamu Staff TU.
+                </small>
+            </div>
+            <div class="col-md-6 text-start">
+                <small class="text-white-50">
+                    Pencipta dari <span class="text-white fw-semibold">The Fighter</span> | IF A Pagi - 1
+                </small>
             </div>
         </div>
-    </footer>
+
+    </div>
+</footer>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -19,9 +19,7 @@
 
    <!-- LOGOUT -->
    <div class="logout ms-3">
-      <a href="../index.php" class="nav-link" style="color:#6c757d; font-size:13px; letter-spacing:2px;">
-         <i class="bi bi-box-arrow-right"></i> Logout
-      </a>
+      <a href="../index.php" class="nav-link" style="color:#6c757d; font-size:13px; letter-spacing:2px;"></a>
    </div>
 
 </div>

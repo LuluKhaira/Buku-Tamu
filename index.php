@@ -59,7 +59,7 @@
                         <a href="asset/tambah_only.php"
                             class="btn btn-warning btn-lg px-4 rounded-pill fw-semibold shadow-sm">
                             <i class="bi bi-plus-circle-fill me-2"></i>
-                            Tambah Data
+                            Isi Data kunjungan
                         </a>
                     </div>
                 </div>
@@ -217,7 +217,6 @@
     <div class="container px-4 px-lg-5">
         <div class="row g-4">
 
-            <!-- Kiri -->
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <h5 class="fw-bold mb-3">
                     <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
@@ -227,11 +226,9 @@
                 </p>
             </div>
 
-            <!-- Menu & Kontak di kanan tapi teks rata kiri -->
             <div class="col-lg-8">
                 <div class="row justify-content-end">
 
-                    <!-- Menu -->
                     <div class="col-lg-3 col-md-4 col-6 text-start">
                         <h6 class="fw-bold mb-3">Menu</h6>
                         <ul class="list-unstyled">
@@ -240,7 +237,6 @@
                         </ul>
                     </div>
 
-                    <!-- Kontak -->
                     <div class="col-lg-5 col-md-4 col-6 text-start">
                         <h6 class="fw-bold mb-3">Kontak Kami</h6>
                         <ul class="list-unstyled text-white-50 small">

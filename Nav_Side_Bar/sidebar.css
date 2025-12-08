@@ -65,16 +65,18 @@ body {
     }
 
     .logout a {
-        font-size: 13px;
-        letter-spacing: 2px;
-        font-weight: 500;
-        color: #6c757d; /* abu2 */
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        text-decoration: none;
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+        letter-spacing: 0 !important;
+        color: #555 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 12px !important;
     }
 
     .logout a:hover {
-        color: #dc3545; /* merah saat hover */
+        background-color: rgba(68, 112, 111, 0.15) !important;
+        color: #f4b942 !important;
+        border-radius: 8px !important;
     }

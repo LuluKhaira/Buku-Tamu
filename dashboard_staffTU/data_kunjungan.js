@@ -2,7 +2,7 @@
       const params = new URLSearchParams(window.location.search);
 
       params.set("limit", limit);
-      params.set("page", 1); // reset ke halaman 1
+      params.set("page", 1);
       window.location.search = params.toString();
     }
 
@@ -12,7 +12,7 @@
         const params = new URLSearchParams(window.location.search);
 
         params.set("search", keyword);
-        params.set("page", 1); // reset halaman
+        params.set("page", 1);
 
         window.location.search = params.toString();
     }

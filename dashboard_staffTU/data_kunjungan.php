@@ -5,7 +5,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Riwayat</title>
+  <title>Data Kunjungan</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -22,7 +22,7 @@
 </head>
 
 <?php
-include "../config/db_riwayat.php";
+include "../config/db_data_kunjungan.php";
 ?>
 
 <body class="d-flex" style="background:#F5EFE7;">
@@ -109,7 +109,7 @@ include "../config/db_riwayat.php";
 
                 <?php
                 include_once '../config/connect.php';
-                include '../config/db_riwayat.php';
+                include '../config/db_data_kunjungan.php';
                 $q = mysqli_query($connect, $sql);
 
                 if (!$q) {
@@ -241,7 +241,7 @@ include "../config/db_riwayat.php";
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../dashboard_staffTU/riwayat.js"></script>
+  <script src="../dashboard_staffTU/data_kunjungan.js"></script>
 
   <script>
     let selectedId = null;
@@ -277,7 +277,7 @@ include "../config/db_riwayat.php";
       formData.append('tujuan', document.getElementById('editTujuan').value);
       formData.append('jumlah', document.getElementById('editJumlah').value);
 
-      fetch('../config/riwayat_update.php', {
+      fetch('../config/data_kunjungan_update.php', {
           method: 'POST',
           body: formData
         })
@@ -293,7 +293,6 @@ include "../config/db_riwayat.php";
 
     });
 
-    // ======================= DELETE ===========================
     document.querySelectorAll('.btn-delete').forEach(btn => {
       btn.addEventListener('click', function() {
         let tr = this.closest('tr');
@@ -307,7 +306,7 @@ include "../config/db_riwayat.php";
       let formData = new FormData();
       formData.append('no_pengunjung', selectedId);
 
-      fetch('../config/riwayat_delete.php', {
+      fetch('../config/data_kunjungan_delete.php', {
           method: 'POST',
           body: formData
         })

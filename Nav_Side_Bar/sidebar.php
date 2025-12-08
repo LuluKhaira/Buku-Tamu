@@ -14,8 +14,8 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<body >
-  <div class="sidebar d-flex flex-column position-relative" >
+<body>
+  <div class="sidebar d-flex flex-column position-relative">
     <div>
       <div class="brand-section">
         <img src="../foto/logo_polibatam.png" alt="Logo">
@@ -29,16 +29,20 @@ $current_page = basename($_SERVER['PHP_SELF']);
         class="nav-link mb-2 <?= ($current_page == 'beranda.php') ? 'active' : '' ?>">
         <i class="bi bi-house-door"></i> Beranda
       </a>
-      
-      <a href="../dashboard_staffTU/riwayat.php"
-        class="nav-link <?= ($current_page == 'riwayat.php') ? 'active' : '' ?>">
-        <i class="bi bi-hourglass-split"></i> Riwayat
+
+      <a href="../dashboard_staffTU/data_kunjungan.php"
+        class="nav-link <?= ($current_page == 'data_kunjungan.php') ? 'active' : '' ?>">
+        <i class="bi bi-hourglass-split"></i> Data Kunjungan
       </a>
     </div>
 
     <div class="logout">
-      <a href="../index.php" class="nav-link"><i class="bi bi-box-arrow-right"></i>Logout</a>
+      <a href="../index.php" class="nav-link" onclick="return confirm('Yakin ingin keluar?');">
+        <i class="bi bi-box-arrow-right"></i> Keluar
+      </a>
     </div>
+
+
   </div>
 </body>
 

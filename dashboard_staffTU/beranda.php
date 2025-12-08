@@ -73,7 +73,6 @@ include "../config/db_pengunjung_hariini.php";
           </div>
         </div>
 
-        <!-- Hari Ini -->
         <div class="col-xl-4 col-md-6 mb-4">
           <div class="card h-100 py-2" style="border-left:8px solid #D4A373; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
             <div class="card-body">

@@ -34,11 +34,6 @@
                     <?php $active = 'kelompok'; ?>
                     <?php include '../Nav_Side_Bar/nav_tambah.php'; ?>
 
-                    <p class="text-uppercase text-secondary mb-2"
-                        style="letter-spacing: 3px; font-size: 13px; font-weight: 500;">
-                        TAMBAH PENGUNJUNG
-                    </p>
-
                     <h2 class="fw-bold mb-4">
                         Silahkan isi Informasi <span style="color: #f4b942; font-style: italic;">Pengunjung!</span>
                     </h2>

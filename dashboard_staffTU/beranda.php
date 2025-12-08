@@ -114,16 +114,6 @@ include "../config/db_pengunjung_hariini.php";
 
 
                 <div class="col-md-6 d-flex align-items-center justify-content-end gap-2">
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="col-form-label">Tampilkan</span>
-                    <select class="form-select form-select-sm" id="showEntries" name="limit"
-                      onchange="changeLimit(this.value)">
-                      <option value="10" <?= ($limit == 10) ? 'selected' : '' ?>>10</option>
-                      <option value="25" <?= ($limit == 25) ? 'selected' : '' ?>>25</option>
-                      <option value="50" <?= ($limit == 50) ? 'selected' : '' ?>>50</option>
-                    </select>
-                  </div>
-
                   <div class="dropdown" id="sortDropdown">
                     <button class="btn dropdown-toggle sort-button" type="button" id="dropdownMenuSort"
                       data-bs-toggle="dropdown" aria-expanded="false">
@@ -201,8 +191,8 @@ include "../config/db_pengunjung_hariini.php";
               </div>
 
               <p class="text-muted mb-0">
-                Menampilkan <span class="fw-bold"><?= $first_number ?></span>
-                sampai <span class="fw-bold"><?= $last_number ?></span>
+                <span class="fw-bold"><?= $first_number ?></span>
+                - <span class="fw-bold"><?= $last_number ?></span>
                 dari <span class="fw-bold"><?= $total_data ?></span>.
               </p>
               <ul class="pagination pagination-sm justify-content-end mb-0">

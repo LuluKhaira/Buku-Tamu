@@ -25,7 +25,7 @@
 include "../config/db_data_kunjungan.php";
 ?>
 
-<body class="d-flex" style="background:#F5EFE7;">
+<body class="d-flex" style="background:#f2f2f2;">
 
   <?php include '../Nav_Side_Bar/sidebar.php'; ?>
 
@@ -53,14 +53,21 @@ include "../config/db_data_kunjungan.php";
               </div>
             </form>
 
-
-
-            <form method="POST" action="../config/exportexcel.php">
+            <form method="POST" action="../config/exportexcel.php" class="d-flex gap-2">
               <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
               <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
-              <button class="btn btn-success form-control" name="bexport">
+              <button class="btn btn-success flex-grow-1" name="export_excel">
                 <i class="fa fa-download"></i> Export Data Excel
+              </button>
+            </form>
+
+            <form method="POST" action="../config/exportpdf.php" class="d-flex gap-2">
+              <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+              <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+
+              <button class="btn btn-danger flex-grow-1" name="export_pdf">
+                <i class="fa fa-download"></i> Export Data PDF
               </button>
             </form>
           </div>

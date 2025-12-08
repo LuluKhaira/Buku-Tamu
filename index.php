@@ -157,10 +157,6 @@
                     <div class="card border-0 shadow-sm rounded-4 h-100">
                         <div class="position-relative">
                             <img src="foto/dashboard.png" class="card-img-top rounded-top-4" alt="">
-                            <span
-                                class="badge bg-white text-dark position-absolute top-0 m-3 px-3 py-2 shadow-sm rounded-pill">
-                                Burnout
-                            </span>
                         </div>
                         <div class="card-body">
                             <h5 class="fw-bold">Beranda Staff TU</h5>
@@ -194,81 +190,38 @@
         </div>
     </section>
 
-    <section id="kontak" class="py-5 bg-white">
-        <div class="container px-4 px-lg-5 py-5">
-            <div class="row g-5 align-items-center">
 
-                <div class="col-lg-12 text-center">
-                    <h2 class="display-5 fw-bold mb-4">Hubungi Kami Jika Ada Kebutuhan</h2>
-                    <p class="lead text-muted mb-4 px-lg-5">
-                        Jika Anda membutuhkan informasi lebih lanjut, memiliki pertanyaan terkait layanan Tata Usaha,
-                        atau memerlukan bantuan dalam menggunakan sistem Buku Tamu, silakan hubungi kami melalui kontak yang tersedia di bawah ini.
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <footer class="bg-dark text-white py-5">
     <div class="container px-4 px-lg-5">
-        <div class="row g-4">
 
-<footer class="bg-dark text-white py-5">
-    <div class="container px-4 px-lg-5">
-        <div class="row g-4">
+        <!-- Row Utama -->
+        <div class="row g-4 align-items-center">
 
-            <div class="col-lg-4 mb-4 mb-lg-0">
-                <h5 class="fw-bold mb-3">
-                    <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
-                </h5>
-                <p class="text-white-50 mb-3">
-                    Sistem pencatatan kehadiran yang modern dan efisien untuk Tata Usaha Politeknik Negeri Batam.
-                </p>
-            </div>
+            <!-- Logo + Judul -->
+            <div class="col-lg-6 d-flex align-items-center gap-3">
+                <img src="foto/logo_polibatam.png" alt="Logo Polibatam"
+                     style="height: 70px; width: auto;">
 
-            <div class="col-lg-8">
-                <div class="row justify-content-end">
-
-                    <div class="col-lg-3 col-md-4 col-6 text-start">
-                        <h6 class="fw-bold mb-3">Menu</h6>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><a href="#beranda" class="text-white-50 text-decoration-none">Beranda</a></li>
-                            <li class="mb-2"><a href="#tentang" class="text-white-50 text-decoration-none">Tentang</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-5 col-md-4 col-6 text-start">
-                        <h6 class="fw-bold mb-3">Kontak Kami</h6>
-                        <ul class="list-unstyled text-white-50 small">
-                            <li class="mb-2">
-                                <i class="bi bi-geo-alt me-2"></i>
-                                Politeknik Negeri Batam
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-telephone me-2"></i>
-                                +62 778 123456
-                            </li>
-                            <li class="mb-2">
-                                <i class="bi bi-envelope me-2"></i>
-                                info@polibatam.ac.id
-                            </li>
-                        </ul>
-                    </div>
+                <div>
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
+                    </h5>
 
                 </div>
             </div>
-
         </div>
 
         <hr class="border-secondary my-4">
 
-        <div class="row">
-            <div class="col-md-6 text-start mb-3 mb-md-0">
+        <!-- Bawah -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                 <small class="text-white-50">
                     &copy; 2025 Buku Tamu Staff TU.
                 </small>
             </div>
-            <div class="col-md-6 text-start">
+            <div class="col-md-6 text-center text-md-end">
                 <small class="text-white-50">
                     Pencipta dari <span class="text-white fw-semibold">The Fighter</span> | IF A Pagi - 1
                 </small>
@@ -277,6 +230,8 @@
 
     </div>
 </footer>
+
+
 
 
 

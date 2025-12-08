@@ -25,8 +25,8 @@ if ($filter_jenis == "satuan") {
 if (!empty($search)) {
     $sql_count .= " AND (
         nama LIKE '%$search%' OR
-        instansi LIKE '%$search%' OR
-        tujuan LIKE '%$search%' OR
+    
+
         DATE(tanggal) LIKE '%$search%'
     )";
 }
@@ -46,8 +46,7 @@ if ($filter_jenis == "satuan") {
 if (!empty($search)) {
     $sql .= " AND (
         nama LIKE '%$search%' OR
-        instansi LIKE '%$search%' OR
-        tujuan LIKE '%$search%' OR
+
         DATE(tanggal) LIKE '%$search%'
     )";
 }

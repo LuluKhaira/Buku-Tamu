@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -29,7 +30,7 @@ session_start();
                     <span class="me-2 d-none d-lg-inline small" style="color:#f9f5ed;">
                         Selamat datang,
                         <b>
-                            <?php echo isset($_SESSION['username'])?>
+                            <?php echo $_SESSION['username'] ?? ''; ?>
                         </b>
                     </span>
                 </a>

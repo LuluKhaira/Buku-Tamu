@@ -37,8 +37,6 @@
   <div class="d-flex flex-column bg-white shadow-sm sidebar"
     style="width: 280px; height: 100vh; padding: 25px; position: relative;">
 
-
-    <!-- Brand -->
     <div class="d-flex align-items-center gap-3 mb-4">
       <img src="../foto/logo_polibatam.png" alt="Logo" style="width:45px; height:45px; object-fit:cover;">
       <div>
@@ -47,7 +45,6 @@
       </div>
     </div>
 
-    <!-- Menu -->
     <a href="../dashboard_staffTU/beranda.php" class="d-flex align-items-center gap-3 p-3 rounded fw-medium text-decoration-none menu-item mb-3
        <?= ($current_page == 'beranda.php') ? 'active-menu' : '' ?>">
       <i class="bi bi-house-door"></i> Beranda
@@ -58,7 +55,6 @@
       <i class="bi bi-hourglass-split"></i> Data Kunjungan
     </a>
 
-    <!-- Logout -->
     <div style="position:absolute; bottom:30px; width:230px;">
       <a href="../index.php" onclick="return confirm('Yakin ingin keluar?');"
         class="d-flex align-items-center gap-3 p-3 rounded fw-medium text-decoration-none menu-item">

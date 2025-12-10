@@ -38,7 +38,6 @@
                     </h2>
 
                     <form id="formTamu">
-
                         <input type="hidden" name="jenis" value="satuan">
 
                         <div class="row">
@@ -66,7 +65,7 @@
                         <div class="d-flex align-items-center gap-3 mt-3">
                             <a href="../logout.php" class="btn btn-danger px-4" style="border-radius: 20px; font-weight: 600;"> Kembali</a>
 
-                            <button type="button" id="btnSimpan" class="btn btn-send px-4"> Simpan Data</button>
+                            <button type="submit" id="Simpan" class="btn btn-send px-4"> Simpan Data</button>
                         </div>
                     </form>
                 </div>

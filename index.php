@@ -66,7 +66,7 @@
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
                         <div class="card-body p-0">
-                            <img src="foto/Tambah.png" class="img-fluid w-100">
+                            <img src="foto/tambah.JPG" class="img-fluid w-100">
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm rounded-4 h-100">
                         <div class="position-relative">
-                            <img src="foto/Tambah.png" class="card-img-top rounded-top-4" alt="">
+                            <img src="foto/tambah.JPG" class="card-img-top rounded-top-4" alt="">
                         </div>
                         <div class="card-body">
                             <h5 class="fw-bold">Tambah Pengunjung</h5>
@@ -172,10 +172,10 @@
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm rounded-4 h-100">
                         <div class="position-relative">
-                            <img src="foto/riwayat.png" class="card-img-top rounded-top-4" alt="">
+                            <img src="foto/data_kunjungan.JPG" class="card-img-top rounded-top-4" alt="">
                         </div>
                         <div class="card-body">
-                            <h5 class="fw-bold">Riwayat Staff TU</h5>
+                            <h5 class="fw-bold"> Data Kunjungan Staff TU</h5>
                             <p class="text-muted small">
                                 Dengan Fitur riwayat menyimpan seluruh cerita dan detail dari semua kunjungan yang
                                 pernah terjadi bisa

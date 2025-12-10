@@ -19,9 +19,6 @@ if ($tgl1 !== '' && $tgl2 !== '') {
 
 $result = mysqli_query($connect, $sql);
 
-// ================================
-// PDF PORTRAIT
-// ================================
 $pdf = new FPDF('P', 'mm', 'A4');
 $pdf->AddPage();
 $pdf->SetFont('Times', 'B', 14);
@@ -29,9 +26,6 @@ $pdf->SetFont('Times', 'B', 14);
 $pdf->Cell(0, 10, 'Data Pengunjung', 0, 1, 'C');
 $pdf->Ln(3);
 
-// ================================
-// LEBAR KOLOM (SUDAH DISESUAIKAN)
-// ================================
 $w_no      = 10;
 $w_tanggal = 23;
 $w_waktu   = 18;
@@ -45,9 +39,6 @@ $total_width = $w_no + $w_tanggal + $w_waktu + $w_nama + $w_inst + $w_jml + $w_h
 $page_width = $pdf->GetPageWidth();   // 210 mm
 $marginX = ($page_width - $total_width) / 2; // center
 
-// ================================
-// HEADER
-// ================================
 $pdf->SetFont('Times', 'B', 10);
 $pdf->SetX($marginX);
 
@@ -59,9 +50,6 @@ $pdf->Cell($w_inst, 10, 'Instansi', 1, 0, 'C');
 $pdf->Cell($w_jml, 10, 'Jumlah', 1, 0, 'C');
 $pdf->Cell($w_hp, 10, 'No HP', 1, 1, 'C');
 
-// ================================
-// DATA
-// ================================
 $pdf->SetFont('Times', '', 10);
 $no = 1;
 

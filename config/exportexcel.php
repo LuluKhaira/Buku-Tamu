@@ -23,7 +23,6 @@ if ($tgl1 !== '' && $tgl2 !== '') {
     $sql = "SELECT * FROM pengunjung ORDER BY tanggal ASC, waktu ASC";
 }
 
-
 $tampil = mysqli_query($connect, $sql);
 ?>
 

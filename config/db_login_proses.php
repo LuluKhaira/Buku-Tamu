@@ -1,24 +1,33 @@
 <?php
+session_start();
+
 include "connect.php";
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+ $username = $_POST['username'];
+ $password = $_POST['password'];
 
-$query = mysqli_query($connect, "SELECT * FROM admin WHERE username='$username'");
-$cek = mysqli_num_rows($query);
+ $stmt = $connect->prepare("SELECT * FROM admin WHERE username = ?");
+ $stmt->bind_param("s", $username);
+ $stmt->execute();
+ $result = $stmt->get_result();
 
-if ($cek > 0) {
-    $data = mysqli_fetch_assoc($query);
+if ($result->num_rows > 0) {
+    $data = $result->fetch_assoc();
 
-    if ($password == $data['password']) {
-        echo "<script>alert('Login berhasil');</script>";
+    if ($password === $data['password']) {
+        
+        $_SESSION['username'] = $data['username'];
+        $_SESSION['login'] = true; 
+
+        header("Location: ../dashboard_staffTU/beranda.php");
+        exit();
+
     } else {
-        echo "<script>alert('Password salah');</script>";
+        header("Location: ../login.php?error=wrongpass");
+        exit();
     }
 } else {
-    echo "<script>alert('Username tidak ditemukan');</script>";
+    header("Location: ../login.php?error=notfound");
+    exit();
 }
-header("Location: ../dashboard_staffTU/beranda.php");
-exit();
-
 ?>

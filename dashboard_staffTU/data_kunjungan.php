@@ -2,337 +2,166 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Kunjungan</title>
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Slide Down Alert CSS -->
   <style>
-    .badge-jenis {
-      width: 90px;
-      display: inline-block;
-      text-align: center;
-      font-size: 0.85rem;
-      padding: 6px 0;
+    .slide-alert {
+      position: fixed;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2000;
+      min-width: 300px;
+      transition: top 0.5s ease;
+    }
+
+    .slide-alert.show {
+      top: 20px;
     }
   </style>
 </head>
 
+<body style="background-color: #e7ecf6ff;">
+
 <?php
-include "../config/db_data_kunjungan.php";
+if (isset($_GET['error'])) {
+    $error_message = '';
+    if ($_GET['error'] == 'wrongpass') {
+        $error_message = 'Password salah!';
+    } elseif ($_GET['error'] == 'notfound') {
+        $error_message = 'Username tidak ditemukan!';
+    }
+
+    if (!empty($error_message)) {
+        echo '
+        <div id="topAlert" class="alert alert-danger slide-alert" role="alert">
+            '. $error_message .'
+        </div>
+
+        <script>
+            setTimeout(() => {
+                document.getElementById("topAlert").classList.add("show");
+            }, 100);
+
+            // Hilang otomatis
+            setTimeout(() => {
+                document.getElementById("topAlert").classList.remove("show");
+            }, 3000);
+        </script>
+        ';
+    }
+}
 ?>
 
-<body class="d-flex" style="background:#f2f2f2;">
+  <section class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg" style="border-radius: 1rem; max-width: 900px; width: 100%;">
+      <div class="row g-0">
 
-  <?php include '../Nav_Side_Bar/sidebar.php'; ?>
+        <div class="col-md-5 d-none d-md-block">
+          <img src="foto/Gedung.jpg" alt="login" class="img-fluid h-100"
+            style="border-radius: 1rem 0 0 1rem; object-fit: cover;">
+        </div>
 
-  <div class="flex-grow-1">
-    <?php include '../Nav_Side_Bar/navbar.php'; ?>
+        <div class="col-md-7 d-flex align-items-center">
+          <div class="card-body p-5">
+            <div class="text-center mb-4">
+              <h3 class="fw-bold mt-3">Login</h3>
+            </div>
 
-    <div class="container mt-4">
+            <form action="config/db_login_proses.php" method="POST">
+              <div class="mb-3 position-relative">
+                <i class="fas fa-envelope position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
+                <input type="text" name="username" class="form-control ps-5" placeholder="Masukkan Username" required>
+              </div>
 
-      <div class="card shadow-sm mb-4">
+              <div class="mb-3 position-relative">
+                <i class="fas fa-lock position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
+                <input type="password" name="password" class="form-control ps-5" placeholder="Masukkan Password" required>
+              </div>
 
-        <div class="card-header py-3 fw-semibold d-flex justify-content-between align-items-center flex-wrap"
-          style="background:#EFE3D6; color:#8B5E34;">
-
-          <span class="fw-bold mb-2 mb-md-0">Laporan Buku Tamu</span>
-
-          <div class="d-flex align-items-center gap-3">
-
-            <form class="d-none d-sm-inline-block" method="GET">
-              <div class="input-group input-group-sm">
-                <span class="input-group-text border-0" style="background:#D4A373; color:white;">
-                  <i class="fas fa-search"></i>
-                </span>
-                <input type="text" name="search" class="form-control border-0" style="width: 200px; background:#F7E9C8;"
-                  placeholder="Cari nama, Instansi, tanggal..." value="<?= $_GET['search'] ?? '' ?>">
+              <div class="d-grid mb-3">
+                <button type="submit" name="login" class="btn btn-dark btn-lg">Login</button>
               </div>
             </form>
 
-            <form method="POST" action="../config/exportexcel.php" class="d-flex gap-2">
-              <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-              <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+            <div class="text-start">
+              <a href="#" onclick="openPopup()" class="small text-muted text-decoration-none">Lupa Password?</a>
+            </div>
 
-              <button class="btn btn-success flex-grow-1" name="export_excel">
-                <i class="bi bi-file-earmark-excel"></i> Export Data Excel
-              </button>
-            </form>
-
-            <form method="POST" action="../config/exportpdf.php" class="d-flex gap-2">
-              <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-              <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
-
-              <button class="btn btn-danger flex-grow-1" name="export_pdf">
-                <i class="bi bi-file-earmark-pdf"></i> Export Data PDF
-              </button>
-            </form>
           </div>
         </div>
-        <div class="card-body">
-          <form method="GET" class="row g-3 mb-4 align-items-end justify-content-center">
-            <div class="col-md-3 col-lg-2 text-center">
-              <label class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
-              <input type="date" name="dari" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
-                value="<?= $_GET['dari'] ?? '' ?>">
-            </div>
-
-            <div class="col-md-3 col-lg-2 text-center">
-              <label class="form-label mb-0 small" style="color:#8B5E34;">Sampai Tanggal</label>
-              <input type="date" name="sampai" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
-                value="<?= $_GET['sampai'] ?? '' ?>">
-            </div>
-
-            <div class="col-auto">
-              <button type="submit" class="btn btn-sm text-white" style="background:#D4A373; border-color:#D4A373;">
-                <i class="bi bi-funnel"></i> Filter
-              </button>
-            </div>
-
-          </form>
-
-          <div class="table-responsive" style="max-height: 460px; overflow-y: auto; overflow-x: auto;">
-            <table class="table table-hover align-middle table-bordered">
-
-              <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0; z-index: 5;">
-                <tr>
-                  <th>No</th>
-                  <th>Pengunjung</th>
-                  <th>No HP</th>
-                  <th>Tanggal</th>
-                  <th>Waktu</th>
-                  <th>Instansi</th>
-                  <th>Tujuan</th>
-                  <th>Jumlah</th>
-                  <th>Jenis</th>
-                  <th>Aksi</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <?php
-                include_once '../config/connect.php';
-                include '../config/db_data_kunjungan.php';
-                $q = mysqli_query($connect, $sql);
-
-                if (!$q) {
-                  echo '<tr><td colspan="10" class="text-danger">Query error: ' . mysqli_error($connect) . '</td></tr>';
-                } else {
-                  if (mysqli_num_rows($q) == 0) {
-                    echo '<tr>
-                <td colspan="10" class="text-muted text-center">
-                  Belum ada pengunjung dibulan / tanggal ini.
-                </td>
-              </tr>';
-                  } else {
-                    $no = 1;
-                    while ($row = mysqli_fetch_assoc($q)):
-                ?>
-                      <tr data-id="<?= $row['no_pengunjung'] ?>">
-                        <td><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
-                        <td><?= htmlspecialchars($row['nama']) ?></td>
-                        <td><?= htmlspecialchars($row['no_hp']) ?></td>
-                        <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
-                        <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
-                        <td><?= htmlspecialchars($row['instansi']) ?></td>
-                        <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
-                          data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['tujuan']) ?>">
-                          <?= htmlspecialchars($row['tujuan']) ?>
-                        </td>
-                        <td><?= $row['jumlah'] ?></td>
-                        <td>
-                          <?php if ($row['jenis'] == 'satuan'): ?>
-                            <span class="badge bg-success badge-jenis">Satuan</span>
-                          <?php else: ?>
-                            <span class="badge bg-warning text-dark badge-jenis">Kelompok</span>
-                          <?php endif; ?>
-                        </td>
-
-                        <td class="d-flex justify-content-center gap-2">
-                          <button class="btn btn-link p-0 text-success btn-edit">
-                            <i class="bi bi-pencil"></i>
-                          </button>
-                          <button class="btn btn-link p-0 text-danger btn-delete">
-                            <i class="bi bi-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
-                <?php
-                    endwhile;
-                  }
-                }
-                ?>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
       </div>
-
     </div>
-  </div>
+  </section>
 
-  <div class="modal fade" id="modalEdit" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <!-- Popup Lupa Password -->
+  <div id="forgotPopup"
+    class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center"
+    style="background: rgba(0,0,0,0.5); z-index:1050;">
+    <div class="bg-white p-4 rounded shadow" style="max-width:400px; width:90%;">
+      <h4 class="text-center mb-3">Ubah Sandi</h4>
+      <p class="text-center text-muted">Masukkan username dan password baru Anda.</p>
 
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Data Pengunjung</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
+      <input type="text" id="risetusername" class="form-control mb-2" placeholder="Masukkan Username" required>
+      <input type="password" id="newPassword" class="form-control mb-2" placeholder="Password Baru" required>
+      <input type="password" id="confirmPassword" class="form-control mb-3" placeholder="Ulangi Password" required>
 
-        <div class="modal-body">
-          <form id="formEdit">
-            <div class="mb-2">
-              <label class="form-label small">Nama Pengunjung</label>
-              <input type="text" class="form-control" id="editNama">
-            </div>
-
-            <div class="mb-2">
-              <label class="form-label small">Nomor HP</label>
-              <input type="text" class="form-control" id="editNoHp">
-            </div>
-
-            <div class="mb-2">
-              <label class="form-label small">Instansi</label>
-              <input type="text" class="form-control" id="editInstansi">
-            </div>
-
-            <div class="mb-2">
-              <label class="form-label small">Tujuan</label>
-              <input type="text" class="form-control" id="editTujuan">
-            </div>
-
-            <div class="mb-2">
-              <label class="form-label small">Jumlah</label>
-              <input type="number" class="form-control" id="editJumlah">
-            </div>
-
-          </form>
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button class="btn btn-primary" id="btnSimpanEdit">Simpan</button>
-        </div>
-
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-dark w-50 me-2" onclick="sendResetEmail()">Kirim</button>
+        <button class="btn btn-outline-secondary w-50" onclick="closePopup()">Batal</button>
       </div>
     </div>
   </div>
-
-  <div class="modal fade" id="modalDelete" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title">Hapus Data</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          Apakah kamu yakin ingin menghapus data ini?
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button class="btn btn-danger" id="btnConfirmDelete">Hapus</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../dashboard_staffTU/data_kunjungan.js"></script>
 
   <script>
-    let selectedId = null;
+    function sendResetEmail() {
+      const username = document.getElementById("risetusername").value;
+      const newPass = document.getElementById("newPassword").value;
+      const confirmPass = document.getElementById("confirmPassword").value;
 
-    const modalEdit = new bootstrap.Modal(document.getElementById('modalEdit'));
-    const modalDelete = new bootstrap.Modal(document.getElementById('modalDelete'));
+      if (!username || !newPass || !confirmPass)
+        return alert("Semua field harus diisi!");
 
-    document.querySelectorAll('.btn-edit').forEach(btn => {
-      btn.addEventListener('click', function() {
+      if (newPass !== confirmPass)
+        return alert("Password tidak cocok!");
 
-        let tr = this.closest('tr');
-        selectedId = tr.dataset.id; // FIX: ID taken from no_pengunjung
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", newPass);
 
-        let data = tr.querySelectorAll('td');
-
-        document.getElementById('editNama').value = data[1].textContent.trim();
-        document.getElementById('editNoHp').value = data[2].textContent.trim();
-        document.getElementById('editInstansi').value = data[5].textContent.trim();
-        document.getElementById('editTujuan').value = data[6].textContent.trim();
-        document.getElementById('editJumlah').value = data[7].textContent.trim();
-
-        modalEdit.show();
-      });
-    });
-
-    document.getElementById('btnSimpanEdit').addEventListener('click', function() {
-
-      let formData = new FormData();
-      formData.append('no_pengunjung', selectedId);
-      formData.append('nama', document.getElementById('editNama').value);
-      formData.append('no_hp', document.getElementById('editNoHp').value);
-      formData.append('instansi', document.getElementById('editInstansi').value);
-      formData.append('tujuan', document.getElementById('editTujuan').value);
-      formData.append('jumlah', document.getElementById('editJumlah').value);
-
-      fetch('../config/data_kunjungan_update.php', {
-          method: 'POST',
+      fetch("config/riset_password.php", {
+          method: "POST",
           body: formData
         })
-        .then(res => res.json())
-        .then(res => {
-          if (res.status === 'success') {
-            alert("Data berhasil diupdate!");
-            location.reload();
+        .then(res => res.text())
+        .then(response => {
+          if (response === "success") {
+            alert("Password berhasil direset!");
+            closePopup();
           } else {
-            alert("Gagal update: " + res.message);
+            alert("Username tidak ditemukan!");
           }
-        });
-
-    });
-
-    document.querySelectorAll('.btn-delete').forEach(btn => {
-      btn.addEventListener('click', function() {
-        let tr = this.closest('tr');
-        selectedId = tr.dataset.id;
-        modalDelete.show();
-      });
-    });
-
-    document.getElementById('btnConfirmDelete').addEventListener('click', function() {
-
-      let formData = new FormData();
-      formData.append('no_pengunjung', selectedId);
-
-      fetch('../config/data_kunjungan_delete.php', {
-          method: 'POST',
-          body: formData
         })
-        .then(res => res.json())
-        .then(res => {
-          if (res.status === 'success') {
-            alert("Data berhasil dihapus!");
-            location.reload();
-          } else {
-            alert("Gagal hapus: " + res.message);
-          }
-        });
+        .catch(() => alert("Terjadi kesalahan"));
+    }
 
-    });
+    function openPopup() {
+      const popup = document.getElementById("forgotPopup");
+      popup.classList.remove("d-none");
+      popup.classList.add("d-flex");
+    }
 
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
+    function closePopup() {
+      const popup = document.getElementById("forgotPopup");
+      popup.classList.add("d-none");
+      popup.classList.remove("d-flex");
+    }
   </script>
 
 </body>
-
 </html>

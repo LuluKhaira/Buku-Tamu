@@ -1,13 +1,11 @@
 <?php
 session_start();
-
 ?>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <body>
     <nav class="navbar navbar-expand px-3 py-4" style="background-color:#2d5f5d;">
-
         <div class="me-auto d-none d-sm-inline-block">
             <?php if (basename($_SERVER['PHP_SELF']) == 'beranda.php'): ?>
                 <h4 class="mb-0 fw-bold" style="color: #f9f5ed;">
@@ -27,11 +25,7 @@ session_start();
 
             <li class="nav-item no-arrow">
                 <a class="nav-link d-flex align-items-center">
-                    <span class="me-2 d-none d-lg-inline small" style="color:#f9f5ed;">
-                        Selamat datang,
-                        <b>
-                            <?php echo $_SESSION['username'] ?? ''; ?>
-                        </b>
+                    <span class="me-2 d-none d-lg-inline small" style="color:#f9f5ed;">Selamat datang, <?php echo $_SESSION['username'] ?? ''; ?>
                     </span>
                 </a>
             </li>

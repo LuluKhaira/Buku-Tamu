@@ -30,7 +30,6 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link px-3" href="#beranda">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#kontak">Kontak</a></li>
                 </ul>
                 <div class="d-flex gap-2 ms-lg-3">
                     <a href="login.php" class="btn btn-success rounded-pill px-4">

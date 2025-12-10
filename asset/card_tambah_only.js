@@ -1,8 +1,8 @@
 const panel = document.getElementById("previewPanel");
 
 // Tombol SIMPAN → tampilkan preview + 2 tombol
-document.getElementById("btnSimpan").addEventListener("click", function () {
-
+document.getElementById("btnSimpan").addEventListener("click", function (e){
+    e.preventDefault();
     let nama = document.querySelector("[name='nama']").value;
     let hp = document.querySelector("[name='no_hp']").value;
     let instansi = document.querySelector("[name='instansi']").value;
@@ -77,4 +77,6 @@ document.getElementById("btnSimpan").addEventListener("click", function () {
             })
             .catch(err => console.error(err));
     });
+
+    
 });

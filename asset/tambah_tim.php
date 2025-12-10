@@ -27,6 +27,7 @@
 <body>
     <div class="container py-5 mt-5">
         <div class="row gy-4 gx-4">
+
             <div class="col-lg-6">
                 <div class="no-bg-panel">
 
@@ -39,6 +40,7 @@
 
                     <form id="formTamu">
                         <input type="hidden" name="jenis" value="kelompok">
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama Penanggung Jawab *</label>
@@ -74,13 +76,16 @@
                                 style="border-radius: 20px; font-weight: 600;">
                                 Kembali
                             </a>
-                            <button type="submit" id="Simpan" class="btn btn-send px-4">
+
+                            <button type="button" id="btnSimpan" class="btn btn-send px-4">
                                 Simpan Data
                             </button>
                         </div>
                     </form>
+
                 </div>
             </div>
+
 
             <div class="col-lg-6">
                 <div class="info-panel" id="previewPanel">
@@ -88,6 +93,7 @@
                     <p class="opacity-75">Belum ada data yang diinput.</p>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -95,4 +101,5 @@
     <script src="../asset/card_tambah_tim.js"></script>
 
 </body>
+
 </html>

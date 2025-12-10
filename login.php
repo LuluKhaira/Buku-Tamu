@@ -10,23 +10,7 @@
 </head>
 
 <body style="background-color: #e7ecf6ff;">
-<?php
-if (isset($_GET['error'])) {
-    $error_message = '';
-    if ($_GET['error'] == 'wrongpass') {
-        $error_message = 'Password salah!';
-    } elseif ($_GET['error'] == 'notfound') {
-        $error_message = 'Username tidak ditemukan!';
-    }
 
-    if (!empty($error_message)) {
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                ' . $error_message . '
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>';
-    }
-}
-?>
   <section class="vh-100 d-flex justify-content-center align-items-center">
     <div class="card shadow-lg" style="border-radius: 1rem; max-width: 900px; width: 100%;">
       <div class="row g-0">

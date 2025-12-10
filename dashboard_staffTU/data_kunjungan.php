@@ -58,7 +58,7 @@ include "../config/db_data_kunjungan.php";
               <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
               <button class="btn btn-success flex-grow-1" name="export_excel">
-                <i class="fa fa-download"></i> Export Data Excel
+                <i class="bi bi-file-earmark-excel"></i> Export Data Excel
               </button>
             </form>
 
@@ -67,7 +67,7 @@ include "../config/db_data_kunjungan.php";
               <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
               <button class="btn btn-danger flex-grow-1" name="export_pdf">
-                <i class="fa fa-download"></i> Export Data PDF
+                <i class="bi bi-file-earmark-pdf"></i> Export Data PDF
               </button>
             </form>
           </div>

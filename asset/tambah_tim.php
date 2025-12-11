@@ -18,6 +18,7 @@
             border-radius: 20px;
             width: 100%;
         }
+
         .no-bg-panel {
             padding: 10px 0;
         }
@@ -45,30 +46,47 @@
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama Penanggung Jawab *</label>
                                 <input type="text" name="nama" class="form-control"
-                                    placeholder="Nama PIC/Ketua Rombongan" required>
+                                    placeholder="Nama PIC/Ketua Rombongan" required
+                                    oninvalid="this.setCustomValidity('Nama Penanggung Jawab wajib diisi')"
+                                    oninput="this.setCustomValidity('')">
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">No Handphone PJ *</label>
-                                <input type="text" name="no_hp" class="form-control" placeholder="08xxxxxxxxxx" required>
+                                <input type="number" name="no_hp" class="form-control" placeholder="08xxxxxxxxxx"
+                                    required oninvalid="this.setCustomValidity('Nomor HP wajib diisi')"
+                                    oninput="this.setCustomValidity('');
+                                    if (this.value.length > 12) {
+                                    this.value = this.value.slice(0, 12); }
+                                    ">
+
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Instansi/Asal *</label>
                             <input type="text" name="instansi" class="form-control"
-                                placeholder="Nama instansi / asal rombongan" required>
+                                placeholder="Nama instansi / asal rombongan" required
+                                oninvalid="this.setCustomValidity('Instansi wajib diisi')"
+                                oninput="this.setCustomValidity('')">
+
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Jumlah Anggota *</label>
-                            <input type="number" name="jumlah" class="form-control" placeholder="Contoh: 35" required>
+                            <input type="number" name="jumlah" class="form-control" placeholder="Contoh: 35" required
+                                oninvalid="this.setCustomValidity('Jumlah anggota wajib diisi')"
+                                oninput="this.setCustomValidity('')">
+
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Tujuan Kedatangan *</label>
                             <textarea name="tujuan" class="form-control" rows="2"
-                                placeholder="Masukkan tujuan kedatangan..." required></textarea>
+                                placeholder="Masukkan tujuan kedatangan..." required
+                                oninvalid="this.setCustomValidity('Tujuan kedatangan wajib diisi')"
+                                oninput="this.setCustomValidity('')"></textarea>
+
                         </div>
 
                         <div class="d-flex align-items-center gap-3 mt-3">
@@ -77,7 +95,7 @@
                                 Kembali
                             </a>
 
-                            <button type="button" id="btnSimpan" class="btn btn-send px-4">
+                            <button type="submit" id="btnSimpan" class="btn btn-send px-4">
                                 Simpan Data
                             </button>
                         </div>

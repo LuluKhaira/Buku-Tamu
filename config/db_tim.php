@@ -2,20 +2,21 @@
 include '../config/connect.php';
 date_default_timezone_set('Asia/Jakarta');
 
-$nama       = $_POST['nama'];
-$no_hp      = $_POST['no_hp'];
+$nama       = $_POST['nama'] ?? '';
+$no_hp      = $_POST['no_hp'] ?? '';
 $tanggal    = date("Y-m-d");
 $waktu      = date("H:i:s");
-$instansi   = $_POST['instansi'];
-$tujuan     = $_POST['tujuan'];
-$jenis      = $_POST['jenis'];
-$jumlah     = $_POST['jumlah'];
+$instansi   = $_POST['instansi']?? '';
+$tujuan     = $_POST['tujuan']?? '';
+$jenis      = $_POST['jenis']?? '';
+$jumlah   = $_POST['jumlah'] ?? 1;
 
 if ($jumlah > 1) {
     $jenis = "kelompok";
 } else {
     $jenis = "satuan";
 }
+
 
 $input = mysqli_query(
     $connect,

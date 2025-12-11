@@ -4,6 +4,14 @@ const panel = document.getElementById("previewPanel");
 document.getElementById("btnSimpan").addEventListener("click", function (e){
     e.preventDefault();
 
+    const form = document.getElementById("formTamu");
+
+    // Jika masih ada yang kosong → stop
+    if (!form.checkValidity()) {
+        form.reportValidity(); // munculkan popup “please fill out this field” + custom message
+        return;
+    }
+
     let nama = document.querySelector("[name='nama']").value;
     let hp = document.querySelector("[name='no_hp']").value;
     let instansi = document.querySelector("[name='instansi']").value;
@@ -18,7 +26,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
         <div><strong>No HP:</strong> ${hp || "-"}</div>
         <div><strong>Instansi:</strong> ${instansi || "-"}</div>
         <div><strong>Jumlah:</strong> ${jumlah || "-"}</div>
-        <div style="white-space: normal; word-wrap: break-word; max-width: 200px;">
+        <div style="white-space: normal; word-break: break-word; max-width: 300px;">
             <strong>Tujuan:</strong> ${tujuan || "-"}
         </div>
 
@@ -42,7 +50,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
     document.getElementById("btnKonfirmasi").addEventListener("click", function () {
 
         const formData = new FormData();
-        formData.append('jenis', 'satuan'); // ← bagian penting
+        formData.append('jenis', 'kelompok'); // ← bagian penting
         formData.append('nama', nama);
         formData.append('no_hp', hp);
         formData.append('instansi', instansi);

@@ -3,6 +3,14 @@ const panel = document.getElementById("previewPanel");
 // Tombol SIMPAN → tampilkan preview + 2 tombol
 document.getElementById("btnSimpan").addEventListener("click", function (e){
     e.preventDefault();
+    const form = document.getElementById("formTamu");
+
+    // Jika masih ada yang kosong → stop
+    if (!form.checkValidity()) {
+        form.reportValidity(); // munculkan popup “please fill out this field” + custom message
+        return;
+    }
+
     let nama = document.querySelector("[name='nama']").value;
     let hp = document.querySelector("[name='no_hp']").value;
     let instansi = document.querySelector("[name='instansi']").value;
@@ -15,7 +23,9 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
         <div><strong>Nama:</strong> ${nama || "-"}</div>
         <div><strong>No HP:</strong> ${hp || "-"}</div>
         <div><strong>Instansi:</strong> ${instansi || "-"}</div>
-        <div><strong>Tujuan:</strong> ${tujuan || "-"}</div>
+        <div style="white-space: normal; word-break: break-word; max-width: 300px;">
+            <strong>Tujuan:</strong> ${tujuan || "-"}
+        </div>
 
         <hr>
         <p class="fw-bold">Apakah data sudah sesuai?</p>

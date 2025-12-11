@@ -2,28 +2,24 @@
 include '../config/connect.php';
 date_default_timezone_set('Asia/Jakarta');
 
-$nama       = $_POST['nama'];
-$no_hp      = $_POST['no_hp'];
+$nama       = $_POST['nama'] ?? '';
+$no_hp      = $_POST['no_hp'] ?? '';
 $tanggal    = date("Y-m-d");
 $waktu      = date("H:i:s");
-$instansi   = $_POST['instansi'];
-$tujuan     = $_POST['tujuan'];
-$jenis      = $_POST['jenis'];
-
-$jumlah = 1;
+$instansi   = $_POST['instansi']?? '';
+$tujuan     = $_POST['tujuan']?? '';
+$jenis      = $_POST['jenis']?? '';
+$jumlah   = $_POST['jumlah'] ?? 1;
 
 $input = mysqli_query(
     $connect,
-    "INSERT INTO pengunjung (nama, no_hp, tanggal, waktu, instansi, tujuan, jenis, jumlah)
-     VALUES ('$nama', '$no_hp', '$tanggal', '$waktu', '$instansi', '$tujuan', '$jenis', '$jumlah')"
+    "INSERT INTO pengunjung (nama, no_hp, tanggal, waktu, instansi, tujuan, jumlah)
+     VALUES ('$nama', '$no_hp', '$tanggal', '$waktu', '$instansi', '$tujuan', '$jumlah')"
 );
 
 if ($input) {
-    echo "<script>
-            alert('Data Berhasil Disimpan');
-            window.location.href = '../asset/tambah_only.php';
-          </script>";
+    echo "success";
 } else {
-    echo mysqli_error($connect);
+    echo "error";
 }
 ?>

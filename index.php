@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;500;600;700&display=swap" rel="stylesheet" />
 </head>
 
-<body class="pt-5 pt-lg-4">
+<body class="pt-5 pt-lg-4" style="font-family: 'Poppins', sans-serif;">
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="dashboard_staffTU/beranda.php">
@@ -26,7 +26,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" id="navbarResponsive" >
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link px-3" href="#beranda">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#tentang">Tentang</a></li>

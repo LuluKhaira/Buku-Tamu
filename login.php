@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body style="background-color: #e7ecf6ff;">
+<body style="background-color: #e7ecf6ff; font-family: 'Poppins', sans-serif;">
 
   <section class="vh-100 d-flex justify-content-center align-items-center">
     <div class="card shadow-lg" style="border-radius: 1rem; max-width: 900px; width: 100%;">
@@ -51,9 +51,9 @@
     </div>
   </section>
 
-  <div id="forgotPopup"
+  <div id="forgotPopup" 
     class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center"
-    style="background: rgba(0,0,0,0.5); z-index:1050;">
+    style="background: rgba(0,0,0,0.5); z-index:1050;" >
     <div class="bg-white p-4 rounded shadow" style="max-width:400px; width:90%;">
       <h4 class="text-center mb-3">Ubah Sandi</h4>
       <p class="text-center text-muted">Masukkan username dan password baru Anda.</p>

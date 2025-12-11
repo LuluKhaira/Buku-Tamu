@@ -18,6 +18,7 @@
             border-radius: 20px;
             width: 100%;
         }
+
         .no-bg-panel {
             padding: 10px 0;
         }
@@ -46,27 +47,35 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">Nama *</label>
-                                <input type="text" name="nama" class="form-control"
-                                    placeholder="Masukkan nama anda" required>
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan nama anda"
+                                    required oninvalid="this.setCustomValidity('Nama wajib diisi')"
+                                    oninput="this.setCustomValidity('')">
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label small fw-semibold">No Handphone *</label>
-                                <input type="text" name="no_hp" class="form-control"
-                                    placeholder="08xxxxxxxxxx" required>
+                                <input type="number" name="no_hp" class="form-control" placeholder="08xxxxxxxxxx"
+                                    required oninvalid="this.setCustomValidity('No Handphone wajib diisi')" oninput="this.setCustomValidity('');
+                                    if (this.value.length > 12) {
+                                    this.value = this.value.slice(0, 12); }
+                                    ">
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Instansi *</label>
                             <input type="text" name="instansi" class="form-control"
-                                placeholder="Instansi / Sekolah / Perusahaan" required>
+                                placeholder="Instansi / Sekolah / Perusahaan" required
+                                oninvalid="this.setCustomValidity('Instansi wajib diisi')"
+                                oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label small fw-semibold">Tujuan *</label>
-                            <textarea name="tujuan" class="form-control" rows="4"
-                                placeholder="Masukkan tujuan kedatangan..." required></textarea>
+                            <textarea type="text" name="tujuan" class="form-control" rows="4"
+                                placeholder="Masukkan tujuan kedatangan..." required
+                                oninvalid="this.setCustomValidity('Tujuan kedatangan wajib diisi')"
+                                oninput="this.setCustomValidity('')"></textarea>
                         </div>
 
                         <div class="d-flex align-items-center gap-3 mt-3">
@@ -75,7 +84,7 @@
                                 Kembali
                             </a>
 
-                            <button type="button" id="btnSimpan" class="btn btn-send px-4">
+                            <button type="submit" id="btnSimpan" class="btn btn-send px-4">
                                 Simpan Data
                             </button>
                         </div>

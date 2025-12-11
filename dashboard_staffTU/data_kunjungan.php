@@ -2,8 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
-    exit();
+  header("Location: ../login.php");
+  exit();
 }
 ?>
 <!DOCTYPE html>
@@ -56,7 +56,7 @@ include "../config/db_data_kunjungan.php";
                 <span class="input-group-text border-0" style="background:#D4A373; color:white;">
                   <i class="fas fa-search"></i>
                 </span>
-                <input type="text" name="search" class="form-control border-0" style="width: 200px; background:#F7E9C8;"
+                <input type="text" name="search" class="form-control border-0" style="width: 230px; background:#F7E9C8;"
                   placeholder="Cari nama, Instansi, tanggal..." value="<?= $_GET['search'] ?? '' ?>">
               </div>
             </form>
@@ -65,15 +65,13 @@ include "../config/db_data_kunjungan.php";
               <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
               <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
-              <button class="btn btn-success flex-grow-1" name="export_excel">
-                <i class="bi bi-file-earmark-excel"></i> Export Data Excel
+              <button class="btn flex-grow-1" style="background:#2d5f5d; color: #f9f5ed;" name="export_excel">
+                <i class="bi bi-file-earmark-excel" style="color:white;"></i> Export Data Excel
               </button>
             </form>
 
             <form method="POST" action="../config/exportpdf.php" class="d-flex gap-2">
-              <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-              <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
-
+          
               <button class="btn btn-danger flex-grow-1" name="export_pdf">
                 <i class="bi bi-file-earmark-pdf"></i> Export Data PDF
               </button>
@@ -139,14 +137,18 @@ include "../config/db_data_kunjungan.php";
                   } else {
                     $no = 1;
                     while ($row = mysqli_fetch_assoc($q)):
-                ?>
+                      ?>
                       <tr data-id="<?= $row['no_pengunjung'] ?>">
                         <td><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
                         <td><?= htmlspecialchars($row['nama']) ?></td>
                         <td><?= htmlspecialchars($row['no_hp']) ?></td>
                         <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
                         <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
-                        <td><?= htmlspecialchars($row['instansi']) ?></td>
+                        <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
+                          data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['instansi']) ?>">
+                          <?= htmlspecialchars($row['instansi']) ?>
+                        </td>
+
                         <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
                           data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['tujuan']) ?>">
                           <?= htmlspecialchars($row['tujuan']) ?>
@@ -169,7 +171,7 @@ include "../config/db_data_kunjungan.php";
                           </button>
                         </td>
                       </tr>
-                <?php
+                      <?php
                     endwhile;
                   }
                 }
@@ -265,7 +267,7 @@ include "../config/db_data_kunjungan.php";
     const modalDelete = new bootstrap.Modal(document.getElementById('modalDelete'));
 
     document.querySelectorAll('.btn-edit').forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function () {
 
         let tr = this.closest('tr');
         selectedId = tr.dataset.id; // FIX: ID taken from no_pengunjung
@@ -282,7 +284,7 @@ include "../config/db_data_kunjungan.php";
       });
     });
 
-    document.getElementById('btnSimpanEdit').addEventListener('click', function() {
+    document.getElementById('btnSimpanEdit').addEventListener('click', function () {
 
       let formData = new FormData();
       formData.append('no_pengunjung', selectedId);
@@ -293,9 +295,9 @@ include "../config/db_data_kunjungan.php";
       formData.append('jumlah', document.getElementById('editJumlah').value);
 
       fetch('../config/data_kunjungan_update.php', {
-          method: 'POST',
-          body: formData
-        })
+        method: 'POST',
+        body: formData
+      })
         .then(res => res.json())
         .then(res => {
           if (res.status === 'success') {
@@ -309,22 +311,22 @@ include "../config/db_data_kunjungan.php";
     });
 
     document.querySelectorAll('.btn-delete').forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function () {
         let tr = this.closest('tr');
         selectedId = tr.dataset.id;
         modalDelete.show();
       });
     });
 
-    document.getElementById('btnConfirmDelete').addEventListener('click', function() {
+    document.getElementById('btnConfirmDelete').addEventListener('click', function () {
 
       let formData = new FormData();
       formData.append('no_pengunjung', selectedId);
 
       fetch('../config/data_kunjungan_delete.php', {
-          method: 'POST',
-          body: formData
-        })
+        method: 'POST',
+        body: formData
+      })
         .then(res => res.json())
         .then(res => {
           if (res.status === 'success') {

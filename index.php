@@ -21,6 +21,11 @@
     body {
         font-family: 'Poppins', sans-serif !important;
     }
+    .card-img-top {
+        height: 220px;  
+        object-fit: cover;
+        width: 100%;
+    }
 </style>
 
 <body class="pt-5 pt-lg-4" style="font-family: 'Poppins', sans-serif;">
@@ -167,7 +172,7 @@
                             <img src="foto/dashboard.png" class="card-img-top rounded-top-4" alt="">
                         </div>
                         <div class="card-body">
-                            <h5 class="fw-bold">Beranda Staff TU</h5>
+                            <h5 class="fw-bold">dashboard Staff TU</h5>
                             <p class="text-muted small">
                                 Dengan beranda ini secara instan menyajikan keterangan pengunjung (harian, mingguan,
                                 bulanan).

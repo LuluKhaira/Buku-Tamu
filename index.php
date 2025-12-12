@@ -142,7 +142,7 @@
     <section class="py-5">
         <div class="container">
             <div class="col-12 text-center mb-4">
-                <h3 class="display-5 fw-bold mb-3">Sistem Buku tamu Staff TU</h3>
+                <h3 class="display-5 fw-bold mb-3">Tentang Website Buku Tamu Staff TU</h3>
             </div>
             <br>
             <div class="row g-4">

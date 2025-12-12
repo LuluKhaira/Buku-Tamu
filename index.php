@@ -10,9 +10,18 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"rel="stylesheet">
+
+
 </head>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif !important;
+    }
+</style>
 
 <body class="pt-5 pt-lg-4" style="font-family: 'Poppins', sans-serif;">
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
@@ -26,7 +35,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive" >
+            <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link px-3" href="#beranda">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#tentang">Tentang</a></li>
@@ -78,10 +87,6 @@
     <section id="tentang" class="py-5 bg-white">
         <div class="container px-4 px-lg-5 py-5">
             <div class="row g-5">
-                <div class="col-12 text-center mb-4">
-                    <h2 class="display-5 fw-bold mb-3">Mengapa Memilih Kami?</h2>
-                    <p class="lead text-muted">Solusi terbaik untuk pencatatan pengunjung yang efisien</p>
-                </div>
 
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center h-100">
@@ -136,6 +141,10 @@
 
     <section class="py-5">
         <div class="container">
+            <div class="col-12 text-center mb-4">
+                <h3 class="display-5 fw-bold mb-3">Sistem Buku tamu Staff TU</h3>
+            </div>
+            <br>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm rounded-4 h-100">
@@ -192,43 +201,42 @@
 
 
     <footer class="bg-dark text-white py-5">
-    <div class="container px-4 px-lg-5">
+        <div class="container px-4 px-lg-5">
 
-        <!-- Row Utama -->
-        <div class="row g-4 align-items-center">
+            <!-- Row Utama -->
+            <div class="row g-4 align-items-center">
 
-            <!-- Logo + Judul -->
-            <div class="col-lg-6 d-flex align-items-center gap-3">
-                <img src="foto/logo_polibatam.png" alt="Logo Polibatam"
-                     style="height: 70px; width: auto;">
+                <!-- Logo + Judul -->
+                <div class="col-lg-6 d-flex align-items-center gap-3">
+                    <img src="foto/logo_polibatam.png" alt="Logo Polibatam" style="height: 70px; width: auto;">
 
-                <div>
-                    <h5 class="fw-bold mb-0">
-                        <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
-                    </h5>
+                    <div>
+                        <h5 class="fw-bold mb-0">
+                            <i class="bi bi-book me-2"></i>Buku Tamu Tata Usaha
+                        </h5>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <hr class="border-secondary my-4">
+            <hr class="border-secondary my-4">
 
-        <!-- Bawah -->
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <small class="text-white-50">
-                    &copy; 2025 Buku Tamu Staff TU.
-                </small>
+            <!-- Bawah -->
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <small class="text-white-50">
+                        &copy; 2025 Buku Tamu Staff TU.
+                    </small>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <small class="text-white-50">
+                        Pencipta dari <span class="text-white fw-semibold">The Fighter</span> | IF A Pagi - 1
+                    </small>
+                </div>
             </div>
-            <div class="col-md-6 text-center text-md-end">
-                <small class="text-white-50">
-                    Pencipta dari <span class="text-white fw-semibold">The Fighter</span> | IF A Pagi - 1
-                </small>
-            </div>
-        </div>
 
-    </div>
-</footer>
+        </div>
+    </footer>
 
 
 

@@ -7,7 +7,17 @@
   <title>Login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif !important;
+  }
+</style>
+
 
 <body style="background-color: #e7ecf6ff; font-family: 'Poppins', sans-serif;">
 
@@ -24,6 +34,35 @@
               <h3 class="fw-bold mt-3">Login</h3>
             </div>
 
+            <?php if (isset($_GET['error'])): ?>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php
+                if ($_GET['error'] === "wrongpass") {
+                  echo "Password salah! Silakan cek kembali.";
+                } elseif ($_GET['error'] === "notfound") {
+                  echo "Username tidak ditemukan!";
+                } else {
+                  echo "Terjadi kesalahan.";
+                }
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              </div>
+            <?php endif; ?>
+
+            <?php if (isset($_GET['success'])): ?>
+              <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+                <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                <span>Login berhasil! Mengarahkan ke halaman...</span>
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+              </div>
+
+              <script>
+                setTimeout(() => {
+                  window.location.href = "dashboard_staffTU/beranda.php";
+                }, 1200);
+              </script>
+            <?php endif; ?>
+
             <form action="config/db_login_proses.php" method="POST">
               <div class="mb-3 position-relative">
                 <i class="fas fa-envelope position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
@@ -32,7 +71,8 @@
 
               <div class="mb-3 position-relative">
                 <i class="fas fa-lock position-absolute top-50 translate-middle-y ms-3 text-secondary"></i>
-                <input type="password" name="password" class="form-control ps-5" placeholder="Masukkan Password" required>
+                <input type="password" name="password" class="form-control ps-5" placeholder="Masukkan Password"
+                  required>
               </div>
 
               <div class="d-grid mb-3">
@@ -51,71 +91,26 @@
     </div>
   </section>
 
-  <div id="forgotPopup" 
+  <div id="forgotPopup"
     class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-center"
-    style="background: rgba(0,0,0,0.5); z-index:1050;" >
+    style="background: rgba(0,0,0,0.5); z-index:1050;">
     <div class="bg-white p-4 rounded shadow" style="max-width:400px; width:90%;">
       <h4 class="text-center mb-3">Ubah Sandi</h4>
-      <p class="text-center text-muted">Masukkan username dan password baru Anda.</p>
+      <p class="text-center text-muted" style="font-size: 14px;">Masukkan username dan password baru Anda.</p>
 
       <input type="text" id="risetusername" class="form-control mb-2" placeholder="Masukkan Username" required>
       <input type="password" id="newPassword" class="form-control mb-2" placeholder="Password Baru" required>
       <input type="password" id="confirmPassword" class="form-control mb-3" placeholder="Ulangi Password" required>
 
-      <div class="d-flex justify-content-between">
-        <button class="btn btn-dark w-50 me-2" onclick="sendResetEmail()">Kirim</button>
+      <div class="d-flex justify-content-between gap-2">
         <button class="btn btn-outline-secondary w-50" onclick="closePopup()">Batal</button>
+        <button class="btn btn-dark w-50 me-2" onclick="sendResetEmail()">Kirim</button>
       </div>
     </div>
   </div>
 
-  <script>
-    function sendResetEmail() {
-      const username = document.getElementById("risetusername").value;
-      const newPass = document.getElementById("newPassword").value;
-      const confirmPass = document.getElementById("confirmPassword").value;
-
-      if (!username || !newPass || !confirmPass)
-        return alert("Semua field harus diisi!");
-
-      if (newPass !== confirmPass)
-        return alert("Password tidak cocok!");
-
-      const formData = new FormData();
-      formData.append("username", username);
-      formData.append("password", newPass);
-
-      fetch("config/riset_password.php", {
-          method: "POST",
-          body: formData
-        })
-        .then(res => res.text())
-        .then(response => {
-          if (response === "success") {
-            alert("Password berhasil direset!");
-            closePopup();
-          } else {
-            alert("username tidak ditemukan!");
-          }
-        })
-        .catch(() => alert("Terjadi kesalahan"));
-    }
-  </script>
-
-  <script>
-    function openPopup() {
-      const popup = document.getElementById("forgotPopup");
-      popup.classList.remove("d-none");
-      popup.classList.add("d-flex");
-    }
-
-    function closePopup() {
-      const popup = document.getElementById("forgotPopup");
-      popup.classList.add("d-none");
-      popup.classList.remove("d-flex");
-    }
-  </script>
-
+  <script src="login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

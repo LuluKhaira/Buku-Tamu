@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query update
-    $stmt = $conn->prepare("UPDATE admin SET username = ? WHERE username = ?");
+    $stmt = $connect->prepare("UPDATE admin SET username = ? WHERE username = ?");
     $stmt->bind_param("ss", $username_baru, $username_lama);
 
     if ($stmt->execute()) {
@@ -38,5 +38,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->close();
-    $conn->close();
+    $connect->close();
 }

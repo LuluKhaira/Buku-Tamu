@@ -5,7 +5,6 @@ include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Pastikan session ada
     if (!isset($_SESSION['username'])) {
         echo json_encode(['status' => 'error', 'message' => 'Session username tidak ditemukan!']);
         exit;
@@ -14,19 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username_baru = trim($_POST['username_baru'] ?? '');
     $username_lama = $_SESSION['username'];
 
-    // Validasi kosong
     if ($username_baru === '') {
         echo json_encode(['status' => 'error', 'message' => 'Username tidak boleh kosong!']);
         exit;
     }
 
-    // Validasi spasi
     if (strpos($username_baru, ' ') !== false) {
         echo json_encode(['status' => 'error', 'message' => 'Username tidak boleh mengandung spasi!']);
         exit;
     }
 
-    // Query update
     $stmt = $connect->prepare("UPDATE admin SET username = ? WHERE username = ?");
     $stmt->bind_param("ss", $username_baru, $username_lama);
 

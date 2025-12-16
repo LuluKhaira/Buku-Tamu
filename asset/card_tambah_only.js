@@ -52,7 +52,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
         formData.append('instansi', instansi);
         formData.append('tujuan', tujuan);
 
-        fetch('../config/db_only.php', {
+        fetch('config/db_only.php', {
             method: 'POST',
             body: formData
         })
@@ -71,7 +71,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
                 // Notifikasi sukses
                 const alert = document.createElement("div");
                 alert.className = "alert alert-success alert-dismissible fade show position-fixed";
-                alert.style.top = "20px";
+                alert.style.top = "80px";
                 alert.style.right = "20px";
                 alert.style.zIndex = "9999";
                 alert.innerHTML = `

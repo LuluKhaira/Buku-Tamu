@@ -57,7 +57,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
         formData.append('jumlah', jumlah);
         formData.append('tujuan', tujuan);
 
-        fetch('../config/db_tim.php', {
+        fetch('config/db_tim.php', {
             method: 'POST',
             body: formData
         })
@@ -76,7 +76,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
                 // Notifikasi sukses
                 const alert = document.createElement("div");
                 alert.className = "alert alert-success alert-dismissible fade show position-fixed";
-                alert.style.top = "20px";
+                alert.style.top = "80px";
                 alert.style.right = "20px";
                 alert.style.zIndex = "9999";
                 alert.innerHTML = `

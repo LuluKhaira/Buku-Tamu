@@ -27,7 +27,7 @@ $input = mysqli_query(
 if ($input) {
     echo "<script>
             alert('Data Berhasil Disimpan');
-            window.location.href = '../asset/tambah_tim.php';
+            window.location.href = 'asset/tambah_tim.php';
           </script>";
 } else {
     echo mysqli_error($connect);

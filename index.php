@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="asset/tambah.css">
 
 
 </head>
@@ -21,189 +23,101 @@
     body {
         font-family: 'Poppins', sans-serif !important;
     }
+
     .card-img-top {
-        height: 220px;  
+        height: 220px;
         object-fit: cover;
         width: 100%;
     }
+
+    .info-panel {
+        background-color: #1f5f57;
+        color: white;
+        padding: 25px;
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    .no-bg-panel {
+        padding: 10px 0;
+    }
 </style>
 
-<body class="pt-5 pt-lg-4" style="font-family: 'Poppins', sans-serif;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="dashboard_staffTU/beranda.php">
-                <img src="foto/logo_polibatam.png" alt="Logo" class="me-2" style="width: 50px; height: 40px;">
-                <span class="text-dark">Buku Tamu</span>
-            </a>
+<body class="pt-5 pt-lg-4 mt-5" style="background:#f3f4f6;">
+    <div class="container py-5 mt-5 align-items-center" style="min-height: 90vh;">
+        <?php include 'Nav_Side_Bar/nav_index.php'; ?>
+        <div class="row gy-4 gx-4">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link px-3" href="#beranda">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="#tentang">Tentang</a></li>
-                </ul>
-                <div class="d-flex gap-2 ms-lg-3">
-                    <a href="login.php" class="btn btn-success rounded-pill px-4">
-                        <i class="bi bi-box-arrow-in-right me-2"></i>Login
-                    </a>
+            <div class="col-lg-6">
+                <div class="no-bg-panel">
+
+                    <?php $active = 'satuan'; ?>
+                    <?php include 'Nav_Side_Bar/nav_tambah.php'; ?>
+
+                    <h2 class="fw-bold mb-4">
+                        Silakan isi Informasi <span style="color: #f4b942; font-style: italic;">Pengunjung!</span>
+                    </h2>
+
+                    <form id="formTamu">
+
+                        <input type="hidden" name="jenis" value="satuan">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-semibold">Nama *</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan nama anda"
+                                    required oninvalid="this.setCustomValidity('Nama wajib diisi')"
+                                    oninput="this.setCustomValidity('')">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-semibold">No Handphone *</label>
+                                <input type="number" name="no_hp" class="form-control" placeholder="08xxxxxxxxxx"
+                                    required oninvalid="this.setCustomValidity('No Handphone wajib diisi')" oninput="this.setCustomValidity('');
+                                    if (this.value.length > 12) {
+                                    this.value = this.value.slice(0, 12); }
+                                    ">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Instansi *</label>
+                            <input type="text" name="instansi" class="form-control"
+                                placeholder="Instansi / Sekolah / Perusahaan" required
+                                oninvalid="this.setCustomValidity('Instansi wajib diisi')"
+                                oninput="this.setCustomValidity('')">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Tujuan *</label>
+                            <textarea type="text" name="tujuan" class="form-control" rows="4"
+                                placeholder="Masukkan tujuan kedatangan..." required
+                                oninvalid="this.setCustomValidity('Tujuan kedatangan wajib diisi')"
+                                oninput="this.setCustomValidity('')"></textarea>
+                        </div>
+
+                        <div class="d-flex align-items-center mt-3">
+
+                            <button type="submit" id="btnSimpan" class="btn btn-warning px-4" style="border-radius: 20px; font-weight: 600;">
+                                Simpan Data
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
+
+
+            <div class="col-lg-6">
+                <div class="info-panel" id="previewPanel">
+                    <h5 class="fw-bold mb-3">Preview Data</h5>
+                    <p class="opacity-75">Belum ada data yang diinput.</p>
+                </div>
+            </div>
+
         </div>
-    </nav>
-
-    <header id="beranda" class="bg-white d-flex align-items-center min-vh-lg-100 mt-5 pt-5 mt-lg-5">
-        <div class="container px-3 px-md-4 px-lg-5 py-5">
-            <div class="row g-4 g-lg-5 align-items-center justify-content-center text-center text-lg-start">
-
-                <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold mb-4 lh-1">
-                        Buku Tamu<br>
-                        <span class="text-success">Staff Tata Usaha</span>
-                    </h1>
-
-                    <p class="lead text-muted mb-4 fs-5">
-                        Sistem pencatatan kehadiran yang modern dan efisien untuk Tata Usaha.
-                    </p>
-
-                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start mb-5">
-                        <a href="asset/tambah_only.php"
-                            class="btn btn-warning btn-lg px-4 rounded-pill fw-semibold shadow-sm">
-                            <i class="bi bi-plus-circle-fill me-2"></i>
-                            Isi Data kunjungan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div class="card border-0 shadow-lg rounded-3 overflow-hidden">
-                        <div class="card-body p-0">
-                            <img src="foto/tambah.JPG" class="img-fluid w-100">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <section id="tentang" class="py-5 bg-white">
-        <div class="container px-4 px-lg-5 py-5">
-            <div class="row g-5">
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="text-center h-100">
-                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4"
-                            style="width: 100px; height: 100px;">
-                            <i class="bi bi-chat-square-dots text-primary fs-1"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Informasi</h4>
-                        <p class="text-muted">Website buku tamu kami dibuat untuk mempermudah pendataan pengunjung mulai
-                            dari nama hingga tujuan kunjungan.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="text-center h-100">
-                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4"
-                            style="width: 100px; height: 100px;">
-                            <i class="bi bi-puzzle text-success fs-1"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Fitur</h4>
-                        <p class="text-muted">Fitur dari website kami meliputi Input data pengunjung, Pencarian data,
-                            Mengubah data dan menghapus data.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="text-center h-100">
-                        <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4"
-                            style="width: 100px; height: 100px;">
-                            <i class="bi bi-trophy text-warning fs-1"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Keunggulan</h4>
-                        <p class="text-muted">Mudah digunakan, cepat, dan data tersimpan rapi untuk memudahkan akses
-                            informasi kapan saja.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3">
-                    <div class="text-center h-100">
-                        <div class="bg-danger bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4"
-                            style="width: 100px; height: 100px;">
-                            <i class="bi bi-shield-shaded text-danger fs-1"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Keamanan Data</h4>
-                        <p class="text-muted">Website kami memastikan data yang Anda isi tersimpan dengan aman dan
-                            terlindungi.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5">
-        <div class="container">
-            <div class="col-12 text-center mb-4">
-                <h3 class="display-5 fw-bold mb-3">Tentang Website Buku Tamu Staff TU</h3>
-            </div>
-            <br>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 h-100">
-                        <div class="position-relative">
-                            <img src="foto/tambah.JPG" class="card-img-top rounded-top-4" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="fw-bold">Tambah Pengunjung</h5>
-                            <p class="text-muted small">
-                                Dengan fitur Tambah Pengunjung, pencatatan tamu kini lebih cepat dan terorganisir.
-                                Setiap data yang masuk langsung tersimpan dan siap digunakan untuk laporan harian.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 h-100">
-                        <div class="position-relative">
-                            <img src="foto/dashboard.png" class="card-img-top rounded-top-4" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="fw-bold">dashboard Staff TU</h5>
-                            <p class="text-muted small">
-                                Dengan beranda ini secara instan menyajikan keterangan pengunjung (harian, mingguan,
-                                bulanan).
-                                Bagian "Pengunjung Hari Ini" memberikan detail data tamu terbaru,
-                                termasuk jenis kunjungan dan waktu kedatangan, yang divalidasi oleh penunjuk waktu.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 h-100">
-                        <div class="position-relative">
-                            <img src="foto/data_kunjungan.JPG" class="card-img-top rounded-top-4" alt="">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="fw-bold"> Data Kunjungan Staff TU</h5>
-                            <p class="text-muted small">
-                                Dengan Fitur riwayat menyimpan seluruh cerita dan detail dari semua kunjungan yang
-                                pernah terjadi bisa
-                                disaring, dicari, dan diekspor melalui Excel.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
+    </div>
 
     <footer class="bg-dark text-white py-5">
         <div class="container px-4 px-lg-5">
@@ -246,7 +160,8 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/card_tambah_only.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -3,7 +3,7 @@
    <!-- NAV TAB -->
    <nav class="nav nav-tabs">
 
-      <a href="tambah_only.php"
+      <a href="index.php"
          class="nav-link text-uppercase <?php echo (isset($active) && $active == 'satuan') ? 'active bg-success text-white' : 'text-secondary'; ?>"
          style="letter-spacing: 3px; font-size: 13px; font-weight: 500;">
          Pengunjung Satuan

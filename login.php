@@ -28,8 +28,8 @@
           <img src="foto/Gedung.jpg" alt="login" class="img-fluid h-100"
             style="border-radius: 1rem 0 0 1rem; object-fit: cover;">
         </div>
-        <div class="col-md-7 d-flex align-items-center">
-          <div class="card-body p-5">
+        <div class="col-md-7 d-flex align-items-center justify-content-center">
+          <div class="card-body p-5 text-center text-md-start" style="width: 100%; max-width: 380px;"">
             <div class="text-center mb-4">
               <h3 class="fw-bold mt-3">Login</h3>
             </div>

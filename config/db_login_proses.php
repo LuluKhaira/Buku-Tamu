@@ -17,17 +17,14 @@ if ($result->num_rows === 0) {
 
 $data = $result->fetch_assoc();
 
-// Cek password
 if ($password !== $data['password']) {
     header("Location: ../login.php?error=wrongpass");
     exit();
 }
 
-// Jika berhasil login
 $_SESSION['username'] = $data['username'];
 $_SESSION['login'] = true;
 
-// Redirect kembali, tampilkan alert success
 header("Location: ../login.php?success=1");
 exit();
 ?>

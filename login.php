@@ -104,7 +104,7 @@
 
       <div class="d-flex justify-content-between gap-2">
         <button class="btn btn-outline-secondary w-50" onclick="closePopup()">Batal</button>
-        <button class="btn btn-dark w-50 me-2" onclick="sendResetEmail()">Kirim</button>
+        <button class="btn btn-dark w-50 me-2" onclick="sendResetEmail()">Kirimm</button>
       </div>
     </div>
   </div>

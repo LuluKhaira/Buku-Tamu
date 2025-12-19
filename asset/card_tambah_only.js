@@ -89,7 +89,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e) {
             </div>
 
             <small class="text-muted">
-                Gunakan ID ini saat proses check-out
+                Gunakan ID ini saat proses keluar
             </small>
 
             <button id="btnUlangi"

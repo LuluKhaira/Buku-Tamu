@@ -58,24 +58,20 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8 col-sm-10">
                     <div class="card shadow-sm border-0 rounded-4">
-                      
 
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-text bg-white border-0">
-                                    <i class="bi bi-qr-code-scan"></i>
-                                </span>
 
-                                <input type="text" class="form-control border-0" placeholder="Masukkan SESSION ID">
+                        <div class="input-group input-group-lg">
+                            <input type="text" id="sessionId" class="form-control border-0"
+                                placeholder="Masukkan SESSION ID anda">
 
-                                <button class="btn btn-dark px-4">
-                                    <i class="bi bi-search me-1"></i> Cari
-                                </button>
-                            </div>
-
-                        
+                            <button class="btn btn-success px-4" type="button" id="btnCari">
+                                <i class="bi bi-search me-1"></i> Cari
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div id="hasilTicket" class="mt-4"></div>
 
         </div>
     </div>
@@ -119,8 +115,75 @@
     </footer>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
+            const btnCari = document.getElementById("btnCari");
+            const sessionInput = document.getElementById("sessionId");
+            const hasilTicket = document.getElementById("hasilTicket");
 
+            if (!btnCari) {
+                console.error("btnCari tidak ditemukan");
+                return;
+            }
+
+            btnCari.addEventListener("click", cariData);
+            sessionInput.addEventListener("keyup", e => {
+                if (e.key === "Enter") cariData();
+            });
+
+            function cariData() {
+                let kode = sessionInput.value.trim();
+
+                if (kode === "") {
+                    hasilTicket.innerHTML = `
+                <div class="alert alert-warning rounded-4">
+                    Session ID tidak boleh kosong.
+                </div>`;
+                    return;
+                }
+
+                hasilTicket.innerHTML = `
+            <div class="text-center text-muted py-4">
+                <div class="spinner-border"></div>
+                <p class="mt-2 mb-0">Mencari data...</p>
+            </div>
+        `;
+
+                fetch("config/caridata.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: "kode=" + encodeURIComponent(kode)
+                })
+                    .then(res => res.text())
+                    .then(html => {
+                        hasilTicket.innerHTML = html;
+                    })
+                    .catch(() => {
+                        hasilTicket.innerHTML = `
+                <div class="alert alert-danger">
+                    Gagal mengambil data.
+                </div>`;
+                    });
+            }
+
+            window.checkout = function (kode) {
+                if (!confirm("Yakin ingin check-out?")) return;
+
+                fetch("config/pulang.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: "kode=" + encodeURIComponent(kode)
+                })
+                    .then(res => res.text())
+                    .then(html => {
+                        hasilTicket.innerHTML = html;
+                        sessionInput.value = "";
+                    });
+            };
+
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

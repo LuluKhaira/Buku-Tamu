@@ -10,6 +10,9 @@ $connect = mysqli_connect(
     $db
 );
 if (!$connect) {
-    echo "Gagal konek: " . mysqli_connect_error();
+     die(json_encode([
+        'status' => 'error',
+        'message' => 'Koneksi database gagal'
+    ]));
 }
 ?>

@@ -71,6 +71,8 @@ if (!isset($_SESSION['username'])) {
 
 <?php
 include "../config/db_data_kunjungan.php";
+include "../config/db_tanggal.php";
+include "../config/db_pengunjung_hariini.php";
 ?>
 
 <body style="background:#f2f2f2;">
@@ -85,7 +87,7 @@ include "../config/db_data_kunjungan.php";
         <div class="card shadow-sm border-0 rounded-4">
 
           <!-- Card Header -->
-          <div class="card-header p-4" style="background:#ffffff; border-bottom:2px solid #e5e7eb;">
+          <div class="card-header p-3 border-0 bg-white">
 
             <div class="row g-3 align-items-center">
 
@@ -133,21 +135,25 @@ include "../config/db_data_kunjungan.php";
                   <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
                   <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
-                  <button class="btn btn-danger px-4 rounded-3" name="export_excel">
+                  <button class="btn btn-danger px-4 rounded-3" name="export_pdf">
                     <i class="bi bi-download me-1" name="export_pdf"></i> PDF
                   </button>
                 </form>
-
-
-
               </div>
-
+              <div class="mt-2 text-end" style="font-size: 12px;">
+                <em class="me-2 text-body-tertiary">*Status</em>
+                <span class="me-3">
+                  <i class="bi bi-circle-fill text-success"></i> Sudah Pulang
+                </span>
+                <span>
+                  <i class="bi bi-circle-fill text-danger"></i> Belum Pulang
+                </span>
+              </div>
             </div>
           </div>
         </div>
-        <br>
 
-        <div class="card shadow-sm border-0 rounded-4">
+        <div class="card shadow-sm border-0 rounded-4 mt-4">
 
           <!-- Card Header (Search & Filter) -->
           <div class="card-header py-0" style="background:#EFE3D6; color:#8B5E34;">
@@ -158,28 +164,31 @@ include "../config/db_data_kunjungan.php";
 
                   <!-- Search -->
                   <div class="col">
-                    <div class="input-group shadow-sm rounded-pill overflow-hidden">
-                      <span class="input-group-text bg-white border-0 ps-3">
-                        <i class="fas fa-search text-muted"></i>
+                    <div class="input-group">
+                      <span class="input-group-text bg-white">
+                        <i class="bi bi-search"></i>
                       </span>
-                      <input type="text" name="search" class="form-control border-0"
-                        placeholder="Cari nama, instansi, atau ID dalam periode ini..."
-                        value="<?= $_GET['search'] ?? '' ?>">
+                      <input type="text" name="search" value="<?= $_GET['search'] ?? '' ?>" class="form-control"
+                        placeholder="Cari data...">
                     </div>
                   </div>
 
+
                   <!-- Filter Status -->
                   <div class="col-auto">
-                    <select name="status" class="form-select shadow-sm rounded-pill px-4">
+                    <select name="status" class="form-select shadow-sm  px-4" onchange="this.form.submit()">
+
                       <option value="">Semua Status</option>
-                      <option value="sedang" <?= ($_GET['status'] ?? '') == 'sedang' ? 'selected' : '' ?>>
+                      <option value="datang" <?= ($_GET['status'] ?? '') == 'datang' ? 'selected' : '' ?>>
                         Sedang Berkunjung
                       </option>
                       <option value="pulang" <?= ($_GET['status'] ?? '') == 'pulang' ? 'selected' : '' ?>>
                         Sudah Pulang
                       </option>
+
                     </select>
                   </div>
+
 
                 </div>
               </div>
@@ -242,10 +251,10 @@ include "../config/db_data_kunjungan.php";
                         <td class="text-center"><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
 
                         <td class="text-center">
-                          <i class="bi bi-circle-fill <?= $row['waktu_pulang'] ? 'text-danger' : 'text-success' ?>"></i>
+                          <i class="bi bi-circle-fill <?= $row['waktu_pulang'] ? 'text-success' : 'text-danger' ?>"></i>
                         </td>
 
-                        
+
                         <td>
                           <?= htmlspecialchars($row['kode'] ?? '') ?>
                         </td>

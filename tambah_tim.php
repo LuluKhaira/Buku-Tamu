@@ -108,8 +108,8 @@
 
                 <div class="col-lg-6">
                     <div class="info-panel" id="previewPanel">
-                        <h5 class="fw-bold mb-3">Preview Data</h5>
-                        <p class="opacity-75">Belum ada data yang diinput.</p>
+                        <h5 class="fw-bold mb-3">Simpan data anda jika berhasil!</h5>
+                        <p class="opacity-75">Silakan lengkapi data diri Anda.</p>
                     </div>
                 </div>
 

@@ -17,7 +17,7 @@ if ($search !== '') {
 
 if ($dari !== '' && $sampai !== '') {
     $sql .= " AND tanggal BETWEEN '$dari' AND '$sampai'";
-}
+}   
 
 $sql .= " ORDER BY 
             (waktu_pulang IS NULL) DESC,

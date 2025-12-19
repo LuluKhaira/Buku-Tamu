@@ -1,6 +1,6 @@
 const panel = document.getElementById("previewPanel");
 
-// Tombol SIMPAN → tampilkan preview + 2 tombol
+// Tombol SIMPAN → tampilkan pesan sukses + kode unik
 document.getElementById("btnSimpan").addEventListener("click", function (e){
     e.preventDefault();
 
@@ -8,7 +8,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
 
     // Jika masih ada yang kosong → stop
     if (!form.checkValidity()) {
-        form.reportValidity(); // munculkan popup “please fill out this field” + custom message
+        form.reportValidity(); 
         return;
     }
 
@@ -18,79 +18,49 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
     let jumlah = document.querySelector("[name='jumlah']").value;
     let tujuan = document.querySelector("[name='tujuan']").value;
 
-    // Tampilkan preview konfirmasi
+    // Buat kode unik (misal random 6 digit)
+    let kode = Math.floor(100000 + Math.random() * 900000);
+
+    // Tampilkan pesan sukses & kode
     panel.innerHTML = `
-        <h5 class="fw-bold mb-3">Preview Data</h5>
-        
-        <div><strong>Nama:</strong> ${nama || "-"}</div>
-        <div><strong>No HP:</strong> ${hp || "-"}</div>
-        <div><strong>Instansi:</strong> ${instansi || "-"}</div>
-        <div><strong>Jumlah:</strong> ${jumlah || "-"}</div>
-        <div style="white-space: normal; word-break: break-word; max-width: 300px;">
-            <strong>Tujuan:</strong> ${tujuan || "-"}
-        </div>
-
-
-        <hr>
-        <p class="fw-bold">Apakah data sudah sesuai?</p>
-
-        <button id="btnUlangi" class="btn btn-warning me-2">Ulangi</button>
-        <button id="btnKonfirmasi" class="btn btn-success">Ya</button>
+        <h5 class="fw-bold mb-3">Data Anda Berhasil!</h5>
+        <p>Silahkan simpan atau screenshot kode dibawah ini:</p>
+        <h3 class="text-primary fw-bold">KODE ANDA: ${kode}</h3>
+        <p class="text-muted">Gunakan kode ini untuk keluar jika sudah selesai berkunjung.</p>
     `;
 
-    // Tombol ULANGI
-    document.getElementById("btnUlangi").addEventListener("click", function () {
-        panel.innerHTML = `
-            <h5 class="fw-bold mb-3">Preview Data</h5>
-            <p class="opacity-75">Silakan isi data kembali.</p>
+    // Kirim data ke PHP
+    const formData = new FormData();
+    formData.append('jenis', 'kelompok');
+    formData.append('nama', nama);
+    formData.append('no_hp', hp);
+    formData.append('instansi', instansi);
+    formData.append('jumlah', jumlah);
+    formData.append('tujuan', tujuan);
+    formData.append('kode', kode); // kirim juga kode ke server
+
+    fetch('config/db_tim.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Reset form
+        document.querySelector("form").reset();
+
+        // Notifikasi sukses
+        const alert = document.createElement("div");
+        alert.className = "alert alert-success alert-dismissible fade show position-fixed";
+        alert.style.top = "80px";
+        alert.style.right = "20px";
+        alert.style.zIndex = "9999";
+        alert.innerHTML = `
+            Data pengunjung berhasil disimpan!
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         `;
-    });
+        document.body.appendChild(alert);
 
-    // Tombol YA → kirim data ke PHP
-    document.getElementById("btnKonfirmasi").addEventListener("click", function () {
-
-        const formData = new FormData();
-        formData.append('jenis', 'kelompok'); // ← bagian penting
-        formData.append('nama', nama);
-        formData.append('no_hp', hp);
-        formData.append('instansi', instansi);
-        formData.append('jumlah', jumlah);
-        formData.append('tujuan', tujuan);
-
-        fetch('config/db_tim.php', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then(data => {
-
-                // Reset form
-                document.querySelector("form").reset();
-
-                // Reset panel
-                panel.innerHTML = `
-                <h5 class="fw-bold mb-3">Preview Data</h5>
-                <p class="opacity-75">Belum ada data yang diinput.</p>
-            `;
-
-                // Notifikasi sukses
-                const alert = document.createElement("div");
-                alert.className = "alert alert-success alert-dismissible fade show position-fixed";
-                alert.style.top = "80px";
-                alert.style.right = "20px";
-                alert.style.zIndex = "9999";
-                alert.innerHTML = `
-                Data pengunjung berhasil disimpan!
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            `;
-                document.body.appendChild(alert);
-
-                setTimeout(() => {
-                    alert.remove();
-                }, 3000);
-
-            })
-            .catch(err => console.error(err));
-    });
-    
+        setTimeout(() => alert.remove(), 3000);
+    })
+    .catch(err => console.error(err));
 });

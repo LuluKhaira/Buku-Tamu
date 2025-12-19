@@ -1,7 +1,7 @@
 const panel = document.getElementById("previewPanel");
 
 // Tombol SIMPAN → tampilkan preview + 2 tombol
-document.getElementById("btnSimpan").addEventListener("click", function (e){
+document.getElementById("btnSimpan").addEventListener("click", function (e) {
     e.preventDefault();
     const form = document.getElementById("formTamu");
 
@@ -56,37 +56,60 @@ document.getElementById("btnSimpan").addEventListener("click", function (e){
             method: 'POST',
             body: formData
         })
-            .then(response => response.text())
-            .then(data => {
+            .then(response => response.json())
+            .then(res => {
+
+                if (res.status !== 'success') {
+                    alert('Gagal menyimpan data');
+                    return;
+                }
+
+                const kode = res.kode;
 
                 // Reset form
-                document.querySelector("form").reset();
+                document.getElementById("formTamu").reset();
 
-                // Reset panel
+                // TAMPILAN PREVIEW SEPERTI FOTO (TANPA QR)
                 panel.innerHTML = `
-                <h5 class="fw-bold mb-3">Preview Data</h5>
-                <p class="opacity-75">Belum ada data yang diinput.</p>
-            `;
+        <div class="text-center mb-4">
+            <div class="mb-3">
+                <i class="bi bi-check-circle-fill"
+                   style="font-size:60px;color:#b5e3d8;"></i>
+            </div>
+            <h4 class="fw-bold text-white">Check-In Berhasil!</h4>
+            <p class="opacity-75">Simpan kode kunjungan Anda</p>
+        </div>
 
-                // Notifikasi sukses
-                const alert = document.createElement("div");
-                alert.className = "alert alert-success alert-dismissible fade show position-fixed";
-                alert.style.top = "80px";
-                alert.style.right = "20px";
-                alert.style.zIndex = "9999";
-                alert.innerHTML = `
-                Data pengunjung berhasil disimpan!
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            `;
-                document.body.appendChild(alert);
+        <div class="bg-white text-dark p-4 rounded-4 shadow-sm text-center">
+            <small class="text-muted d-block mb-1">SESSION ID</small>
 
-                setTimeout(() => {
-                    alert.remove();
-                }, 3000);
+            <div class="border border-dashed rounded-3 py-3 mb-3"
+                 style="font-size:28px;letter-spacing:3px;font-weight:700;">
+                ${kode}
+            </div>
+
+            <small class="text-muted">
+                Gunakan ID ini saat proses check-out
+            </small>
+
+            <button id="btnUlangi"
+                class="btn btn-dark w-100 mt-4 rounded-pill">
+                Input Data Baru
+            </button>
+        </div>
+    `;
+
+                document.getElementById("btnUlangi").addEventListener("click", () => {
+                    panel.innerHTML = `
+            <h5 class="fw-bold mb-3">Simpan data anda jika berhasil!</h5>
+            <p class="opacity-75">Silakan lengkapi data diri Anda.</p>
+        `;
+                });
 
             })
             .catch(err => console.error(err));
+
     });
 
-    
+
 });

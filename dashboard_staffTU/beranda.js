@@ -1,27 +1,3 @@
-function updateClock() {
-      const now = new Date();
-
-      document.getElementById("clockTime").textContent =
-        String(now.getHours()).padStart(2, '0') + ":" +
-        String(now.getMinutes()).padStart(2, '0');
-
-      document.getElementById("clockDate").textContent =
-        now.toLocaleDateString("id-ID", {
-          weekday: "long"
-        }) + ", " +
-        now.toLocaleDateString("id-ID", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric"
-        });
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock();
-
-   
-
-
     function changeLimit(limit) {
       const params = new URLSearchParams(window.location.search);
 

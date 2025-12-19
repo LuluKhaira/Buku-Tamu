@@ -41,8 +41,6 @@ if (!isset($_SESSION['username'])) {
       flex-grow: 1;
       padding: 0px;
     }
-
-   
   </style>
 </head>
 
@@ -119,146 +117,167 @@ include "../config/db_pengunjung_hariini.php";
 
         </div>
 
-        <div class="row">
-          <div class="col-lg-8 mb-3">
-            <div class="card shadow-sm" style=" overflow-y: auto;">
 
-              <div class="card-header py-3 d-flex justify-content-between align-items-center"
-                style="background:#EFE3D6;">
-                <h5 class="mb-0 fw-semibold" style="color:#8B5E34;">Pengunjung Hari Ini</h5>
-              </div>
+        <div class="col-lg-12 mb-3">
+          <div class="card shadow-sm" style=" overflow-y: auto;">
 
-              <div class="card-body">
-                <div class="row mb-3 align-items-center justify-content-between">
-                  <div class="col-md-6">
-                    <div class="input-group input-group-sm" style="width: 230px;">
-                      <input class="form-control" style="background:#F7E9C8;" type="text" id="searchInput" name="search"
-                        placeholder="Cari nama, tanggal..."
-                        value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
-                        onkeyup="searchEnter(event)">
-                    </div>
-                  </div>
-
-
-                  <div class="col-md-6 d-flex align-items-center justify-content-end gap-2">
-                    <div class="dropdown" id="sortDropdown">
-                      <button class="btn dropdown-toggle sort-button" type="button" id="dropdownMenuSort"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-
-                        <span id="selectedSortOption">
-                          <?= ($filter_jenis == 'all') ? 'Semua' : ucfirst($filter_jenis); ?>
-                        </span>
-                      </button>
-
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuSort">
-                        <li>
-                          <a class="dropdown-item <?= ($filter_jenis == 'all') ? 'active' : '' ?>" href="?jenis=all">
-                            Semua
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="dropdown-item <?= ($filter_jenis == 'satuan') ? 'active' : '' ?>"
-                            href="?jenis=satuan">
-                            Satuan
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="dropdown-item <?= ($filter_jenis == 'kelompok') ? 'active' : '' ?>"
-                            href="?jenis=kelompok">
-                            Kelompok
-                          </a>
-                        </li>
-
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="table-responsive" style="max-height: 310px; overflow-y: auto;">
-                  <table id="tabelPengunjung" class="table table-hover text-center align-middle table-bordered mb-0">
-                    <thead class="table-light sticky-top" style="top: 0; z-index: 10;">
-                      <tr>
-                        <th>Jenis</th>
-                        <th>Nama / PJ</th>
-                        <th>Jumlah</th>
-                        <th>Tanggal</th>
-                        <th>Waktu</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <?php if (!empty($pengunjung_hari_ini)): ?>
-                        <?php foreach ($pengunjung_hari_ini as $p): ?>
-                          <tr>
-                            <td>
-                              <?php if ($p['jenis'] == 'satuan'): ?>
-                                <span class="badge badge-jenis" style="background:#4CAF50;">Satuan</span>
-                              <?php else: ?>
-                                <span class="badge badge-jenis" style="background:#FFC107; color:#000;">Kelompok</span>
-                              <?php endif; ?>
-                            </td>
-
-                            <td><?= htmlspecialchars($p['nama']) ?></td>
-                            <td><?= $p['jumlah'] ?></td>
-
-                            <td><?= date("d/m/Y", strtotime($p['tanggal'])) ?></td>
-                            <td><?= date("H.i", strtotime($p['waktu'])) ?></td>
-                          </tr>
-                        <?php endforeach; ?>
-                      <?php else: ?>
-                        <tr>
-                          <td colspan="5" class="text-muted">Belum ada pengunjung hari ini.</td>
-                        </tr>
-                      <?php endif; ?>
-                    </tbody>
-
-                  </table>
-                </div>
-
-                <p class="text-muted mb-0">
-                  <span class="fw-bold"><?= $first_number ?></span>
-                  - <span class="fw-bold"><?= $last_number ?></span>
-                  dari <span class="fw-bold"><?= $total_data ?></span>.
-                </p>
-                <ul class="pagination pagination-sm justify-content-end mb-0">
-
-                  <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
-                    <a class="page-link"
-                      href="?page=<?= $page - 1 ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">&laquo;</a>
-                  </li>
-
-                  <?php for ($i = 1; $i <= $total_page; $i++): ?>
-                    <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
-                      <a class="page-link" href="?page=<?= $i ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">
-                        <?= $i ?>
-                      </a>
-                    </li>
-                  <?php endfor; ?>
-
-                  <li class="page-item <?= ($page >= $total_page) ? 'disabled' : '' ?>">
-                    <a class="page-link"
-                      href="?page=<?= $page + 1 ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">&raquo;</a>
-                  </li>
-                </ul>
-              </div>
+            <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background:#EFE3D6;">
+              <h5 class="mb-0 fw-semibold" style="color:#8B5E34;">Pengunjung Hari Ini</h5>
             </div>
-          </div>
 
-          <div class="col-lg-4 mb-3">
-            <div class="card h-100 shadow-sm text-center">
-              <div class="card-header py-3" style="background:#EFE3D6;">
-                <h5 class="mb-0 fw-semibold" style="color:#8B5E34;">Waktu Sekarang</h5>
+            <div class="card-body">
+              <div class="row mb-3 align-items-center justify-content-between">
+                <div class="col-md-6">
+                  <div class="input-group input-group-sm" style="width: 230px;">
+                    <input class="form-control" style="background:#F7E9C8;" type="text" id="searchInput" name="search"
+                      placeholder="Cari nama, tanggal..."
+                      value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
+                      onkeyup="searchEnter(event)">
+                  </div>
+                </div>
+
+
+                <div class="col-md-6 d-flex align-items-center justify-content-end gap-2">
+                  <div class="dropdown" id="sortDropdown">
+                    <button class="btn dropdown-toggle sort-button" type="button" id="dropdownMenuSort"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+
+                      <span id="selectedSortOption">
+                        <?= ($filter_jenis == 'all') ? 'Semua' : ucfirst($filter_jenis); ?>
+                      </span>
+                    </button>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuSort">
+                      <li>
+                        <a class="dropdown-item <?= ($filter_jenis == 'all') ? 'active' : '' ?>" href="?jenis=all">
+                          Semua
+                        </a>
+                      </li>
+
+                      <li>
+                        <a class="dropdown-item <?= ($filter_jenis == 'satuan') ? 'active' : '' ?>"
+                          href="?jenis=satuan">
+                          Satuan
+                        </a>
+                      </li>
+
+                      <li>
+                        <a class="dropdown-item <?= ($filter_jenis == 'kelompok') ? 'active' : '' ?>"
+                          href="?jenis=kelompok">
+                          Kelompok
+                        </a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
               </div>
 
-              <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                <h1 id="clockTime" class="fw-bold display-3 mb-0" style="color:#8B5E34;"></h1>
-                <p id="clockDate" class="text-muted fs-4 mt-2"></p>
+              <div class="table-responsive" style="max-height: 310px; overflow-y: auto;">
+                <table id="tabelPengunjung" class="table table-hover text-center align-middle table-bordered mb-0">
+                  <thead class="table-light sticky-top" style="top: 0; z-index: 10;">
+                    <tr>
+                      <th>Jenis</th>
+                      <th>Status</th>
+                      <th>KODE</th>
+                      <th>Nama / PJ</th>
+                      <th>Jumlah</th>
+                      <th>Tanggal</th>
+                      <th>datang</th>
+                      <th>pulang</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <?php if (!empty($pengunjung_hari_ini)): ?>
+                      <?php foreach ($pengunjung_hari_ini as $p): ?>
+                        <tr>
+                          <!-- Jenis -->
+                          <td>
+                            <?php if ($p['jenis'] == 'satuan'): ?>
+                              <span class="badge badge-jenis bg-success">Satuan</span>
+                            <?php else: ?>
+                              <span class="badge badge-jenis bg-warning text-dark">Kelompok</span>
+                            <?php endif; ?>
+                          </td>
+
+                          <!-- Status -->
+                          <td>
+                            <?php if ($p['waktu_pulang'] == NULL): ?>
+                              <span class="badge bg-danger">Belum Pulang</span>
+                            <?php else: ?>
+                              <span class="badge bg-success">Sudah Pulang</span>
+                            <?php endif; ?>
+                          </td>
+
+                          <td>
+                            <?= htmlspecialchars($p['kode'] ?? '-') ?>
+                          </td>
+
+
+                          <!-- Nama -->
+                          <td><?= htmlspecialchars($p['nama']) ?></td>
+
+                          <!-- Jumlah -->
+                          <td><?= $p['jumlah'] ?></td>
+
+                          <!-- Tanggal -->
+                          <td><?= date('d/m/Y', strtotime($p['tanggal'])) ?></td>
+
+                          <!-- Datang -->
+                          <td><?= date('H:i', strtotime($p['waktu_datang'])) ?></td>
+
+                          <!-- Pulang -->
+                          <td>
+                            <?= $p['waktu_pulang']
+                              ? date('H:i', strtotime($p['waktu_pulang']))
+                              : '-' ?>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
+                    <?php else: ?>
+                      <tr>
+                        <td colspan="7" class="text-muted">Belum ada pengunjung hari ini.</td>
+                      </tr>
+                    <?php endif; ?>
+                  </tbody>
+
+
+
+                </table>
               </div>
+
+              <p class="text-muted mb-0">
+                <span class="fw-bold"><?= $first_number ?></span>
+                - <span class="fw-bold"><?= $last_number ?></span>
+                dari <span class="fw-bold"><?= $total_data ?></span>.
+              </p>
+              <ul class="pagination pagination-sm justify-content-end mb-0">
+
+                <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
+                  <a class="page-link"
+                    href="?page=<?= $page - 1 ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">&laquo;</a>
+                </li>
+
+                <?php for ($i = 1; $i <= $total_page; $i++): ?>
+                  <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
+                    <a class="page-link" href="?page=<?= $i ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">
+                      <?= $i ?>
+                    </a>
+                  </li>
+                <?php endfor; ?>
+
+                <li class="page-item <?= ($page >= $total_page) ? 'disabled' : '' ?>">
+                  <a class="page-link"
+                    href="?page=<?= $page + 1 ?>&limit=<?= $limit ?>&jenis=<?= $filter_jenis ?>">&raquo;</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
   </div>

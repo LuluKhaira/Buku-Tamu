@@ -82,75 +82,128 @@ include "../config/db_data_kunjungan.php";
 
       <div class="container-fluid mt-4 px-2">
 
-        <div class="card shadow-sm mb-4">
+        <div class="card shadow-sm border-0 rounded-4">
 
-          <div class="card-header py-3 fw-semibold d-flex justify-content-between align-items-center flex-wrap"
-            style="background:#EFE3D6; color:#8B5E34;">
+          <!-- Card Header -->
+          <div class="card-header p-4" style="background:#ffffff; border-bottom:2px solid #e5e7eb;">
 
-            <span class="fw-bold mb-2 mb-md-0">Laporan Buku Tamu</span>
+            <div class="row g-3 align-items-center">
 
-            <div class="d-flex align-items-center gap-3">
+              <!-- Filter Tanggal -->
+              <div class="col-md-6">
+                <div class="row g-3 align-items-end">
 
-              <form class="d-none d-sm-inline-block" method="GET">
-                <div class="input-group input-group-sm">
-                  <span class="input-group-text border-0" style="background:#D4A373; color:white;">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text" name="search" class="form-control border-0"
-                    style="width: 230px; background:#F7E9C8;" placeholder="Cari nama, Instansi, tanggal..."
-                    value="<?= $_GET['search'] ?? '' ?>">
+                  <div class="col-md-4">
+                    <label class="small fw-semibold text-muted mb-1">DARI TANGGAL</label>
+                    <input type="date" name="dari" class="form-control rounded-3" value="<?= $_GET['dari'] ?? '' ?>">
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="small fw-semibold text-muted mb-1">SAMPAI TANGGAL</label>
+                    <input type="date" name="sampai" class="form-control rounded-3"
+                      value="<?= $_GET['sampai'] ?? '' ?>">
+                  </div>
+
+                  <div class="col-md-4 ">
+                    <button type="submit" class="btn btn-sm text-white "
+                      style="background:#D4A373; border-color:#D4A373;">
+                      <i class="bi bi-funnel"></i> Filter
+                    </button>
+                  </div>
+
                 </div>
-              </form>
+              </div>
 
-              <form method="POST" action="../config/exportexcel.php" class="d-flex gap-2">
-                <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-                <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
-                <button class="btn flex-grow-1" style="background:#2d5f5d; color: #f9f5ed;" name="export_excel">
-                  <i class="bi bi-file-earmark-excel" style="color:white;"></i> Export Data Excel
-                </button>
-              </form>
+              <!-- Action Button -->
+              <div class="col-md-6 d-flex justify-content-md-end gap-2">
 
-              <form method="POST" action="../config/exportpdf.php" class="d-flex gap-2">
+                <!-- Export CSV -->
+                <form method="POST" action="../config/exportexcel.php">
+                  <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+                  <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
 
-                <button class="btn btn-danger flex-grow-1" name="export_pdf">
-                  <i class="bi bi-file-earmark-pdf"></i> Export Data PDF
-                </button>
-              </form>
+                  <button class="btn btn-success px-4 rounded-3" name="export_excel">
+                    <i class="bi bi-download me-1"></i> EXCEL
+                  </button>
+                </form>
+
+                <!-- Export PDF -->
+                <form method="POST" action="../config/exportpdf.php">
+                  <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+                  <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+
+                  <button class="btn btn-danger px-4 rounded-3" name="export_excel">
+                    <i class="bi bi-download me-1" name="export_pdf"></i> PDF
+                  </button>
+                </form>
+
+
+
+              </div>
+
             </div>
           </div>
-          <div class="card-body">
-            <form method="GET" class="row g-3 mb-4 align-items-end justify-content-center">
-              <div class="col-md-3 col-lg-2 text-center">
-                <label class="form-label mb-0 small" style="color:#8B5E34;">Dari Tanggal</label>
-                <input type="date" name="dari" class="form-control form-control-sm" style="border: 1.9px solid #8B5E34;"
-                  value="<?= $_GET['dari'] ?? '' ?>">
-              </div>
+        </div>
+        <br>
 
-              <div class="col-md-3 col-lg-2 text-center">
-                <label class="form-label mb-0 small" style="color:#8B5E34;">Sampai Tanggal</label>
-                <input type="date" name="sampai" class="form-control form-control-sm"
-                  style="border: 1.9px solid #8B5E34;" value="<?= $_GET['sampai'] ?? '' ?>">
-              </div>
+        <div class="card shadow-sm border-0 rounded-4">
 
-              <div class="col-auto">
-                <button type="submit" class="btn btn-sm text-white" style="background:#D4A373; border-color:#D4A373;">
-                  <i class="bi bi-funnel"></i> Filter
-                </button>
-              </div>
+          <!-- Card Header (Search & Filter) -->
+          <div class="card-header py-0" style="background:#EFE3D6; color:#8B5E34;">
+            <form method="GET">
+              <div class="rounded-4 p-3">
 
+                <div class="row g-2 align-items-center">
+
+                  <!-- Search -->
+                  <div class="col">
+                    <div class="input-group shadow-sm rounded-pill overflow-hidden">
+                      <span class="input-group-text bg-white border-0 ps-3">
+                        <i class="fas fa-search text-muted"></i>
+                      </span>
+                      <input type="text" name="search" class="form-control border-0"
+                        placeholder="Cari nama, instansi, atau ID dalam periode ini..."
+                        value="<?= $_GET['search'] ?? '' ?>">
+                    </div>
+                  </div>
+
+                  <!-- Filter Status -->
+                  <div class="col-auto">
+                    <select name="status" class="form-select shadow-sm rounded-pill px-4">
+                      <option value="">Semua Status</option>
+                      <option value="sedang" <?= ($_GET['status'] ?? '') == 'sedang' ? 'selected' : '' ?>>
+                        Sedang Berkunjung
+                      </option>
+                      <option value="pulang" <?= ($_GET['status'] ?? '') == 'pulang' ? 'selected' : '' ?>>
+                        Sudah Pulang
+                      </option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
             </form>
+          </div>
 
-            <div class="table-responsive" style="max-height: 465px; overflow-y: auto; overflow-x: auto;">
-              <table class="table table-hover table-bordered table-custom align-middle mb-0">
+          <!-- Card Body (Table) -->
+          <div class="card-body p-0">
 
-                <thead style="background:#EFE3D6; color:#8B5E34; position: sticky; top: 0; z-index: 5;">
+            <div class="table-responsive" style="max-height:465px; overflow:auto;">
+              <table class="table table-hover table-bordered align-middle mb-0">
+
+                <!-- Table Header -->
+                <thead class="text-center"
+                  style="background:#EFE3D6; color:#8B5E34; position:sticky; top:0; z-index:5;">
                   <tr>
                     <th>No</th>
-                    <th>Pengunjung</th>
+                    <th>Status</th>
+                    <th>KODE</th>
+                    <th>Nama Pengunjung</th>
                     <th>No HP</th>
                     <th>Tanggal</th>
-                    <th>Waktu</th>
+                    <th>Waktu Datang</th>
+                    <th>Waktu Pulang</th>
                     <th>Instansi</th>
                     <th>Tujuan</th>
                     <th>Jumlah</th>
@@ -159,76 +212,92 @@ include "../config/db_data_kunjungan.php";
                   </tr>
                 </thead>
 
+                <!-- Table Body -->
                 <tbody>
-
                   <?php
                   include_once '../config/connect.php';
                   include '../config/db_data_kunjungan.php';
+
                   $q = mysqli_query($connect, $sql);
 
-                  if (!$q) {
-                    echo '<tr><td colspan="10" class="text-danger">Query error: ' . mysqli_error($connect) . '</td></tr>';
-                  } else {
-                    if (mysqli_num_rows($q) == 0) {
-                      echo '<tr>
-                <td colspan="10" class="text-muted text-center">
-                  Belum ada pengunjung dibulan / tanggal ini.
-                </td>
-              </tr>';
-                    } else {
-                      $no = 1;
-                      while ($row = mysqli_fetch_assoc($q)):
-                        ?>
-                        <tr data-id="<?= $row['no_pengunjung'] ?>">
-                          <td><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
-                          <td><?= htmlspecialchars($row['nama']) ?></td>
-                          <td><?= htmlspecialchars($row['no_hp']) ?></td>
-                          <td><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
-                          <td><?= date('H.i', strtotime($row['waktu'])) ?></td>
-                          <td class="td-text" data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['instansi']) ?>">
-                            <?= htmlspecialchars($row['instansi']) ?>
-                          </td>
+                  if (!$q): ?>
+                    <tr>
+                      <td colspan="12" class="text-danger text-center">
+                        Query error: <?= mysqli_error($connect) ?>
+                      </td>
+                    </tr>
 
-                          <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
-                            data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['tujuan']) ?>">
-                            <?= htmlspecialchars($row['tujuan']) ?>
-                          </td>
-                          <td><?= $row['jumlah'] ?></td>
-                          <td>
-                            <?php if ($row['jenis'] == 'satuan'): ?>
-                              <span class="badge bg-success badge-jenis">Satuan</span>
-                            <?php else: ?>
-                              <span class="badge bg-warning text-dark badge-jenis">Kelompok</span>
-                            <?php endif; ?>
-                          </td>
+                  <?php elseif (mysqli_num_rows($q) == 0): ?>
+                    <tr>
+                      <td colspan="12" class="text-muted text-center py-4">
+                        Belum ada pengunjung pada periode ini.
+                      </td>
+                    </tr>
 
-                          <td class="text-center align-middle">
-                            <div class="d-flex justify-content-center align-items-center gap-2">
-                              <button
-                                class="btn btn-success d-flex align-items-center justify-content-center btn-sm btn-edit">
-                                <i class="bi bi-pencil"></i>
-                              </button>
+                  <?php else:
+                    $no = 1;
+                    while ($row = mysqli_fetch_assoc($q)): ?>
+                      <tr data-id="<?= $row['no_pengunjung'] ?>">
 
-                              <button
-                                class="btn btn-danger d-flex align-items-center justify-content-center btn-sm btn-delete">
-                                <i class="bi bi-trash"></i>
-                              </button>
-                            </div>
-                          </td>
+                        <td class="text-center"><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
 
+                        <td class="text-center">
+                          <i class="bi bi-circle-fill <?= $row['waktu_pulang'] ? 'text-danger' : 'text-success' ?>"></i>
+                        </td>
 
-                        </tr>
-                        <?php
-                      endwhile;
-                    }
-                  }
-                  ?>
+                        
+                        <td>
+                          <?= htmlspecialchars($row['kode'] ?? '') ?>
+                        </td>
+
+                        <td><?= htmlspecialchars($row['nama']) ?></td>
+                        <td><?= htmlspecialchars($row['no_hp']) ?></td>
+                        <td class="text-center"><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
+                        <td class="text-center"><?= date('H:i', strtotime($row['waktu_datang'])) ?></td>
+                        <td class="text-center">
+                          <?= $row['waktu_pulang'] ? date('H:i', strtotime($row['waktu_pulang'])) : '-' ?>
+                        </td>
+
+                        <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
+                          data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['instansi']) ?>">
+                          <?= htmlspecialchars($row['instansi']) ?>
+                        </td>
+
+                        <td style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
+                          data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['tujuan']) ?>">
+                          <?= htmlspecialchars($row['tujuan']) ?>
+                        </td>
+
+                        <td class="text-center"><?= $row['jumlah'] ?></td>
+
+                        <td class="text-center">
+                          <span class="badge <?= $row['jenis'] == 'satuan' ? 'bg-success' : 'bg-warning text-dark' ?>">
+                            <?= ucfirst($row['jenis']) ?>
+                          </span>
+                        </td>
+
+                        <td class="text-center">
+                          <div class="d-flex justify-content-center gap-2">
+                            <button class="btn btn-success btn-sm btn-edit">
+                              <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm btn-delete">
+                              <i class="bi bi-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+
+                      </tr>
+                    <?php endwhile;
+                  endif; ?>
                 </tbody>
+
               </table>
             </div>
 
           </div>
         </div>
+
 
       </div>
     </div>
@@ -268,6 +337,14 @@ include "../config/db_data_kunjungan.php";
             <div class="mb-2">
               <label class="form-label small">Jumlah</label>
               <input type="number" class="form-control" id="editJumlah">
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label small">Status Kunjungan</label>
+              <select class="form-select" id="editStatus">
+                <option value="sedang">Sedang Berkunjung</option>
+                <option value="pulang">Sudah Pulang</option>
+              </select>
             </div>
 
           </form>
@@ -322,17 +399,19 @@ include "../config/db_data_kunjungan.php";
 
         let data = tr.querySelectorAll('td');
 
-        document.getElementById('editNama').value = data[1].textContent.trim();
-        document.getElementById('editNoHp').value = data[2].textContent.trim();
-        document.getElementById('editInstansi').value = data[5].textContent.trim();
-        document.getElementById('editTujuan').value = data[6].textContent.trim();
-        document.getElementById('editJumlah').value = data[7].textContent.trim();
+        document.getElementById('editNama').value = data[2].textContent.trim();
+        document.getElementById('editNoHp').value = data[3].textContent.trim();
+        document.getElementById('editInstansi').value = data[7].textContent.trim();
+        document.getElementById('editTujuan').value = data[8].textContent.trim();
+        document.getElementById('editJumlah').value = data[9].textContent.trim();
+        document.getElementById('editStatus').value = data[1].textContent.trim();
 
         modalEdit.show();
       });
     });
 
     document.getElementById('btnSimpanEdit').addEventListener('click', function () {
+
 
       let formData = new FormData();
       formData.append('no_pengunjung', selectedId);
@@ -341,6 +420,7 @@ include "../config/db_data_kunjungan.php";
       formData.append('instansi', document.getElementById('editInstansi').value);
       formData.append('tujuan', document.getElementById('editTujuan').value);
       formData.append('jumlah', document.getElementById('editJumlah').value);
+      formData.append('status', document.getElementById('editStatus').value);
 
       fetch('../config/data_kunjungan_update.php', {
         method: 'POST',

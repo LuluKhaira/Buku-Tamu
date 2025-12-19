@@ -8,6 +8,7 @@ $instansi = $_POST['instansi'] ?? '';
 $tujuan   = $_POST['tujuan'] ?? '';
 $jumlah   = $_POST['jumlah'] ?? '';
 
+
 if ($id == '') {
     echo json_encode(['status' => 'error', 'message' => 'ID kosong']);
     exit;
@@ -19,7 +20,8 @@ $sql = "UPDATE pengunjung SET
             instansi='$instansi',
             tujuan='$tujuan',
             jumlah='$jumlah'
-        WHERE no_pengunjung='$id'";
+        WHERE no_pengunjung='$id'
+        AND status='datang'";
 
 if (mysqli_query($connect, $sql)) {
     echo json_encode(['status' => 'success']);

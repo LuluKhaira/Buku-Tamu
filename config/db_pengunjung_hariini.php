@@ -4,11 +4,12 @@ date_default_timezone_set('Asia/Jakarta');
 
 $filter_jenis = isset($_GET['jenis']) ? $_GET['jenis'] : 'all';
 
-$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
-$page  = isset($_GET['page'])  ? (int)$_GET['page'] : 1;
+$limit = isset($_GET['limit']) ? (int) $_GET['limit'] : 10;
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-if ($page < 1) $page = 1; 
+if ($page < 1)
+    $page = 1;
 
 $offset = ($page - 1) * $limit;
 
@@ -51,7 +52,7 @@ if (!empty($search)) {
     )";
 }
 
-$sql .= " ORDER BY waktu DESC LIMIT $limit OFFSET $offset";
+$sql .= " ORDER BY waktu_datang DESC LIMIT $limit OFFSET $offset";
 
 $result = mysqli_query($connect, $sql);
 
@@ -63,6 +64,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 $total_page = ceil($total_data / $limit);
 
 $first_number = ($total_data > 0) ? $offset + 1 : 0;
-$last_number  = $offset + count($pengunjung_hari_ini);
+$last_number = $offset + count($pengunjung_hari_ini);
 ?>
-

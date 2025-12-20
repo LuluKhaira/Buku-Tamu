@@ -15,7 +15,6 @@ $jenis      = 'kelompok';
 
 $tanggal     = date("Y-m-d");
 $waktuDatang = date("H:i:s");
-$status      = 'datang';
 
 // === GENERATE KODE UNIK (SAMA KAYAK ONLY) ===
 $kode = generateKode();
@@ -27,9 +26,9 @@ while (mysqli_num_rows($cek) > 0) {
 
 // === INSERT DATA ===
 $sql = "INSERT INTO pengunjung
-        (kode, status, nama, no_hp, tanggal, waktu_datang, instansi, tujuan, jumlah, jenis)
+        (kode, nama, no_hp, tanggal, waktu_datang, instansi, tujuan, jumlah, jenis)
         VALUES
-        ('$kode','$status','$nama','$no_hp','$tanggal','$waktuDatang','$instansi','$tujuan','$jumlah','$jenis')";
+        ('$kode','$nama','$no_hp','$tanggal','$waktuDatang','$instansi','$tujuan','$jumlah','$jenis')";
 
 if (mysqli_query($connect, $sql)) {
     echo json_encode([

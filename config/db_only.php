@@ -1,6 +1,8 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header('Content-Type: application/json');
+
 
 include '../config/connect.php';
 date_default_timezone_set('Asia/Jakarta');
@@ -17,13 +19,16 @@ $jenis    = $_POST['jenis'] ?? '';
 $jumlah   = $_POST['jumlah'] ?? 1;
 
 if ($nama === '' || $no_hp === '') {
-    echo "ERROR|Data tidak lengkap";
+    echo json_encode([
+        'status' => 'error',
+        'msg'    => 'Data tidak lengkap'
+    ]);
     exit;
 }
 
 $tanggal = date("Y-m-d");
 $waktu   = date("H:i:s");
-$status  = 'datang';
+
 
 // generate kode unik
 do {
@@ -32,15 +37,21 @@ do {
 } while (mysqli_num_rows($cek) > 0);
 
 $sql = "INSERT INTO pengunjung
-(kode,status,nama,no_hp,tanggal,waktu_datang,instansi,tujuan,jumlah,jenis)
+(kode, nama, no_hp, tanggal, waktu_datang, instansi, tujuan, jumlah, jenis)
 VALUES
-('$kode','$status','$nama','$no_hp','$tanggal','$waktu','$instansi','$tujuan','$jumlah','$jenis')";
+('$kode','$nama','$no_hp','$tanggal','$waktu','$instansi','$tujuan','$jumlah','$jenis')";
 
 if (!mysqli_query($connect, $sql)) {
-    echo "ERROR|Gagal menyimpan";
+    echo json_encode([
+        'status' => 'error',
+        'msg'    => 'Gagal menyimpan'
+    ]);
     exit;
 }
 
-// SUKSES → KIRIM TEKS
-echo "OK|$kode";
+// ✅ SUKSES → JSON
+echo json_encode([
+    'status' => 'success',
+    'kode'   => $kode
+]);
 exit;

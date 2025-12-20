@@ -6,25 +6,35 @@ $nama     = $_POST['nama'] ?? '';
 $no_hp    = $_POST['no_hp'] ?? '';
 $instansi = $_POST['instansi'] ?? '';
 $tujuan   = $_POST['tujuan'] ?? '';
-$jumlah   = $_POST['jumlah'] ?? '';
-
+$status   = $_POST['status'] ?? '';
 
 if ($id == '') {
     echo json_encode(['status' => 'error', 'message' => 'ID kosong']);
     exit;
 }
 
-$sql = "UPDATE pengunjung SET 
-            nama='$nama',
-            no_hp='$no_hp',
-            instansi='$instansi',
-            tujuan='$tujuan',
-            jumlah='$jumlah'
-        WHERE no_pengunjung='$id'
-        AND status='datang'";
+// Tentukan waktu_pulang berdasarkan status
+if ($status === 'pulang') {
+    $waktu_pulang = date('Y-m-d H:i:s'); // waktu sekarang
+} else {
+    $waktu_pulang = null; // kosongkan jika masih datang
+}
 
-if (mysqli_query($connect, $sql)) {
+// Prepared statement agar aman
+$stmt = $connect->prepare("UPDATE pengunjung SET 
+    nama = ?, 
+    no_hp = ?, 
+    instansi = ?, 
+    tujuan = ?, 
+    waktu_pulang = ?
+    WHERE no_pengunjung = ?");
+
+$stmt->bind_param("sssssi", $nama, $no_hp, $instansi, $tujuan, $waktu_pulang, $id);
+
+if ($stmt->execute()) {
     echo json_encode(['status' => 'success']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => mysqli_error($connect)]);
+    echo json_encode(['status' => 'error', 'message' => $stmt->error]);
 }
+$stmt->close();
+?>

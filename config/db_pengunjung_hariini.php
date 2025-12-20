@@ -23,18 +23,13 @@ $sql_count = "SELECT COUNT(*) AS total
               FROM pengunjung 
               WHERE DATE(tanggal) = CURDATE()";
 
-// filter jenis
-if ($filter_jenis === "satuan") {
-    $sql_count .= " AND jenis = 'satuan'";
-} elseif ($filter_jenis === "kelompok") {
-    $sql_count .= " AND jenis = 'kelompok'";
-}
+
 
 // filter status
 if ($status === "datang") {
-    $sql_count .= " AND waktu_datang IS NOT NULL AND waktu_pulang IS NULL";
+    $sql .= " AND waktu_pulang IS NULL";
 } elseif ($status === "pulang") {
-    $sql_count .= " AND waktu_pulang IS NOT NULL";
+    $sql .= " AND waktu_pulang IS NOT NULL";
 }
 
 // search

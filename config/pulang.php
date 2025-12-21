@@ -16,5 +16,5 @@ mysqli_query($connect, "
 
 echo '
 <div class="alert alert-success rounded-4">
-    Check-out berhasil. Terima kasih 🙏
+    Keluar berhasil. Terima kasih telah berkunjung^^
 </div>';

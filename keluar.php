@@ -51,7 +51,7 @@
                     <span style="color: #f4b942; font-style: italic;">Pengunjung!</span>
                 </h2>
                 <p class="text-secondary mb-0">
-                    Scan QR Code atau masukkan Session ID Anda.
+                    Masukkan Session ID Anda.
                 </p>
             </div>
 

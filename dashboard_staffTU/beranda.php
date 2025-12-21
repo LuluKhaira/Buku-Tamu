@@ -183,8 +183,8 @@ include "../config/db_pengunjung_hariini.php";
                       <th>Nama / PJ</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
-                      <th>datang</th>
-                      <th>pulang</th>
+                      <th>Datang</th>
+                      <th>Pulang</th>
                     </tr>
                   </thead>
 

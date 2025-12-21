@@ -155,16 +155,16 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
           <div class="card-body p-0">
             <div class="table-responsive" style="max-height:465px; overflow:auto;">
               <table class="table table-hover table-bordered align-middle mb-0">
-                <thead class="text-center" style="background:#EFE3D6; color:#8B5E34; position:sticky; top:0; z-index:5;">
+                <thead class="table-light text-center" style="background:#EFE3D6; color:#8B5E34; position:sticky; top:0; z-index:5;">
                   <tr>
                     <th>No</th>
                     <th>Status</th>
                     <th>KODE</th>
-                    <th>Nama Pengunjung</th>
+                    <th>Nama</th>
                     <th>No HP</th>
                     <th>Tanggal</th>
-                    <th>Waktu Datang</th>
-                    <th>Waktu Pulang</th>
+                    <th>Datang</th>
+                    <th>Pulang</th>
                     <th>Instansi</th>
                     <th>Tujuan</th>
                     <th>Jumlah</th>

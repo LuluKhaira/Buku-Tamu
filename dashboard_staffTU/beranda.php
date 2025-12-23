@@ -1,11 +1,8 @@
-<?php
-session_start();
-
+<?php session_start();
 if (!isset($_SESSION['username'])) {
   header("Location: ../login.php");
   exit();
-}
-?>
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +10,33 @@ if (!isset($_SESSION['username'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buku Tamu Staff TU</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     body {
       font-family: 'Poppins', sans-serif !important;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif !important;
+      background: #f2f2f2;
+    }
+
+    /* CRITICAL: Reset margin/padding */
+    html,
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden;
+    }
+
+    /* Navbar full width tanpa margin */
+    .navbar {
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     .badge-jenis {
@@ -34,12 +48,105 @@ if (!isset($_SESSION['username'])) {
     }
 
     .page-wrapper {
-      margin-top: -30px;
+      margin-top: 0px;
+      padding: 0;
     }
 
     .main-content {
       flex-grow: 1;
       padding: 0px;
+      padding-top: 70px !important;
+      margin-top: 0 !important;
+    }
+
+    /* Container fluid reset margin */
+    .container-fluid {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+
+    /* ================= iPAD / TABLET ONLY ================= */
+    @media (max-width: 1200px) and (min-width: 768px) {
+
+      /* Paksa 3 card sejajar */
+      .stats-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 12px;
+      }
+
+      .stats-row>div {
+        flex: 1 1 0;
+        max-width: 33.333%;
+      }
+
+      /* SEMBUNYIKAN TEKS */
+      .stats-label,
+      .stats-text {
+        display: none !important;
+      }
+
+      /* Perbesar angka */
+      .stats-number {
+        font-size: 1.3rem !important;
+      }
+
+      /* Perbesar icon */
+      .stats-card i {
+        font-size: 2rem !important;
+      }
+
+      /* Tengah vertikal */
+      .stats-card .row {
+        align-items: center;
+      }
+    }
+
+
+    /* RESPONSIVE MOBILE */
+    @media (max-width: 576px) {
+      .container-fluid {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+      }
+
+      .card-body {
+        padding: 12px !important;
+      }
+
+      .table th,
+      .table td {
+        padding: 8px 5px !important;
+        font-size: 12px;
+      }
+
+      .badge-jenis {
+        width: 70px;
+        font-size: 0.7rem;
+      }
+
+      /* Stack card header items vertically */
+      .card-header .row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .input-group {
+        width: 100% !important;
+      }
+
+      /* KHUSUS TABLET */
+      @media (max-width: 991.98px) and (min-width: 577px) {
+        .card .h5 {
+          font-size: 1rem;
+        }
+
+        .card i {
+          font-size: 1.8rem !important;
+        }
+      }
+
+
     }
   </style>
 </head>
@@ -59,9 +166,9 @@ include "../config/db_pengunjung_hariini.php";
 
       <?php include '../Nav_Side_Bar/navbar.php'; ?>
 
-      <div class="container mt-4">
-        <div class="row">
-          <div class="col-xl-4 col-md-6 mb-4">
+      <div class="container-fluid mt-3 px-2 px-md-3">
+        <div class="row stats-row">
+          <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
             <div class="card h-100 py-2" style="border-left:8px solid #D4A373; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
               <div class="card-body">
                 <div class="row align-items-center">
@@ -130,7 +237,7 @@ include "../config/db_pengunjung_hariini.php";
                 <div class="col-md-6">
                   <div class="input-group input-group-sm" style="width: 230px;">
                     <input class="form-control" style="background:#F7E9C8;" type="text" id="searchInput" name="search"
-                      placeholder="Cari nama..."
+                      placeholder="Cari nama, tanggal..."
                       value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
                       onkeyup="searchEnter(event)">
                   </div>
@@ -183,8 +290,8 @@ include "../config/db_pengunjung_hariini.php";
                       <th>Nama / PJ</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
-                      <th>Datang</th>
-                      <th>Pulang</th>
+                      <th>datang</th>
+                      <th>pulang</th>
                     </tr>
                   </thead>
 
@@ -275,9 +382,6 @@ include "../config/db_pengunjung_hariini.php";
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   </div>

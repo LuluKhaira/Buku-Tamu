@@ -32,11 +32,13 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
     }
 
     .page-wrapper {
-      margin-top: -30px;
+      margin-top: 0;
+      padding: 0;
     }
 
     .main-content {
       flex-grow: 1;
+      padding-top: 70px;
     }
 
     .table-custom {
@@ -74,59 +76,59 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
     <div class="main-content">
       <?php include '../Nav_Side_Bar/navbar.php'; ?>
 
-      <div class="container-fluid mt-4 px-2">
+      <div class="container-fluid mt-2 px-2">
 
         <!-- Filter Tanggal & Export -->
         <div class="card shadow-sm border-0 rounded-4">
   <div class="card-header p-3 border-0 bg-white">
-    <div class="d-flex justify-content-between align-items-start flex-wrap">
-
+    
+    <!-- Container utama: flex row di desktop, column di mobile -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+      
       <!-- Bagian Kiri: Filter Tanggal -->
-      <form method="GET" class="d-flex gap-2 flex-wrap">
+      <form method="GET" class="d-flex gap-2 flex-wrap align-items-end">
         <div>
           <label class="small fw-semibold text-muted mb-1">DARI TANGGAL</label>
-          <input type="date" name="dari" class="form-control rounded-3" value="<?= htmlspecialchars($_GET['dari'] ?? '') ?>">
+          <input type="date" name="dari" class="form-control form-control-sm rounded-3" value="<?= htmlspecialchars($_GET['dari'] ?? '') ?>">
         </div>
         <div>
           <label class="small fw-semibold text-muted mb-1">SAMPAI TANGGAL</label>
-          <input type="date" name="sampai" class="form-control rounded-3" value="<?= htmlspecialchars($_GET['sampai'] ?? '') ?>">
+          <input type="date" name="sampai" class="form-control form-control-sm rounded-3" value="<?= htmlspecialchars($_GET['sampai'] ?? '') ?>">
         </div>
-        <div class="d-flex align-items-end">
+        <div>
           <button type="submit" class="btn btn-sm text-white" style="background:#D4A373; border-color:#D4A373;">
-            <i class="bi bi-funnel"></i> Filter
+            <i class="bi bi-funnel"></i><span class="d-none d-md-inline ms-1">Filter</span>
           </button>
         </div>
       </form>
 
-      <!-- Bagian Kanan: Export & Status -->
-      <div class="text-end">
-        <!-- Export Buttons -->
-        <div class="d-flex gap-2 mb-2 flex-wrap justify-content-end">
-          <form method="POST" action="../config/exportexcel.php">
-            <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-            <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
-            <button class="btn btn-success px-4 rounded-3" name="export_excel">
-              <i class="bi bi-download me-1"></i> EXCEL
-            </button>
-          </form>
-          <form method="POST" action="../config/exportpdf.php">
-            <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
-            <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
-            <button class="btn btn-danger px-4 rounded-3" name="export_pdf">
-              <i class="bi bi-download me-1"></i> PDF
-            </button>
-          </form>
-        </div>
-
-        <!-- Penjelasan Status -->
-        <div style="font-size: 12px;">
-          <em class="me-2 text-body-tertiary">*Status</em>
-          <span class="me-3"><i class="bi bi-circle-fill text-success"></i> Sudah Pulang</span>
-          <span><i class="bi bi-circle-fill text-danger"></i> Belum Pulang</span>
-        </div>
+      <!-- Bagian Kanan: Export Buttons -->
+      <div class="d-flex gap-2 flex-wrap">
+        <form method="POST" action="../config/exportexcel.php" class="d-inline">
+          <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+          <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+          <button class="btn btn-success btn-sm px-3 rounded-3" name="export_excel">
+            <i class="bi bi-download me-1"></i> EXCEL
+          </button>
+        </form>
+        <form method="POST" action="../config/exportpdf.php" class="d-inline">
+          <input type="hidden" name="tanggala" value="<?= $_GET['dari'] ?? '' ?>">
+          <input type="hidden" name="tanggalb" value="<?= $_GET['sampai'] ?? '' ?>">
+          <button class="btn btn-danger btn-sm px-3 rounded-3" name="export_pdf">
+            <i class="bi bi-download me-1"></i> PDF
+          </button>
+        </form>
       </div>
 
     </div>
+
+    <!-- Penjelasan Status -->
+    <div class="text-start text-md-end mt-2" style="font-size: 12px;">
+      <em class="me-2 text-body-tertiary">*Status</em>
+      <span class="me-3"><i class="bi bi-circle-fill text-success"></i> Sudah Pulang</span>
+      <span><i class="bi bi-circle-fill text-danger"></i> Belum Pulang</span>
+    </div>
+
   </div>
 </div>
 

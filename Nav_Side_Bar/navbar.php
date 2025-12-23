@@ -1,6 +1,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-<nav class="navbar navbar-expand sticky-top p-0 m-0" style="background-color:#2d5f5d; min-height:64px;">
+<nav class="navbar navbar-expand p-0 m-0" style="background-color:#2d5f5d; min-height:64px; position:fixed; top:0; left:0; right:0; z-index:1050;">
   
   <!-- HAMBURGER -->
   <button class="btn btn-outline-light ms-3 d-lg-none" 

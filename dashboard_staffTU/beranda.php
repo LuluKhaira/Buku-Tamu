@@ -130,7 +130,7 @@ include "../config/db_pengunjung_hariini.php";
                 <div class="col-md-6">
                   <div class="input-group input-group-sm" style="width: 230px;">
                     <input class="form-control" style="background:#F7E9C8;" type="text" id="searchInput" name="search"
-                      placeholder="Cari nama, tanggal..."
+                      placeholder="Cari nama..."
                       value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
                       onkeyup="searchEnter(event)">
                   </div>

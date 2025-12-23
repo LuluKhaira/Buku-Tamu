@@ -16,6 +16,30 @@
   body {
     font-family: 'Poppins', sans-serif !important;
   }
+
+  /* Responsive untuk mobile */
+  @media (max-width: 767.98px) {
+    .card {
+      margin: 10px;
+      border-radius: 1rem !important;
+    }
+    
+    .card-body {
+      padding: 2rem !important;
+    }
+  }
+
+  /* Icon alignment yang lebih baik */
+  .form-control {
+    height: 45px;
+  }
+
+  .position-relative i {
+    line-height: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+  }
 </style>
 
 
@@ -29,7 +53,7 @@
             style="border-radius: 1rem 0 0 1rem; object-fit: cover;">
         </div>
         <div class="col-md-7 d-flex align-items-center justify-content-center">
-          <div class="card-body p-5 text-center text-md-start" style="width: 100%; max-width: 380px;"">
+          <div class="card-body p-4 p-md-5 text-center text-md-start" style="width: 100%; max-width: 380px;">
             <div class="text-center mb-4">
               <h3 class="fw-bold mt-3">Login</h3>
             </div>
@@ -81,9 +105,7 @@
             </form>
 
             <div class="text-start">
-              <a href="#" onclick="openPopup()" class="small text-muted text-start text-decoration-none">Lupa
-                Password?</a>
-              </p>
+              <a href="#" onclick="openPopup()" class="small text-muted text-decoration-none">Lupa Password?</a>
             </div>
           </div>
         </div>

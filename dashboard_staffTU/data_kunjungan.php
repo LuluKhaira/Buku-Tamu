@@ -38,7 +38,7 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
 
     .main-content {
       flex-grow: 1;
-      padding-top: 70px;
+      padding-top: 35px;
     }
 
     .table-custom {
@@ -65,6 +65,59 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    /* Mobile: buat tabel penuhi layar dengan pembatas */
+    @media (max-width: 768px) {
+      html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+      
+      .page-wrapper {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      .main-content > .container-fluid {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding-bottom: 10px;
+      }
+      
+      .main-content > .container-fluid > .card.mt-4 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 0 !important;
+      }
+      
+      .main-content > .container-fluid > .card.mt-4 > .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 0;
+      }
+      
+      .main-content > .container-fluid > .card.mt-4 > .card-body > .table-responsive {
+        flex: 1;
+        overflow-y: auto !important;
+        max-height: none !important;
+      }
     }
   </style>
 </head>

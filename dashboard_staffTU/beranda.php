@@ -55,7 +55,7 @@ if (!isset($_SESSION['username'])) {
     .main-content {
       flex-grow: 1;
       padding: 0px;
-      padding-top: 70px !important;
+      padding-top: 45px !important;
       margin-top: 0 !important;
     }
 

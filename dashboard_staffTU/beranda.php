@@ -344,7 +344,7 @@ include "../config/db_pengunjung_hariini.php";
                       <?php endforeach; ?>
                     <?php else: ?>
                       <tr>
-                        <td colspan="7" class="text-muted">Belum ada pengunjung hari ini.</td>
+                        <td colspan="8" class="text-muted">Belum ada pengunjung hari ini.</td>
                       </tr>
                     <?php endif; ?>
                   </tbody>

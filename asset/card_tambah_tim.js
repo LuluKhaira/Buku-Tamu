@@ -80,7 +80,7 @@ document.getElementById("btnSimpan").addEventListener("click", function (e) {
                         <i class="bi bi-check-circle-fill"
                            style="font-size:60px;color:#b5e3d8;"></i>
                     </div>
-                    <h4 class="fw-bold text-white">Check-In Berhasil!</h4>
+                    <h4 class="fw-bold text-white">Masuk Berhasil!</h4>
                     <p class="opacity-75">Simpan kode kunjungan Anda</p>
                 </div>
 

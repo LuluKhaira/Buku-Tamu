@@ -240,7 +240,7 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
                         <td><?= str_pad($no++, 2, "0", STR_PAD_LEFT) ?></td>
                         <td class="text-center"><i class="bi bi-circle-fill <?= $row['waktu_pulang'] ? 'text-success' : 'text-danger' ?>"></i></td>
                         <td><?= htmlspecialchars($row['kode']) ?></td>
-                        <td><?= htmlspecialchars($row['nama']) ?></td>
+                        <td class="td-text" data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['nama']) ?>"><?= htmlspecialchars($row['nama']) ?></td>
                         <td><?= htmlspecialchars($row['no_hp']) ?></td>
                         <td class="text-center"><?= date('d/m/Y', strtotime($row['tanggal'])) ?></td>
                         <td class="text-center"><?= date('H:i', strtotime($row['waktu_datang'])) ?></td>

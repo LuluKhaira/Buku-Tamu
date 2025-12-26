@@ -237,7 +237,7 @@ include "../config/db_pengunjung_hariini.php";
                 <div class="col-md-6">
                   <div class="input-group input-group-sm" style="width: 230px;">
                     <input class="form-control" style="background:#F7E9C8;" type="text" id="searchInput" name="search"
-                      placeholder="Cari nama, tanggal..."
+                      placeholder="Cari nama..."
                       value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
                       onkeyup="searchEnter(event)">
                   </div>
@@ -323,9 +323,9 @@ include "../config/db_pengunjung_hariini.php";
 
 
                           <!-- Nama -->
-                          <td><?= htmlspecialchars($p['nama']) ?></td>
+                          <td class="td-text" data-bs-toggle="tooltip" title="<?= htmlspecialchars($p['nama']) ?>"><?= htmlspecialchars($p['nama']) ?></td>
 
-                          <!-- Jumlah -->
+                         
                           <td><?= $p['jumlah'] ?></td>
 
                           <!-- Tanggal -->
@@ -388,6 +388,8 @@ include "../config/db_pengunjung_hariini.php";
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../dashboard_staffTU/beranda.js"></script>
+  <script>
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));</script>
 </body>
 
 </html>

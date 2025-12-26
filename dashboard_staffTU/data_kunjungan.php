@@ -248,7 +248,7 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
                         <td class="td-text" data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['instansi']) ?>"><?= htmlspecialchars($row['instansi']) ?></td>
                         <td class="td-text" data-bs-toggle="tooltip" title="<?= htmlspecialchars($row['tujuan']) ?>"><?= htmlspecialchars($row['tujuan']) ?></td>
                         <td class="text-center"><?= $row['jumlah'] ?></td>
-                        <td class="text-center"><span class="badge <?= $row['jenis'] == 'satuan' ? 'bg-success' : 'bg-warning text-dark' ?>"><?= ucfirst($row['jenis']) ?></span></td>
+                        <td class="text-center"><span class="badge badge-jenis <?= $row['jenis'] == 'satuan' ? 'bg-success' : 'bg-warning text-dark' ?>"><?= ucfirst($row['jenis']) ?></span></td>
                         <td class="text-center">
                           <div class="d-flex justify-content-center gap-2">
                             <button class="btn btn-success btn-sm btn-edit"><i class="bi bi-pencil"></i></button>

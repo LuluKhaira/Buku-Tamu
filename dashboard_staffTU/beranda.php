@@ -25,7 +25,6 @@ if (!isset($_SESSION['username'])) {
       background: #f2f2f2;
     }
 
-    /* CRITICAL: Reset margin/padding */
     html,
     body {
       margin: 0 !important;
@@ -33,7 +32,6 @@ if (!isset($_SESSION['username'])) {
       overflow-x: hidden;
     }
 
-    /* Navbar full width tanpa margin */
     .navbar {
       margin: 0 !important;
       padding: 0 !important;
@@ -59,16 +57,12 @@ if (!isset($_SESSION['username'])) {
       margin-top: 0 !important;
     }
 
-    /* Container fluid reset margin */
     .container-fluid {
       padding-left: 15px !important;
       padding-right: 15px !important;
     }
 
-    /* ================= iPAD / TABLET ONLY ================= */
     @media (max-width: 1200px) and (min-width: 768px) {
-
-      /* Paksa 3 card sejajar */
       .stats-row {
         display: flex;
         flex-wrap: nowrap;
@@ -80,30 +74,24 @@ if (!isset($_SESSION['username'])) {
         max-width: 33.333%;
       }
 
-      /* SEMBUNYIKAN TEKS */
       .stats-label,
       .stats-text {
         display: none !important;
       }
 
-      /* Perbesar angka */
       .stats-number {
         font-size: 1.3rem !important;
       }
 
-      /* Perbesar icon */
       .stats-card i {
         font-size: 2rem !important;
       }
 
-      /* Tengah vertikal */
       .stats-card .row {
         align-items: center;
       }
     }
 
-
-    /* RESPONSIVE MOBILE */
     @media (max-width: 576px) {
       .container-fluid {
         padding-left: 10px !important;
@@ -125,7 +113,6 @@ if (!isset($_SESSION['username'])) {
         font-size: 0.7rem;
       }
 
-      /* Stack card header items vertically */
       .card-header .row {
         flex-direction: column;
         gap: 10px;
@@ -135,7 +122,6 @@ if (!isset($_SESSION['username'])) {
         width: 100% !important;
       }
 
-      /* KHUSUS TABLET */
       @media (max-width: 991.98px) and (min-width: 577px) {
         .card .h5 {
           font-size: 1rem;
@@ -145,8 +131,6 @@ if (!isset($_SESSION['username'])) {
           font-size: 1.8rem !important;
         }
       }
-
-
     }
   </style>
 </head>
@@ -156,8 +140,6 @@ include "../config/db_beranda.php";
 include "../config/db_pengunjung_hariini.php";
 
 ?>
-
-
 <body style="background:#f2f2f2;">
   <div class="page-wrapper">
     <?php include '../Nav_Side_Bar/sidebar.php'; ?>
@@ -221,13 +203,10 @@ include "../config/db_pengunjung_hariini.php";
               </div>
             </div>
           </div>
-
         </div>
-
 
         <div class="col-lg-12 mb-3">
           <div class="card shadow-sm" style=" overflow-y: auto;">
-
             <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background:#EFE3D6;">
               <h5 class="mb-0 fw-semibold" style="color:#8B5E34;">Pengunjung Hari Ini</h5>
             </div>
@@ -243,12 +222,10 @@ include "../config/db_pengunjung_hariini.php";
                   </div>
                 </div>
 
-
                 <div class="col-md-6 d-flex align-items-center justify-content-end gap-2">
                   <div class="dropdown" id="sortDropdown">
                     <button class="btn dropdown-toggle sort-button" type="button" id="dropdownMenuSort"
                       data-bs-toggle="dropdown" aria-expanded="false">
-
                       <span id="selectedSortOption">
                         <?= ($filter_jenis == 'all') ? 'Semua' : ucfirst($filter_jenis); ?>
                       </span>
@@ -290,8 +267,8 @@ include "../config/db_pengunjung_hariini.php";
                       <th>Nama / PJ</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
-                      <th>datang</th>
-                      <th>pulang</th>
+                      <th>Datang</th>
+                      <th>Pulang</th>
                     </tr>
                   </thead>
 

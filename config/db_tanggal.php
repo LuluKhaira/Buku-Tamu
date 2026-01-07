@@ -24,7 +24,7 @@ if ($status === "datang") {
 
 // Filter search (nama, instansi, tujuan, tanggal)
 if (!empty($search)) {
-    $where[] = "(nama LIKE ? OR instansi LIKE ? OR tujuan LIKE ? OR tanggal LIKE ?)";
+    $where[] = "(nama LIKE ? OR instansi LIKE ? OR tujuan LIKE ?)";
 }
 
 $where_sql = $where ? 'WHERE ' . implode(' AND ', $where) : '';
@@ -43,9 +43,8 @@ if ($dari && $sampai) {
 }
 
 if (!empty($search)) {
-    $bind_types .= 'ssss';
+    $bind_types .= 'sss';
     $likeSearch = "%$search%";
-    $bind_values[] = $likeSearch;
     $bind_values[] = $likeSearch;
     $bind_values[] = $likeSearch;
     $bind_values[] = $likeSearch;

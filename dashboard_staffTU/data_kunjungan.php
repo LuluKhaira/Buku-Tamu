@@ -193,7 +193,7 @@ include "../config/db_tanggal.php"; // file ini sudah men-generate $pengunjung a
               <div class="col">
                 <div class="input-group">
                   <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-                  <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>" class="form-control" placeholder="Cari nama, instansi, tanggal...">
+                  <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>" class="form-control" placeholder="Cari nama, instansi, tujuan...">
                 </div>
               </div>
               <div class="col-auto">

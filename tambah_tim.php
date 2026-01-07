@@ -92,7 +92,6 @@
                                     placeholder="Masukkan tujuan kedatangan..." required
                                     oninvalid="this.setCustomValidity('Tujuan kedatangan wajib diisi')"
                                     oninput="this.setCustomValidity('')"></textarea>
-
                             </div>
 
                             <div class="d-flex align-items-center mt-3">
@@ -101,7 +100,6 @@
                                 </button>
                             </div>
                         </form>
-
                     </div>
                 </div>
 
@@ -112,7 +110,6 @@
                         <p class="opacity-75">Silakan lengkapi data diri Anda.</p>
                     </div>
                 </div>
-
             </div>
         
     </div>

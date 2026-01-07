@@ -56,7 +56,7 @@
                     <?php include 'Nav_Side_Bar/nav_tambah.php'; ?>
 
                     <h2 class="fw-bold mb-4">
-                        Silakan isi Informasi <span style="color: #f4b942; font-style: italic;">Pengunjung!</span>
+                        Silahkan isi Informasi <span style="color: #f4b942; font-style: italic;">Pengunjung!</span>
                     </h2>
 
                     <form id="formTamu">

@@ -114,78 +114,9 @@
         </div>
     </footer>
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const btnCari = document.getElementById("btnCari");
-            const sessionInput = document.getElementById("sessionId");
-            const hasilTicket = document.getElementById("hasilTicket");
-
-            if (!btnCari) {
-                console.error("btnCari tidak ditemukan");
-                return;
-            }
-
-            btnCari.addEventListener("click", cariData);
-            sessionInput.addEventListener("keyup", e => {
-                if (e.key === "Enter") cariData();
-            });
-
-            function cariData() {
-                let kode = sessionInput.value.trim();
-
-                if (kode === "") {
-                    hasilTicket.innerHTML = `
-                <div class="alert alert-warning rounded-4">
-                    Session ID tidak boleh kosong.
-                </div>`;
-                    return;
-                }
-
-                hasilTicket.innerHTML = `
-            <div class="text-center text-muted py-4">
-                <div class="spinner-border"></div>
-                <p class="mt-2 mb-0">Mencari data...</p>
-            </div>
-        `;
-
-                fetch("config/caridata.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: "kode=" + encodeURIComponent(kode)
-                })
-                    .then(res => res.text())
-                    .then(html => {
-                        hasilTicket.innerHTML = html;
-                    })
-                    .catch(() => {
-                        hasilTicket.innerHTML = `
-                <div class="alert alert-danger">
-                    Gagal mengambil data.
-                </div>`;
-                    });
-            }
-
-            window.checkout = function (kode) {
-                if (!confirm("Yakin ingin check-out?")) return;
-
-                fetch("config/pulang.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: "kode=" + encodeURIComponent(kode)
-                })
-                    .then(res => res.text())
-                    .then(html => {
-                        hasilTicket.innerHTML = html;
-                        sessionInput.value = "";
-                    });
-            };
-
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="keluar.js"></script>
 </body>
 
 </html>
